@@ -12,6 +12,7 @@ script:
 after_success:
   - cd website
   - make html
+  - cd ..
 
 deploy:
   - provider: pages
