@@ -8,7 +8,7 @@ install:
   - pip install -U .
 
 script:
-  - pip install -U -r requirements_dev.txt 2>&1 | tail -n 11
+  - pip install -U -r requirements.txt 2>&1 | tail -n 11
 
 after_success:
   - cd website
@@ -18,7 +18,7 @@ deploy:
   - provider: pages
     skip_cleanup: true
     github_token:
-      secure: jrPIzI6e67nPuqIFXCwr0NfpAKxVrkZ5JSE9iW7GLVagLTiHcXCnzGDDPYo8Aq+jwJv69Hy+wXLCgq5G6AU/SCy9eLjYlAFVoEwyKh9SQzm404ay3B5Gxcuskj4nqJWWWH0ETAK4QIvhWtAzx48ElNwLOaidzPRFAgyzSVm337EpnEvuNr67I53M0IYaaAL21zWj8yCdKzOTOg/GI1Idn3a1cvW+Hqy0AWID7d/LxNWC1zwBIwTwUGaMUOw9tA2FTqrXXbfW00nBlulhYkkWG3JUursL8nrs/PLzwp5lJPQJ8DBG6I1PYexZ5Cfl6GMHY6+K2lSx+PdNeB9UkEucXNiB4utQMplCqVxHPi/m2wEM9tJSADMQ96HCKSprXmKfa1VW039Dxf8efWGosO7dI1QOmbsrs8LcloSLli/q+PmgNv7s+emEv6/X0UL7idB4T097KPsJCulE468VBwuNfnvIUcX2a2q7T+MDr6Q3uDFZ1NYAsTPpOLqDLM25ri5h0DHf0i3h3wCuMT27kDUlpEcSjaVeJvJStlS3nn+ioo/LGNUGvNiO9uUYB62Pegb8RmIEZ1QGjL6hhGPujv9WAdqYU2f8iSmpBr50G/jOUZhnOMOcvttaQDew20+TRvg20u43HggaeS9f32YbXEK7QbtdtGLsJiPculnxF3ZNBmM=
+      secure: "iCkNHdB8Dr65E7DE8tIF54FUF8wO0td1+6s6vVkueJJ0/rG52I+MFXt6Lsd66wHMeCzPbfdrYht8zHf8NwUv0QL9itXt0bXjGqRJMD0x19TWwTU1aoQPmkOQ54eaLrVqpqLFc0UyMM3S+A25Cn5gJBwd3o/E73CnalW9zHqQz8ShXxqtI7RCtM/WNBIprTV7BFSClSRTjrg5a8zv2O+m1OBEA0HGuW6cVpLRD2Orm1zkoy9OqKU4FVTMth7dPUoZukM5bA7q79ndDuw98fyFZh2KCKvlltA89HRkcX+HbnZOqJ0TTl+8DlWn5o1FTwWDPv0OKvvyA6g5WD+zRtdA2Z4qtvyf6nSsajsbpzr4JC//zMYOQxieFUwXfpq06XBpOSoAdjQNxoBRQMVRQoCOTPLLLW0kMFz4vhQqAmpoWwruqn0bV8WuO99jOOcOzdt6Y/h7UXFkDujNx9MLe0YAFPj31x5wSUYjvg39JAKnIc+oG8P5avK5hrFspPqeigZeTa0lGIbmHQShnjQYO/1ZpbG+vKFxAdJREn5FIJQZVtqEpAK2Y+QdNzbafBmlbX46+HJweN94pNTzL6vHKZ7tTDbGi6Tv5/8Iqad7UIIFp+eJSXi5cP+ZCsBnEj8kXhf1+u+sD962gReCiMPADTGSHJj3JmM7+sPIsanIn1ZYKao="
     local_dir: website/_build/html
     keep-history: true
     on:
