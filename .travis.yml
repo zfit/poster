@@ -13,7 +13,7 @@ after_success:
   - cd website
   - make clean
   - make html
-  - touch .nojekyll
+  - touch _build/html/.nojekyll
   - cd ..
 
 deploy:
