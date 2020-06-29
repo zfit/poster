@@ -13,8 +13,8 @@ after_success:
   - cd website
   - make clean
   - make html
-  - cd ..
   - touch .nojekyll
+  - cd ..
 
 deploy:
   - provider: pages
