@@ -11,7 +11,8 @@ script:
 
 after_success:
   - cd website
-  - make html
+  - make -C clean
+  - make -C html
   - cd ..
 
 deploy:

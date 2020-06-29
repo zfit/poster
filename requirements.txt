@@ -1,4 +1,4 @@
 zfit
 matplotlib
 Sphinx>=1.7.1
-sphinx_bootstrap_theme
+sphinx_bootstrap_themeck
