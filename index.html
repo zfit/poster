@@ -108,12 +108,14 @@
       
   <div class="section" id="zfit-scalable-pythonic-fitting">
 <h1>zfit: scalable, pythonic fitting<a class="headerlink" href="#zfit-scalable-pythonic-fitting" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://github.com/zfit/zfit"><img alt="zfit_logo" src="website/images/zfit-fin-hires.png" /></a></p>
+<p><a class="reference external" href="https://github.com/zfit/zfit"><img alt="zfit_logo" src="_images/zfit-fin_400x168.png" /></a></p>
 <p><strong>How it works</strong>: click on the links or the images to explore zfit.</p>
 <div class="section" id="what-is-zfit">
 <h2>What is zfit?<a class="headerlink" href="#what-is-zfit" title="Permalink to this headline">¶</a></h2>
 <p>zfit is a (likelihood) model fitting library. Hereby, model refer to analytic distributions
-such as a Normal, Poisson. It is enspired to be powerful and flexible enough to satisfy the
+such as a Normal, Poisson.</p>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/zfit/zfit-tutorials/9fc3fb862f078d410288142a354c78edfa0d0b05?filepath=10%20-%20Introduction%20to%20zfit.ipynb"><img alt="zfit logo" src="_images/gauss_fit.png" /></a></p>
+<p>It is enspired to be powerful and flexible enough to satisfy the
 strong requirements in High Energy Physics, but is a general purpose library. It focuses strongly on two points,
 namely:</p>
 <ul class="simple">
@@ -121,11 +123,16 @@ namely:</p>
 mathematical library very similar to Numpy but with the native ability to compile
 parts and imply various optimizations, including GPU support and automatic gradients.</p></li>
 <li><p>customizability of models: While comparable libraries offer usually a limited set of
-model combinations or the possibility to implement custom models, zfit supports
-products, sums and muldidimensional distributions out-of-the-box.
-Furthermore, implementing a custom model is straightforward and allows for arbitrary
-complicated functions; if analytical methods for integration and sampling are not
-available, it falls back to numerical methods.</p></li>
+model combinations or the possibility to implement custom models, zfit supports <a class="reference external" href="https://mybinder.org/v2/gh/zfit/zfit-tutorials/9fc3fb862f078d410288142a354c78edfa0d0b05?filepath=20%20-%20Composite%20Models.ipynb">a variety of
+composed and multidimensional distributions</a>, such as
+products and sums, out-of-the-box.
+Implementing a custom model with your own function
+(<a class="reference external" href="https://mybinder.org/v2/gh/zfit/zfit-tutorials/9fc3fb862f078d410288142a354c78edfa0d0b05?filepath=60%20-%20Custom%20PDF.ipynb">try your own shape and see!</a>
+is straightforward and allows for arbitrary
+complicated functions - even functions reaching thousands of lines of code;
+if analytical methods for integration and sampling are not
+available, it automatically falls back to numerical methods. No further care needs to
+be taken by the user therefore.</p></li>
 </ul>
 </div>
 </div>

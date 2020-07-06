@@ -11,7 +11,11 @@ What is zfit?
 -------------
 
 zfit is a (likelihood) model fitting library. Hereby, model refer to analytic distributions
-such as a Normal, Poisson. It is enspired to be powerful and flexible enough to satisfy the
+such as a Normal, Poisson.
+
+|tutorial10|
+
+It is enspired to be powerful and flexible enough to satisfy the
 strong requirements in High Energy Physics, but is a general purpose library. It focuses strongly on two points,
 namely:
 
@@ -19,15 +23,21 @@ namely:
   mathematical library very similar to Numpy but with the native ability to compile
   parts and imply various optimizations, including GPU support and automatic gradients.
 - customizability of models: While comparable libraries offer usually a limited set of
-  model combinations or the possibility to implement custom models, zfit supports
-  products, sums and muldidimensional distributions out-of-the-box.
-  Furthermore, implementing a custom model is straightforward and allows for arbitrary
-  complicated functions; if analytical methods for integration and sampling are not
-  available, it falls back to numerical methods.
+  model combinations or the possibility to implement custom models, zfit supports `a variety of
+  composed and multidimensional distributions <https://mybinder.org/v2/gh/zfit/zfit-tutorials/9fc3fb862f078d4
+  10288142a354c78edfa0d0b05?filepath=20%20-%20Composite%20Models.ipynb>`_, such as
+  products and sums, out-of-the-box.
+  Implementing a custom model with your own function
+  (`try your own shape and see! <https://mybinder.org/v2/gh/zfit/zfit-tutorials/9fc3fb862f078d410288142a354c78edfa0d0b05?filepath=60%20-%20Custom%20PDF.ipynb>`_
+  is straightforward and allows for arbitrary
+  complicated functions - even functions reaching thousands of lines of code;
+  if analytical methods for integration and sampling are not
+  available, it automatically falls back to numerical methods. No further care needs to
+  be taken by the user therefore.
 
-.. |zfit_logo| image:: website/images/zfit-fin-hires.png
+.. |zfit_logo| image:: images/zfit-fin_400x168.png
    :target: https://github.com/zfit/zfit
 
-.. |tutorial10| image:: website/images/gauss_fit.png
+.. |tutorial10| image:: images/gauss_fit.png
    :target: https://mybinder.org/v2/gh/zfit/zfit-tutorials/9fc3fb862f078d410288142a354c78edfa0d0b05?filepath=10%20-%20Introduction%20to%20zfit.ipynb
    :alt: zfit logo
