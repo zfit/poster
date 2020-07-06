@@ -25,6 +25,6 @@ namely:
   complicated functions; if analytical methods for integration and sampling are not
   available, it falls back to numerical methods.
 
-.. |zfit_logo| image:: docs/images/zfit-fin-hires.png
+.. |zfit_logo| image:: website/images/zfit-fin-hires.png
    :target: https://github.com/zfit/zfit
    :alt: zfit logo
