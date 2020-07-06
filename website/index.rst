@@ -5,7 +5,7 @@ zfit: scalable, pythonic fitting
 
 |zfit_logo|
 
-
+**How it works**: click on the links or the images to explore zfit.
 
 What is zfit?
 -------------
@@ -27,4 +27,7 @@ namely:
 
 .. |zfit_logo| image:: website/images/zfit-fin-hires.png
    :target: https://github.com/zfit/zfit
+
+.. |tutorial10| image:: website/images/gauss_fit.png
+   :target: https://mybinder.org/v2/gh/zfit/zfit-tutorials/9fc3fb862f078d410288142a354c78edfa0d0b05?filepath=10%20-%20Introduction%20to%20zfit.ipynb
    :alt: zfit logo
