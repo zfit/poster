@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to zfit-poster’s documentation! &#8212; zfit-poster  documentation</title>
+    <title>zfit: scalable, pythonic fitting &#8212; zfit-poster  documentation</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -63,7 +63,10 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Welcome to zfit-poster’s documentation!</a></li>
+<li><a class="reference internal" href="#">zfit: scalable, pythonic fitting</a><ul>
+<li><a class="reference internal" href="#what-is-zfit">What is zfit?</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -103,9 +106,26 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="welcome-to-zfit-poster-s-documentation">
-<h1>Welcome to zfit-poster’s documentation!<a class="headerlink" href="#welcome-to-zfit-poster-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+  <div class="section" id="zfit-scalable-pythonic-fitting">
+<h1>zfit: scalable, pythonic fitting<a class="headerlink" href="#zfit-scalable-pythonic-fitting" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/zfit/zfit"><img alt="zfit logo" src="docs/images/zfit-fin-hires.png" /></a></p>
+<div class="section" id="what-is-zfit">
+<h2>What is zfit?<a class="headerlink" href="#what-is-zfit" title="Permalink to this headline">¶</a></h2>
+<p>zfit is a (likelihood) model fitting library. Hereby, model refer to analytic distributions
+such as a Normal, Poisson. It is enspired to be powerful and flexible enough to satisfy the
+strong requirements in High Energy Physics, but is a general purpose library. It focuses strongly on two points,
+namely:</p>
+<ul class="simple">
+<li><p>performance: it is built on top of the <em>low-level</em> components of TensorFlow. This is an
+mathematical library very similar to Numpy but with the native ability to compile
+parts and imply various optimizations, including GPU support and automatic gradients.</p></li>
+<li><p>customizability of models: While comparable libraries offer usually a limited set of
+model combinations or the possibility to implement custom models, zfit supports
+products, sums and muldidimensional distributions out-of-the-box.
+Furthermore, implementing a custom model is straightforward and allows for arbitrary
+complicated functions; if analytical methods for integration and sampling are not
+available, it falls back to numerical methods.</p></li>
+</ul>
 </div>
 </div>
 
@@ -122,7 +142,7 @@
     </p>
     <p>
         &copy; Copyright 2020, Jonas Eschle.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
     </p>
   </div>
 </footer>
