@@ -1,3 +1,5 @@
+
+
 ================================
 zfit: scalable, pythonic fitting
 ================================
@@ -28,7 +30,7 @@ namely:
   10288142a354c78edfa0d0b05?filepath=20%20-%20Composite%20Models.ipynb>`_, such as
   products and sums, out-of-the-box.
   Implementing a custom model with your own function
-  (`try your own shape and see! <https://mybinder.org/v2/gh/zfit/zfit-tutorials/9fc3fb862f078d410288142a354c78edfa0d0b05?filepath=60%20-%20Custom%20PDF.ipynb>`_
+  (`you can try your own shape  <https://mybinder.org/v2/gh/zfit/zfit-tutorials/9fc3fb862f078d410288142a354c78edfa0d0b05?filepath=60%20-%20Custom%20PDF.ipynb>`_)
   is straightforward and allows for arbitrary
   complicated functions - even functions reaching thousands of lines of code;
   if analytical methods for integration and sampling are not
