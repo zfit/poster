@@ -12,13 +12,13 @@ zfit: scalable, pythonic fitting
 What is zfit?
 -------------
 
-zfit is a (likelihood) model fitting library. Hereby, model refer to analytic distributions
-such as a Normal, Poisson.
+zfit is a (likelihood) model fitting library. Hereby, model refers to analytic distributions
+such as a Normal, Poisson. (`This is similar to SciPy distributions and fitting, why zfit? <scipy_vs_zfit>`_)
 
 |tutorial10|
 
-It is enspired to be powerful and flexible enough to satisfy the
-strong requirements in High Energy Physics, but is a general purpose library. It focuses strongly on two points,
+It is built to be powerful and flexible enough to satisfy the
+strong requirements of High Energy Physics, but is a general purpose library. It focuses strongly on two points,
 namely:
 
 - performance: it is built on top of the *low-level* components of TensorFlow. This is an
