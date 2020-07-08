@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>&lt;no title&gt; &#8212; zfit-poster  documentation</title>
+    <title>SciPy vs zfit &#8212; zfit-poster  documentation</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -64,7 +64,8 @@
      href="#">Page <b class="caret"></b></a>
   <ul class="dropdown-menu localtoc"
       role="menu"
-      aria-labelledby="dLabelLocalToc"><ul class="simple">
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">SciPy vs zfit</a></li>
 </ul>
 </ul>
 </li>
@@ -95,7 +96,24 @@
   <div class="row">
     <div class="body span12 content" role="main">
       
-  
+  <div class="section" id="scipy-vs-zfit">
+<h1>SciPy vs zfit<a class="headerlink" href="#scipy-vs-zfit" title="Permalink to this headline">¶</a></h1>
+<p>zfit is a model fitting library. SciPy offers a lot more, but also has distributions and minimization capabilities.</p>
+<p>While the SciPy capabilities are good for simple fits, the library has a few shortcomings that zfit implements:</p>
+<ul class="simple">
+<li><p>extendability: while distributions can be added to scipy, only analytical integrable distributions can. zfit
+can deal with any function and applies numerical methods to it.</p></li>
+<li><p>compositions: zfit contains pdfs such as sums and products that build a new distribution out of others.</p></li>
+<li><p>speed: with TensorFlow as the backend, zfit can be a factor of 10-100 faster than comparable fits in scipy</p></li>
+<li><p>mulitple dimensions are handled consistently in zfit</p></li>
+<li><p>consistent design: the fitting workflow of zfit contains 5 elementary pieces - data, model, loss, minimizer, fitresult -
+which are all maximally decoupled and can be exchanged arbitrarily.</p></li>
+</ul>
+<p>There are many more, smaller advantages such as parameters, different normalization ranges and more. There is
+no disadvantage in using zfit compared to scipy to do a simple fit and it is straightforward to extend it to anything more
+complicated due to the composite design of zfit structures.</p>
+</div>
+
 
     </div>
       
