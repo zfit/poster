@@ -45,9 +45,9 @@ namely:
   `TensorFlow for High Performance Computing <../_tmp/zfit-tutorials/TensorFlow/HPC_with_TensorFlow>`_
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 0
 
-    `TensorFlow for High Performance Computing <../_tmp/zfit-tutorials/TensorFlow/HPC_with_TensorFlow>`
+    ../_tmp/zfit-tutorials/TensorFlow/HPC_with_TensorFlow
 
 
 - **custom models**: While comparable libraries offer usually a limited set of
