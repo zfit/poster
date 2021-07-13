@@ -8,7 +8,7 @@ jupyter-sphinx
 myst-nb
 mdit-py-plugins < 0.2.7  # temporary fix
 pandas
-Sphinx >= 3
+Sphinx >= 3,<4
 sphinx-book-theme
 sphinx-copybutton
 sphinx-panels
