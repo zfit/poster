@@ -6,7 +6,6 @@ pygit2
 scipy
 jupyter-sphinx
 myst-nb
-jupyter
 mdit-py-plugins < 0.2.7  # temporary fix
 pandas
 Sphinx >= 3
@@ -15,4 +14,3 @@ sphinx-copybutton
 sphinx-panels
 sphinx-thebe
 sphinx-togglebutton
-sphobjinv
