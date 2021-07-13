@@ -1,4 +1,25 @@
 zfit
 matplotlib
+mplhep
+numpy
 Sphinx>=1.7.1
 sphinx_bootstrap_theme
+sphinx_panels
+sphinx_thebe
+sphinx_book_theme
+pygit2
+scipy
+jupyter-sphinx
+myst-nb
+jupyter
+matplotlib
+mdit-py-plugins < 0.2.7  # temporary fix
+myst-nb >= 0.11  # myst_enable_extensions
+pandas
+Sphinx >= 3
+sphinx-book-theme
+sphinx-copybutton
+sphinx-panels
+sphinx-thebe
+sphinx-togglebutton
+sphobjinv
