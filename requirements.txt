@@ -6,11 +6,10 @@ pygit2
 scipy
 jupyter-sphinx
 myst-nb
-mdit-py-plugins < 0.2.7  # temporary fix
+mdit-py-plugins  # temporary fix
 pandas
 Sphinx >= 3,<4
 sphinx-book-theme
-sphinx-copybutton
 sphinx-panels
 sphinx-thebe
 sphinx-togglebutton
