@@ -7,10 +7,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.3.1
 
+      defaults:
+        run:
+          shell: bash -l {0}
+
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: zposter38
+          environment-file: environment.yml
+          python-version: 3.8
+          auto-activate-base: false
+
       - name: Install and Build
         run: |
-          pip install -U pip
-          pip install -r requirements.txt
+#          pip install -U pip
+#          pip install -r requirements.txt
           cd website
           make clean
           make html
