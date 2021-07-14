@@ -272,8 +272,8 @@
 <div class="section" id="adding-a-constraint">
 <h2>Adding a constraint<a class="headerlink" href="#adding-a-constraint" title="Permalink to this headline">¶</a></h2>
 <p>If we know a parameters value from a different measurement and want to constraint this using its uncertainty, a Gaussian constraint can be added to the likelihood as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-11c60847-578b-4f64-b2c4-c0f4ead1fb21">
-<span class="eqno">(1)<a class="headerlink" href="#equation-11c60847-578b-4f64-b2c4-c0f4ead1fb21" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e204281e-b46e-46fe-9518-5e3db16975df">
+<span class="eqno">(1)<a class="headerlink" href="#equation-e204281e-b46e-46fe-9518-5e3db16975df" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathrm{constr_i} = \mathrm{Gauss}(\mu_{measured}; \theta_i, \sigma_{measured})
 \end{align}\]</div>
 <p>In general, additional terms can be added to the likelihood arbitrarily in zfit, be it to incorporate other shaped measurements or to add penalty terms to confine a fit within boundaries.</p>
@@ -382,13 +382,13 @@
 <h2>Simultaneous fits<a class="headerlink" href="#simultaneous-fits" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes, we don’t want to fit a single channel but multiple with the same likelihood and having shared parameters between them. In this example, we will fit the decay simultaneously to its resonant control channel.</p>
 <p>A simultaneous likelihood is the product of different likelihoods defined by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7f1bab16-e860-4b14-8ef2-a58cf4af0f83">
-<span class="eqno">(2)<a class="headerlink" href="#equation-7f1bab16-e860-4b14-8ef2-a58cf4af0f83" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e3f8ac4c-2f44-4375-8beb-2606d3017428">
+<span class="eqno">(2)<a class="headerlink" href="#equation-e3f8ac4c-2f44-4375-8beb-2606d3017428" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathcal{L}_{f(x)}(\theta | {data_0, data_1, ..., data_n}) &amp;= \prod_{i=1}^{n} \mathcal{L}(\theta_i, data_i)
 \end{align}\]</div>
 <p>and becomes in the NLL a sum</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3652d3f3-7c2c-476e-a465-c456ea151a88">
-<span class="eqno">(3)<a class="headerlink" href="#equation-3652d3f3-7c2c-476e-a465-c456ea151a88" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4d9a6228-435e-4437-9217-fb34cdded26f">
+<span class="eqno">(3)<a class="headerlink" href="#equation-4d9a6228-435e-4437-9217-fb34cdded26f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathrm{NLL}_{f(x)}(\theta | {data_0, data_1, ..., data_n}) &amp;= \sum_{i=1}^{n} \mathrm{NLL}(\theta_i, data_i)
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -473,8 +473,8 @@ As a consequence, this parameters can have limits (which effectively restrict th
 </div>
 </div>
 <p>To implement the simultaneous fit, there are two ways to achieve this in zfit. As an important distinction to other frameworks, zfit translates the above equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-93f48c53-f6b8-4322-9270-19437f914c4c">
-<span class="eqno">(4)<a class="headerlink" href="#equation-93f48c53-f6b8-4322-9270-19437f914c4c" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5a6d7fcb-0e0a-470c-b0d7-549b753fd299">
+<span class="eqno">(4)<a class="headerlink" href="#equation-5a6d7fcb-0e0a-470c-b0d7-549b753fd299" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathrm{NLL}_{f(x)}(\theta | {data_0, data_1, ..., data_n}) &amp;= \sum_{i=1}^{n} \mathrm{NLL}(\theta_i, data_i)
 \end{align}\]</div>
 <p>directly into code.</p>
@@ -586,8 +586,8 @@ As a consequence, this parameters can have limits (which effectively restrict th
 </div>
 <p>What the <code class="docutils literal notranslate"><span class="pre">POI</span></code> class does is to take as input a <code class="docutils literal notranslate"><span class="pre">zfit.Parameter</span></code> instance and a value corresponding to a given hypothesis. You can notice that we didn’t define here the alternative hypothesis as in the discovery test the value of POI for alternate is set to the best fit value.</p>
 <p>The test statistic used is the profile likelihood ratio and defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ee6cfa0b-0fa7-4e02-ad25-fdd7960ad18d">
-<span class="eqno">(5)<a class="headerlink" href="#equation-ee6cfa0b-0fa7-4e02-ad25-fdd7960ad18d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ed0e99af-dbf0-4463-98a7-7f064688cea1">
+<span class="eqno">(5)<a class="headerlink" href="#equation-ed0e99af-dbf0-4463-98a7-7f064688cea1" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 q_{0} = \left\{
     \begin{array}{ll}
         -2 \ln \frac{\mathcal{L}(N_{sig}=0, \; \hat{\hat{\theta}})}{\mathcal{L}(N_{sig}=\hat{N}_{sig}, \; \hat{\theta})} &amp; \mbox{if } \; \hat{N}_{sig} \geq 0 \\
@@ -597,14 +597,14 @@ q_{0} = \left\{
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> are the best fitted values of the nuisances parameters (i.e. background yield, exponential slope…), while <span class="math notranslate nohighlight">\(\hat{\hat{\theta}}\)</span> are the fitted values of the nuisances when <span class="math notranslate nohighlight">\({N}_{sig} = 0\)</span>.</p>
 <p>From the test statistic distribution a p-value can computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-10d51bde-9252-4cc8-b1f3-0d9910d58cf3">
-<span class="eqno">(6)<a class="headerlink" href="#equation-10d51bde-9252-4cc8-b1f3-0d9910d58cf3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b4a2f3a3-59b1-4a72-a5c6-616941ece334">
+<span class="eqno">(6)<a class="headerlink" href="#equation-b4a2f3a3-59b1-4a72-a5c6-616941ece334" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 p_{0} = \int_{q_{0}^{obs}}^{\infty} f(q_{0} |H_{0}) dq_{0}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(q_{0}^{obs}\)</span> is the value of the test statistic evaluated on observed data.</p>
 <p>The construction of the test statistic and the computation of the p-value is done in a <code class="docutils literal notranslate"><span class="pre">Calculator</span></code> object in <code class="docutils literal notranslate"><span class="pre">hepstats</span></code>. In this example we will use in this example the <code class="docutils literal notranslate"><span class="pre">AsymptoticCalculator</span></code> calculator which assumes that <span class="math notranslate nohighlight">\(q_{0}\)</span> follows a <span class="math notranslate nohighlight">\(\chi^2(ndof=1)\)</span> which simplifies the p-value computation to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eefa86a9-f2c6-4067-bdba-6fc73791d94f">
-<span class="eqno">(7)<a class="headerlink" href="#equation-eefa86a9-f2c6-4067-bdba-6fc73791d94f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-241349e0-5611-4c6d-b55c-864f2d102763">
+<span class="eqno">(7)<a class="headerlink" href="#equation-241349e0-5611-4c6d-b55c-864f2d102763" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 p_{0} = 1 - \Phi\bigg({\sqrt{q_{0}^{obs}}}\bigg).
 \end{equation}\]</div>
 <p>The calculator objects takes as input the likelihood function and a minimizer to profile the likelihood.</p>
@@ -624,8 +624,8 @@ p_{0} = 1 - \Phi\bigg({\sqrt{q_{0}^{obs}}}\bigg).
 </div>
 <p>There is another calculator in <code class="docutils literal notranslate"><span class="pre">hepstats</span></code> called <code class="docutils literal notranslate"><span class="pre">FrequentistCalculator</span></code> which constructs the test statistic distribution <span class="math notranslate nohighlight">\(f(q_{0} |H_{0})\)</span> with pseudo-experiments (toys), but it takes more time.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Discovery</span></code> class is a high-level class that takes as input a calculator and a <code class="docutils literal notranslate"><span class="pre">POI</span></code> instance representing the null hypothesis, it basically asks the calculator to compute the p-value and also computes the signifance as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-828a7be1-d66e-4f96-b179-8ede784bbc26">
-<span class="eqno">(8)<a class="headerlink" href="#equation-828a7be1-d66e-4f96-b179-8ede784bbc26" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-078fd971-589d-446b-ab7a-06c6a114dc93">
+<span class="eqno">(8)<a class="headerlink" href="#equation-078fd971-589d-446b-ab7a-06c6a114dc93" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 Z = \Phi^{-1}(1 - p_0).
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -679,8 +679,8 @@ Z = \Phi^{-1}(1 - p_0).
 </div>
 </div>
 <p>We might consider computing an upper limit on the signal yield instead. The test statistic for an upper limit calculation is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-511c7719-a60c-4ba8-8484-5d5108abd5ab">
-<span class="eqno">(9)<a class="headerlink" href="#equation-511c7719-a60c-4ba8-8484-5d5108abd5ab" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9978d5d0-91d3-474d-b9bf-bf218b1f6741">
+<span class="eqno">(9)<a class="headerlink" href="#equation-9978d5d0-91d3-474d-b9bf-bf218b1f6741" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 q_{N_{sig}} = \left\{
     \begin{array}{ll}
         -2 \ln \frac{\mathcal{L}(N_{sig}, \; \hat{\hat{\theta}})}{\mathcal{L}(N_{sig}=\hat{N}_{sig}, \; \hat{\theta})} &amp; \mbox{if } \; \hat{N}_{sig} \leq N_{sig} \\
@@ -689,8 +689,8 @@ q_{N_{sig}} = \left\{
 \right.
 \end{equation}\]</div>
 <p>and the p-value is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7c410bae-2b26-4ac7-b946-89f37addc6dd">
-<span class="eqno">(10)<a class="headerlink" href="#equation-7c410bae-2b26-4ac7-b946-89f37addc6dd" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ec309d82-46eb-494e-a74f-1e3c23913008">
+<span class="eqno">(10)<a class="headerlink" href="#equation-ec309d82-46eb-494e-a74f-1e3c23913008" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 p_{N_{sig}} = \int_{q_{N_{sig}}^{obs}}^{\infty} f(q_{N_{sig}} |N_{sig}) dq_{N_{sig}}.
 \end{equation}\]</div>
 <p>The upper limit on <span class="math notranslate nohighlight">\(N_{sig}\)</span>, <span class="math notranslate nohighlight">\(N_{sig, \uparrow}\)</span> is found for <span class="math notranslate nohighlight">\(p_{N_{sig, \uparrow}} = 1 - \alpha\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span> being the confidence level (typically <span class="math notranslate nohighlight">\(95 \%\)</span>). The upper limit is found by interpolation of the p-values as a function of <span class="math notranslate nohighlight">\(N_{sig}\)</span>, which is done the <code class="docutils literal notranslate"><span class="pre">UpperLimit</span></code> class. We have to give the range of values of <span class="math notranslate nohighlight">\(N_{sig}\)</span> to scan using the <code class="docutils literal notranslate"><span class="pre">POIarray</span></code> class which as the <code class="docutils literal notranslate"><span class="pre">POI</span></code> class takes as input the parameter but takes several values to evaluate the parameter instead of one.</p>
@@ -787,13 +787,13 @@ p_{N_{sig}} = \int_{q_{N_{sig}}^{obs}}^{\infty} f(q_{N_{sig}} |N_{sig}) dq_{N_{s
 </div>
 </div>
 <p><strong>sPlot</strong> will use the fitted yield for each sources to derive the so-called <strong>sWeights</strong> for each data point:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ab43ee91-2060-420d-86ec-6155ad73b0e6">
-<span class="eqno">(11)<a class="headerlink" href="#equation-ab43ee91-2060-420d-86ec-6155ad73b0e6" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-46ac33b6-f4d8-47d8-bd5f-079849c87614">
+<span class="eqno">(11)<a class="headerlink" href="#equation-46ac33b6-f4d8-47d8-bd5f-079849c87614" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 W_{n}(x) = \frac{\sum_{j=1}^{N_S} V_{nj} f_j(x)}{\sum_{k=1}^{N_S} N_{k}f_k(x)}
 \end{equation}\]</div>
 <p>with</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e7dd61b4-1682-4440-a586-e07b6de5afc1">
-<span class="eqno">(12)<a class="headerlink" href="#equation-e7dd61b4-1682-4440-a586-e07b6de5afc1" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2c1460e9-cf1a-4228-b795-c4890531a46b">
+<span class="eqno">(12)<a class="headerlink" href="#equation-2c1460e9-cf1a-4228-b795-c4890531a46b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 V_{nj}^{-1} = \sum_{e=1}^{N} \frac{f_n(x_e) f_j(x_e)}{(\sum_{k=1}^{N_S} N_{k}f_k(x))^2}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\({N_S}\)</span> is the number of sources in the data sample, here 2. The index <span class="math notranslate nohighlight">\(n\)</span> represents the source, for instance <span class="math notranslate nohighlight">\(0\)</span> is the signal and <span class="math notranslate nohighlight">\(1\)</span> is the background, then <span class="math notranslate nohighlight">\(f_0\)</span> and <span class="math notranslate nohighlight">\(N_0\)</span> are the pdf and yield for the signal.</p>
