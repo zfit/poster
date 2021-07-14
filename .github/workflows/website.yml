@@ -9,7 +9,8 @@ jobs:
 
       - name: Install and Build
         run: |
-          pip install -U -r requirements.txt
+          pip install -U pip
+          pip install -r requirements.txt
           cd website
           make clean
           make html
