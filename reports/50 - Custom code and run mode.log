@@ -29,7 +29,7 @@ from zfit import z  # this is basically tf, just wrapped
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mValueError[0m                                Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2620/1991092450.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_2654/1991092450.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      5[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      6[0m [0;32mimport[0m [0mtensorflow[0m [0;32mas[0m [0mtf[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 7[0;31m [0;32mimport[0m [0mzfit[0m[0;34m[0m[0;34m[0m[0m

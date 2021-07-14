@@ -226,46 +226,39 @@
             </div>
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Custom models
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-model">
+   Creating a model
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-a-model">
-     Creating a model
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-happened">
+   What happened?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-dimensions-and-parameters-with-angular-observables">
+   Multiple dimensions and parameters with angular observables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multidimensional-spaces">
+     Multidimensional Spaces
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-happened">
-     What happened?
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#managing-parameters">
+     Managing parameters
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#multiple-dimensions-and-parameters-with-angular-observables">
-     Multiple dimensions and parameters with angular observables
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#including-another-observable">
+     Including another observable
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#multidimensional-spaces">
-       Multidimensional Spaces
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#managing-parameters">
-       Managing parameters
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#including-another-observable">
-       Including another observable
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-happened-exactly">
    What happened
    <em>
@@ -273,8 +266,8 @@
    </em>
    ?
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#overriding-pdf">
      Overriding
      <code class="docutils literal notranslate">
@@ -283,30 +276,34 @@
       </span>
      </code>
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#composed-pdfs">
+       Composed PDFs
+      </a>
+     </li>
+    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#composed-pdfs">
-     Composed PDFs
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#and-now">
-     …and now?
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#and-now">
+   …and now?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#mixing-with-pure-python">
      Mixing with pure Python
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#sidestep-what-is-z">
        Sidestep: What is ‘z’?
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#full-python-compatibility">
      Full Python compatibility
     </a>
@@ -572,9 +569,8 @@
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="what-happened-exactly">
-<h1>What happened <em>exactly</em> ?<a class="headerlink" href="#what-happened-exactly" title="Permalink to this headline">¶</a></h1>
+<h2>What happened <em>exactly</em> ?<a class="headerlink" href="#what-happened-exactly" title="Permalink to this headline">¶</a></h2>
 <p>The model tries to be as smart as possible and calls the most explicit function. Then it starts falling back to alternatives and uses, whenever possible, the analytic version (if available), otherwise a numerical.</p>
 <p>The rule simplified: public (sanitizes input and) calls […] private. So e.g. <code class="docutils literal notranslate"><span class="pre">pdf</span></code> calls <code class="docutils literal notranslate"><span class="pre">_pdf</span></code> and if this is not provided, it uses the fallback that may not be optimized, but general enough to work.</p>
 <p>The rule extended (in its current implementation): public calls a series of well defined methods and hooks before it calls the private method. These intermediate <em>can</em> be used, they mostly automatically catch certain cases and handle them for us.</p>
@@ -582,7 +578,7 @@
 <p>In the case above, <code class="docutils literal notranslate"><span class="pre">pdf</span></code> called first <code class="docutils literal notranslate"><span class="pre">_pdf</span></code> (which is not implemented), so it calls <code class="docutils literal notranslate"><span class="pre">_unnormalized_pdf</span></code> and divides this by the <code class="docutils literal notranslate"><span class="pre">normalization</span></code>. The latter also does not have an explicit implementation (<code class="docutils literal notranslate"><span class="pre">_implementation</span></code>), so it uses the fallback and calls <code class="docutils literal notranslate"><span class="pre">integrate</span></code> over the <code class="docutils literal notranslate"><span class="pre">norm_range</span></code>. Since <code class="docutils literal notranslate"><span class="pre">_integrate</span></code> is not provided, the fallback tries to perform an analytic integral, which is not available. Therefore, it integrates the <code class="docutils literal notranslate"><span class="pre">_unnormalized_prob</span></code> numerically. In all of this calls, we can hook in by overriding the mentioned, specified methods.</p>
 <p>What we did not mention: <code class="docutils literal notranslate"><span class="pre">ZPDF</span></code> is just a wrapper around the actual <code class="docutils literal notranslate"><span class="pre">BasePDF</span></code> that should be preferred in general; it simply provides a convenient <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. For the next example, we will implement a multidimensional PDF and use the custom <code class="docutils literal notranslate"><span class="pre">__init__</span></code></p>
 <div class="section" id="overriding-pdf">
-<h2>Overriding <code class="docutils literal notranslate"><span class="pre">pdf</span></code><a class="headerlink" href="#overriding-pdf" title="Permalink to this headline">¶</a></h2>
+<h3>Overriding <code class="docutils literal notranslate"><span class="pre">pdf</span></code><a class="headerlink" href="#overriding-pdf" title="Permalink to this headline">¶</a></h3>
 <p>Before, we used <code class="docutils literal notranslate"><span class="pre">_unnormalized_pdf</span></code>, which is the common use-case. Even if we want to add an analytic integral, we can register it. Or do more fancy stuff like overriding the <code class="docutils literal notranslate"><span class="pre">_normalization</span></code>. We can however also get the full control of what our model output by directly overriding <code class="docutils literal notranslate"><span class="pre">_pdf</span></code>. The signature does not contain only <code class="docutils literal notranslate"><span class="pre">x</span></code> but additionally <code class="docutils literal notranslate"><span class="pre">norm_range</span></code>. This can have no limits (<code class="docutils literal notranslate"><span class="pre">norm_range.has_limits</span></code> is False), in which case the “unnormalized pdf” is requested. Otherwise, <code class="docutils literal notranslate"><span class="pre">norm_range</span></code> can have different limits and we have to take care of the proper normalization.</p>
 <p>This is usually not needed and inside zfit, all PDFs are implemented using the <code class="docutils literal notranslate"><span class="pre">_unnormalized_pdf</span></code>.</p>
 <p>Therefore, it provides mostly a possibility to implement <em>whatever</em> is wanted, any unforeseen use-case, any kind of hack to “just try out something”.</p>
@@ -614,9 +610,8 @@
 </div>
 </div>
 <p>In a similar manner, other methods can be overriden as well. We won’t go into further details here, as this provides a quite advanced task. Furthermore, if stability is a large concern or such special cases need to be implemented, it is recommended to get in contact with the developers and share the idea.</p>
-</div>
 <div class="section" id="composed-pdfs">
-<h2>Composed PDFs<a class="headerlink" href="#composed-pdfs" title="Permalink to this headline">¶</a></h2>
+<h4>Composed PDFs<a class="headerlink" href="#composed-pdfs" title="Permalink to this headline">¶</a></h4>
 <p>So far, we only looked at creating a model that depends on parameters and data but did not include other models. This is crucial to create for example sums or products of PDFs. Instead of inheriting from <code class="docutils literal notranslate"><span class="pre">BasePDF</span></code>, we can use the <code class="docutils literal notranslate"><span class="pre">BaseFunctor</span></code> that contains a mixin which handles daughter PDFs correctly.</p>
 <p>The main difference is that we can now provide a list of PDFs that our model depends on. There can still be parameters (as for example the <code class="docutils literal notranslate"><span class="pre">fracs</span></code> for the sum) that describe the behavior of the models but they can also be omitted (e.g. for the product). _Sidenote: technically, a normal <code class="docutils literal notranslate"><span class="pre">BasePDF</span></code> can of course also have no parameters, however, since this is a constant function without dependencies, this will rarely be used in practice.</p>
 <div class="cell docutils container">
@@ -672,13 +667,14 @@
 </div>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="and-now">
 <h2>…and now?<a class="headerlink" href="#and-now" title="Permalink to this headline">¶</a></h2>
 <p>We’ve implemented a custom PDF. Maybe spent quite some time fine tuning it, debugging it. Adding an integral. And now? Time to make it available to others: <a class="reference external" href="https://github.com/zfit/zfit-physics">zfit-physics</a>. This repository is meant for community contributions. It has less requirements to contribute than to zfit core and has a low threshold. Core devs can provide you with help and you can provide the community with a PDF.</p>
 <p>Make an issue or a PR, everything is welcome!</p>
-</div>
 <div class="section" id="mixing-with-pure-python">
-<h2>Mixing with pure Python<a class="headerlink" href="#mixing-with-pure-python" title="Permalink to this headline">¶</a></h2>
+<h3>Mixing with pure Python<a class="headerlink" href="#mixing-with-pure-python" title="Permalink to this headline">¶</a></h3>
 <p>Whenever possible, it is preferrable to write anything in TensorFlow. But there is the possibility to mix with pure Python, however losing many of the benefits that TensorFlow provides. To do so:</p>
 <ul class="simple">
 <li><p>try to use <code class="docutils literal notranslate"><span class="pre">z.py_function</span></code> or <code class="docutils literal notranslate"><span class="pre">tf.py_function</span></code> to wrap pure Python code</p></li>
@@ -703,12 +699,12 @@
 <p>To do what the above warning told us to do, we can use <code class="docutils literal notranslate"><span class="pre">zfit.run.set_autograd_mode(False)</span></code>.</p>
 <p>This is needed whenever we want to use non-traceable Python calls in the dynamic calculations, be it by using <code class="docutils literal notranslate"><span class="pre">py_function</span></code> or be it by switching off the gradient mode as shown below.</p>
 <div class="section" id="sidestep-what-is-z">
-<h3>Sidestep: What is ‘z’?<a class="headerlink" href="#sidestep-what-is-z" title="Permalink to this headline">¶</a></h3>
+<h4>Sidestep: What is ‘z’?<a class="headerlink" href="#sidestep-what-is-z" title="Permalink to this headline">¶</a></h4>
 <p>This is a subset of TensorFlow, wrapped to improve dtype handling and sometimes even provide additional functionality, such as <code class="docutils literal notranslate"><span class="pre">z.function</span></code> decorator.</p>
 </div>
 </div>
 <div class="section" id="full-python-compatibility">
-<h2>Full Python compatibility<a class="headerlink" href="#full-python-compatibility" title="Permalink to this headline">¶</a></h2>
+<h3>Full Python compatibility<a class="headerlink" href="#full-python-compatibility" title="Permalink to this headline">¶</a></h3>
 <p>To operate in a full Python compatible, yet (way) less efficient mode, we can switch off the automatic gradient, as discussed before, and the graph compilation, leaving us with a Numpy-like TensorFlow</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -726,7 +722,7 @@ However, practially, this mode should anyway be used rather rarely and compares 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NumpyGauss</span><span class="p">(</span><span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">ZPDF</span><span class="p">):</span>
     <span class="n">_PARAMS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">]</span>
-    
+
     <span class="k">def</span> <span class="nf">_unnormalized_pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">zfit</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">assert_executing_eagerly</span><span class="p">()</span>  <span class="c1"># make sure we&#39;re eager</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">unstack_x</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -761,6 +757,7 @@ However, practially, this mode should anyway be used rather rarely and compares 
 <span class="n">integral</span> <span class="o">=</span> <span class="n">gauss</span><span class="o">.</span><span class="n">integrate</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">integral_np</span><span class="p">,</span> <span class="n">integral</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
