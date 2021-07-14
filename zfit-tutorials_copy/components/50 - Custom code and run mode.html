@@ -352,13 +352,13 @@ The expression always stays the same. But in fact, we could split things into tw
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.96678565  0.44665559  0.09849048 -0.99881933  0.26940458]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.44194106  0.55505251  0.98471163 -1.42439679  1.0426848 ]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor([-0.18027262 -2.52040901  2.34369381 -0.07265989  0.05514618], shape=(5,), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor([-0.40727824  0.1405432  -1.23463046 -0.88077355 -0.13073378], shape=(5,), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -374,7 +374,7 @@ The expression always stays the same. But in fact, we could split things into tw
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor([-1.14705828 -2.07375342  2.44218429 -1.07147921  0.32455076], shape=(5,), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor([-0.8492193   0.69559571 -0.24991883 -2.30517035  0.91195103], shape=(5,), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -389,7 +389,7 @@ The expression always stays the same. But in fact, we could split things into tw
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.3157427 , 4.30045324, 5.96426411, 1.1480677 , 0.1053332 ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.72117342, 0.48385339, 0.06245942, 5.31381034, 0.83165467])
 </pre></div>
 </div>
 </div>
@@ -649,8 +649,8 @@ Furthermore, since different objects (e.g. different datasets, <code class="docu
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float64, numpy=
-array([4.95041006, 2.78395664, 0.20840776, 1.64991629, 3.42840278,
-       1.33324437, 0.08279918, 0.87461268, 5.76400127, 1.12348107])&gt;
+array([4.06786252, 2.56856789, 3.76112812, 4.52642042, 3.97926043,
+       4.8008461 , 5.61824806, 2.72370821, 3.13417161, 0.2794445 ])&gt;
 </pre></div>
 </div>
 </div>
@@ -702,7 +702,7 @@ array([4.95041006, 2.78395664, 0.20840776, 1.64991629, 3.42840278,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13.1 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13.5 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -721,7 +721,7 @@ array([4.95041006, 2.78395664, 0.20840776, 1.64991629, 3.42840278,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13.7 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.1 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -742,7 +742,7 @@ array([4.95041006, 2.78395664, 0.20840776, 1.64991629, 3.42840278,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.63 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.87 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -757,7 +757,7 @@ array([4.95041006, 2.78395664, 0.20840776, 1.64991629, 3.42840278,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.util.temporary.TemporarilySet at 0x7f02c8c7f1c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.util.temporary.TemporarilySet at 0x7f0a3843ea60&gt;
 </pre></div>
 </div>
 </div>
@@ -798,37 +798,37 @@ Building graphs and not clearing them will fill up the cache and significanlty s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1696535645154.6814, shape=(), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1651598754519.6846, shape=(), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1646545800023.8777, shape=(), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1676086221630.883, shape=(), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1587696372359.1753, shape=(), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1620098532209.491, shape=(), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1609989893645.388, shape=(), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1573940576682.322, shape=(), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1629150545838.0754, shape=(), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1630701905322.774, shape=(), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>29.7 ms ± 834 µs per loop (mean ± std. dev. of 5 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28.5 ms ± 495 µs per loop (mean ± std. dev. of 5 runs, 1 loop each)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -844,7 +844,7 @@ Building graphs and not clearing them will fill up the cache and significanlty s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.util.temporary.TemporarilySet at 0x7f02c8c7f250&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.util.temporary.TemporarilySet at 0x7f0a3843ee80&gt;
 </pre></div>
 </div>
 </div>
@@ -857,13 +857,13 @@ Building graphs and not clearing them will fill up the cache and significanlty s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1596137783671.4055, shape=(), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1617797395512.902, shape=(), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>180 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>222 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -880,37 +880,37 @@ Building graphs and not clearing them will fill up the cache and significanlty s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1599087459948.1055, shape=(), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1611353738480.6372, shape=(), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1616717487268.678, shape=(), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1634789211925.7605, shape=(), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1623239026702.7544, shape=(), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1671613871337.332, shape=(), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1661235424745.9248, shape=(), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1623924152936.9832, shape=(), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1629170257895.969, shape=(), dtype=float64)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1600701306881.366, shape=(), dtype=float64)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.71 ms ± 916 µs per loop (mean ± std. dev. of 5 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.3 ms ± 608 µs per loop (mean ± std. dev. of 5 runs, 1 loop each)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>

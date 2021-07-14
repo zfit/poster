@@ -430,7 +430,7 @@ zfit consists of 5 mostly independent parts. Other libraries can rely on this pa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We have 9949 events in our dataset with the minimum of -4.973194678952152
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We have 9941 events in our dataset with the minimum of -4.971925019457021
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -460,8 +460,8 @@ zfit consists of 5 mostly independent parts. Other libraries can rely on this pa
 <li><p>PDF that are function which are normalized (over a specified range); this is the main model and is what we gonna use throughout the tutorials.</p></li>
 </ul>
 <p>A PDF is defined by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9e557412-6e0e-4e6a-b12a-400bf83ac519">
-<span class="eqno">(1)<a class="headerlink" href="#equation-9e557412-6e0e-4e6a-b12a-400bf83ac519" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3a80836d-8935-40ed-87c1-da33188fdc51">
+<span class="eqno">(1)<a class="headerlink" href="#equation-3a80836d-8935-40ed-87c1-da33188fdc51" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathrm{PDF}_{f(x)}(x; \theta) = \frac{f(x; \theta)}{\int_{a}^{b} f(x; \theta)}
 \end{align}\]</div>
 <p>where a and b define the normalization range (<code class="docutils literal notranslate"><span class="pre">norm_range</span></code>), over which (by inserting into the above definition) the integral of the PDF is unity.</p>
@@ -671,7 +671,7 @@ either by <em>name</em> (the parameterization name, e.g. <code class="docutils l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.core.data.SampleData at 0x7ff3643af880&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.core.data.SampleData at 0x7fca98b134c0&gt;
 </pre></div>
 </div>
 </div>
@@ -684,8 +684,8 @@ either by <em>name</em> (the parameterization name, e.g. <code class="docutils l
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float64, numpy=
-array([0.75613581, 1.23148468, 2.52938197, 0.25533568, 0.16358203,
-       2.72255828, 1.71440185, 0.79141726, 2.37425199, 1.31954787])&gt;
+array([0.84171846, 2.68975341, 0.07653054, 0.71020618, 0.87364869,
+       2.46647831, 1.94888481, 1.05559116, 2.413514  , 1.7437317 ])&gt;
 </pre></div>
 </div>
 </div>
@@ -724,8 +724,8 @@ array([0.75613581, 1.23148468, 2.52938197, 0.25533568, 0.16358203,
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float64, numpy=
-array([0.38725441, 0.38839551, 0.12387985, 0.30234062, 0.2811868 ,
-       0.09048764, 0.30908977, 0.39035765, 0.15517174, 0.37908533])&gt;
+array([0.39397609, 0.09569667, 0.26045206, 0.38253743, 0.39577047,
+       0.13612008, 0.2543282 , 0.39832632, 0.1469079 , 0.30255054])&gt;
 </pre></div>
 </div>
 </div>
@@ -761,7 +761,7 @@ array([0.38725441, 0.38839551, 0.12387985, 0.30234062, 0.2811868 ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Introduction_43_21.png" src="../../_images/Introduction_43_21.png" />
+<img alt="../../_images/Introduction_43_2.png" src="../../_images/Introduction_43_2.png" />
 </div>
 </div>
 <p>We can of course do better (and will see that later on, continuously improve the plots), but this is quite simple and gives us the full power of matplotlib.</p>
@@ -897,7 +897,7 @@ behavior if there is a degree of freedom too much</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Introduction_58_01.png" src="../../_images/Introduction_58_01.png" />
+<img alt="../../_images/Introduction_58_0.png" src="../../_images/Introduction_58_0.png" />
 </div>
 </div>
 <p>Plotting the components is not difficult now: we can either just plot the pdfs separately (as we still can access them) or in a generalized manner by accessing the <code class="docutils literal notranslate"><span class="pre">pdfs</span></code> attribute:</p>
@@ -918,7 +918,7 @@ behavior if there is a degree of freedom too much</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Introduction_61_01.png" src="../../_images/Introduction_61_01.png" />
+<img alt="../../_images/Introduction_61_0.png" src="../../_images/Introduction_61_0.png" />
 </div>
 </div>
 <p>Now we can add legends etc. Btw, did you notice that actually, the <code class="docutils literal notranslate"><span class="pre">frac</span></code> params are zfit <code class="docutils literal notranslate"><span class="pre">Parameters</span></code>? But we just used them as if they were Python scalars and it works.</p>
@@ -1000,7 +1000,7 @@ behavior if there is a degree of freedom too much</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float64, numpy=999.9999999999998&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float64, numpy=999.9999999999994&gt;
 </pre></div>
 </div>
 </div>
@@ -1027,7 +1027,7 @@ behavior if there is a degree of freedom too much</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;zfit.core.data.Data at 0x7ff3643af250&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;zfit.core.data.Data at 0x7fcb288271f0&gt;]
 </pre></div>
 </div>
 </div>
@@ -1130,7 +1130,7 @@ behavior if there is a degree of freedom too much</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.Parameter &#39;lambda&#39; floating=False value=-0.006734&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.Parameter &#39;lambda&#39; floating=False value=-0.004755&gt;
 </pre></div>
 </div>
 </div>
@@ -1149,7 +1149,7 @@ behavior if there is a degree of freedom too much</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Introduction_92_01.png" src="../../_images/Introduction_92_01.png" />
+<img alt="../../_images/Introduction_92_0.png" src="../../_images/Introduction_92_0.png" />
 </div>
 </div>
 </div>
@@ -1168,7 +1168,7 @@ behavior if there is a degree of freedom too much</p></li>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> of
-&lt;ExtendedUnbinnedNLL model=[&lt;zfit.&lt;class &#39;zfit.models.functor.SumPDF&#39;&gt;  params=[Composed_autoparam_5, Composed_autoparam_6, Composed_autoparam_7]] data=[&lt;zfit.core.data.SampleData object at 0x7ff2d446b130&gt;] constraints=[]&gt; 
+&lt;ExtendedUnbinnedNLL model=[&lt;zfit.&lt;class &#39;zfit.models.functor.SumPDF&#39;&gt;  params=[Composed_autoparam_5, Composed_autoparam_6, Composed_autoparam_7]] data=[&lt;zfit.core.data.SampleData object at 0x7fca988dd280&gt;] constraints=[]&gt; 
 with
 &lt;Minuit Minuit tol=0.001&gt;
 
@@ -1187,7 +1187,7 @@ with
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        │ False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            │ 0.00012 │ -1167       │
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            │ 0.00024 │ -1129       │
 ╘═════════╧═════════════╧══════════════════╧═════════╧═════════════╛
 </pre></div>
 </div>
@@ -1196,19 +1196,19 @@ with
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name               value    at limit
 ---------------  -------  ----------
-sig_yield           1926       False
+sig_yield           1772       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>comb_bkg_yield      1365       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>comb_bkg_yield      1665       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>part_reco_yield     6709       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>part_reco_yield     6563       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_sig             368.6       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_sig             370.1       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_sig          35.37       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_sig          34.55       False
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1226,19 +1226,19 @@ sig_yield           1926       False
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name               value    at limit
 ---------------  -------  ----------
-sig_yield           1926       False
+sig_yield           1772       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>comb_bkg_yield      1365       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>comb_bkg_yield      1665       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>part_reco_yield     6709       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>part_reco_yield     6563       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_sig             368.6       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_sig             370.1       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_sig          35.37       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_sig          34.55       False
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1254,7 +1254,7 @@ sig_yield           1926       False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;value&#39;: 368.593270057785}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;value&#39;: 370.0978512361958}
 </pre></div>
 </div>
 </div>
@@ -1273,7 +1273,7 @@ sig_yield           1926       False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1166.7756386445253
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1129.1477248935262
 </pre></div>
 </div>
 </div>
@@ -1295,15 +1295,15 @@ sig_yield           1926       False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&lt;zfit.Parameter &#39;sig_yield&#39; floating=True value=1926&gt;: {&#39;error&#39;: 73.43093788715831,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&lt;zfit.Parameter &#39;sig_yield&#39; floating=True value=1772&gt;: {&#39;error&#39;: 79.12174313410453,
   &#39;cl&#39;: 0.68268949},
- &lt;zfit.Parameter &#39;comb_bkg_yield&#39; floating=True value=1365&gt;: {&#39;error&#39;: 95.76667833257841,
+ &lt;zfit.Parameter &#39;comb_bkg_yield&#39; floating=True value=1665&gt;: {&#39;error&#39;: 128.05775813701723,
   &#39;cl&#39;: 0.68268949},
- &lt;zfit.Parameter &#39;part_reco_yield&#39; floating=True value=6709&gt;: {&#39;error&#39;: 146.75656475216311,
+ &lt;zfit.Parameter &#39;part_reco_yield&#39; floating=True value=6563&gt;: {&#39;error&#39;: 180.12998435979296,
   &#39;cl&#39;: 0.68268949},
- &lt;zfit.Parameter &#39;mu_sig&#39; floating=True value=368.6&gt;: {&#39;error&#39;: 1.369857477669427,
+ &lt;zfit.Parameter &#39;mu_sig&#39; floating=True value=370.1&gt;: {&#39;error&#39;: 1.4969635289653374,
   &#39;cl&#39;: 0.68268949},
- &lt;zfit.Parameter &#39;sigma_sig&#39; floating=True value=35.37&gt;: {&#39;error&#39;: 1.3280520017930129,
+ &lt;zfit.Parameter &#39;sigma_sig&#39; floating=True value=34.55&gt;: {&#39;error&#39;: 1.4820222289523863,
   &#39;cl&#39;: 0.68268949}}
 </pre></div>
 </div>
@@ -1326,19 +1326,19 @@ sig_yield           1926       False
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name               value    minuit_hesse    at limit
 ---------------  -------  --------------  ----------
-sig_yield           1926     +/-      73       False
+sig_yield           1772     +/-      79       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>comb_bkg_yield      1365     +/-      96       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>comb_bkg_yield      1665     +/- 1.3e+02       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>part_reco_yield     6709     +/- 1.5e+02       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>part_reco_yield     6563     +/- 1.8e+02       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_sig             368.6     +/-     1.4       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_sig             370.1     +/-     1.5       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_sig          35.37     +/-     1.3       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_sig          34.55     +/-     1.5       False
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1369,7 +1369,7 @@ sig_yield           1926     +/-      73       False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OrderedDict([(&lt;zfit.Parameter &#39;sig_yield&#39; floating=True value=1926&gt;, {&#39;lower&#39;: -72.48830024917278, &#39;upper&#39;: 74.42494115098802, &#39;is_valid&#39;: True, &#39;upper_valid&#39;: True, &#39;lower_valid&#39;: True, &#39;at_lower_limit&#39;: False, &#39;at_upper_limit&#39;: False, &#39;nfcn&#39;: 76, &#39;original&#39;: &lt;MError number=0 name=&#39;sig_yield&#39; lower=-72.48830024917278 upper=74.42494115098802 is_valid=True lower_valid=True upper_valid=True at_lower_limit=False at_upper_limit=False at_lower_max_fcn=False at_upper_max_fcn=False lower_new_min=False upper_new_min=False nfcn=76 min=1925.8523985029185&gt;, &#39;cl&#39;: 0.68268949}), (&lt;zfit.Parameter &#39;part_reco_yield&#39; floating=True value=6709&gt;, {&#39;lower&#39;: -147.58891571707585, &#39;upper&#39;: 146.02533583987199, &#39;is_valid&#39;: True, &#39;upper_valid&#39;: True, &#39;lower_valid&#39;: True, &#39;at_lower_limit&#39;: False, &#39;at_upper_limit&#39;: False, &#39;nfcn&#39;: 54, &#39;original&#39;: &lt;MError number=2 name=&#39;part_reco_yield&#39; lower=-147.58891571707585 upper=146.02533583987199 is_valid=True lower_valid=True upper_valid=True at_lower_limit=False at_upper_limit=False at_lower_max_fcn=False at_upper_max_fcn=False lower_new_min=False upper_new_min=False nfcn=54 min=6708.942295697756&gt;, &#39;cl&#39;: 0.68268949}), (&lt;zfit.Parameter &#39;mu_sig&#39; floating=True value=368.6&gt;, {&#39;lower&#39;: -1.3655839054187013, &#39;upper&#39;: 1.3760504023495492, &#39;is_valid&#39;: True, &#39;upper_valid&#39;: True, &#39;lower_valid&#39;: True, &#39;at_lower_limit&#39;: False, &#39;at_upper_limit&#39;: False, &#39;nfcn&#39;: 40, &#39;original&#39;: &lt;MError number=3 name=&#39;mu_sig&#39; lower=-1.3655839054187013 upper=1.3760504023495492 is_valid=True lower_valid=True upper_valid=True at_lower_limit=False at_upper_limit=False at_lower_max_fcn=False at_upper_max_fcn=False lower_new_min=False upper_new_min=False nfcn=40 min=368.593270057785&gt;, &#39;cl&#39;: 0.68268949})])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OrderedDict([(&lt;zfit.Parameter &#39;sig_yield&#39; floating=True value=1772&gt;, {&#39;lower&#39;: -78.95354148458229, &#39;upper&#39;: 79.33755935160495, &#39;is_valid&#39;: True, &#39;upper_valid&#39;: True, &#39;lower_valid&#39;: True, &#39;at_lower_limit&#39;: False, &#39;at_upper_limit&#39;: False, &#39;nfcn&#39;: 44, &#39;original&#39;: &lt;MError number=0 name=&#39;sig_yield&#39; lower=-78.95354148458229 upper=79.33755935160495 is_valid=True lower_valid=True upper_valid=True at_lower_limit=False at_upper_limit=False at_lower_max_fcn=False at_upper_max_fcn=False lower_new_min=False upper_new_min=False nfcn=44 min=1771.833961902003&gt;, &#39;cl&#39;: 0.68268949}), (&lt;zfit.Parameter &#39;part_reco_yield&#39; floating=True value=6563&gt;, {&#39;lower&#39;: -177.9066835968367, &#39;upper&#39;: 182.5812184916769, &#39;is_valid&#39;: True, &#39;upper_valid&#39;: True, &#39;lower_valid&#39;: True, &#39;at_lower_limit&#39;: False, &#39;at_upper_limit&#39;: False, &#39;nfcn&#39;: 76, &#39;original&#39;: &lt;MError number=2 name=&#39;part_reco_yield&#39; lower=-177.9066835968367 upper=182.5812184916769 is_valid=True lower_valid=True upper_valid=True at_lower_limit=False at_upper_limit=False at_lower_max_fcn=False at_upper_max_fcn=False lower_new_min=False upper_new_min=False nfcn=76 min=6562.7031740775055&gt;, &#39;cl&#39;: 0.68268949}), (&lt;zfit.Parameter &#39;mu_sig&#39; floating=True value=370.1&gt;, {&#39;lower&#39;: -1.5230692007844617, &#39;upper&#39;: 1.4733239185348583, &#39;is_valid&#39;: True, &#39;upper_valid&#39;: True, &#39;lower_valid&#39;: True, &#39;at_lower_limit&#39;: False, &#39;at_upper_limit&#39;: False, &#39;nfcn&#39;: 88, &#39;original&#39;: &lt;MError number=3 name=&#39;mu_sig&#39; lower=-1.5230692007844617 upper=1.4733239185348583 is_valid=True lower_valid=True upper_valid=True at_lower_limit=False at_upper_limit=False at_lower_max_fcn=False at_upper_max_fcn=False lower_new_min=False upper_new_min=False nfcn=88 min=370.0978512361958&gt;, &#39;cl&#39;: 0.68268949})])
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1386,19 +1386,19 @@ sig_yield           1926     +/-      73       False
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name               value    minuit_hesse         minuit_minos    at limit
 ---------------  -------  --------------  -------------------  ----------
-sig_yield           1926     +/-      73  -     72   +     74       False
+sig_yield           1772     +/-      79  -     79   +     79       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>comb_bkg_yield      1365     +/-      96                            False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>comb_bkg_yield      1665     +/- 1.3e+02                            False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>part_reco_yield     6709     +/- 1.5e+02  -1.5e+02   +1.5e+02       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>part_reco_yield     6563     +/- 1.8e+02  -1.8e+02   +1.8e+02       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_sig             368.6     +/-     1.4  -    1.4   +    1.4       False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_sig             370.1     +/-     1.5  -    1.5   +    1.5       False
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_sig          35.37     +/-     1.3                            False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_sig          34.55     +/-     1.5                            False
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1428,7 +1428,7 @@ sig_yield           1926     +/-      73  -     72   +     74       False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.util.temporary.TemporarilySet at 0x7ff2ccacdca0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.util.temporary.TemporarilySet at 0x7fca9821c820&gt;
 </pre></div>
 </div>
 </div>
@@ -1440,10 +1440,10 @@ sig_yield           1926     +/-      73  -     72   +     74       False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ff2cca117f0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fca82e9c2b0&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/Introduction_113_11.png" src="../../_images/Introduction_113_11.png" />
+<img alt="../../_images/Introduction_113_1.png" src="../../_images/Introduction_113_1.png" />
 </div>
 </div>
 <p>We can also access the covariance matrix of the parameters</p>
@@ -1454,16 +1454,16 @@ sig_yield           1926     +/-      73  -     72   +     74       False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 5.39210269e+03,  1.77854037e+03, -5.24444196e+03,
-        -2.35550581e+01,  4.70675202e+01],
-       [ 1.77854037e+03,  9.17125676e+03, -9.58482646e+03,
-        -1.40514054e+01,  2.33122369e+01],
-       [-5.24444196e+03, -9.58482646e+03,  2.15374895e+04,
-         3.76037664e+01, -7.03741443e+01],
-       [-2.35550581e+01, -1.40514054e+01,  3.76037664e+01,
-         1.87650953e+00, -3.55035560e-01],
-       [ 4.70675202e+01,  2.33122369e+01, -7.03741443e+01,
-        -3.55035560e-01,  1.76372214e+00]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 6.26025029e+03,  3.33610987e+03, -7.82288220e+03,
+        -2.80109942e+01,  6.20813398e+01],
+       [ 3.33610987e+03,  1.63987896e+04, -1.80670077e+04,
+        -2.43937429e+01,  4.32338155e+01],
+       [-7.82288220e+03, -1.80670077e+04,  3.24468116e+04,
+         5.23935166e+01, -1.05292950e+02],
+       [-2.80109942e+01, -2.43937429e+01,  5.23935166e+01,
+         2.24089983e+00, -5.04883112e-01],
+       [ 6.20813398e+01,  4.32338155e+01, -1.05292950e+02,
+        -5.04883112e-01,  2.19638991e+00]])
 </pre></div>
 </div>
 </div>
@@ -1490,7 +1490,7 @@ sig_yield           1926     +/-      73  -     72   +     74       False
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3001</span><span class="o">/</span><span class="mf">2041392903.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2466</span><span class="o">/</span><span class="mf">2041392903.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">hepstats.hypotests</span> <span class="kn">import</span> <span class="n">ConfidenceInterval</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">hepstats.hypotests.calculators</span> <span class="kn">import</span> <span class="n">AsymptoticCalculator</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">hepstats.hypotests.parameters</span> <span class="kn">import</span> <span class="n">POIarray</span>
