@@ -1,0 +1,17 @@
+zfit
+matplotlib
+mplhep
+numpy
+pygit2
+scipy
+jupyter-sphinx
+myst-nb
+mdit-py-plugins  # temporary fix
+pandas
+Sphinx >= 3,<4
+sphinx-book-theme
+sphinx-panels
+sphinx-thebe
+sphinx-togglebutton
+sphinx-copybutton
+pip >=21.1
