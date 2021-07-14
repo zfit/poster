@@ -1,0 +1,947 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom models &#8212; zfit</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../_static/zfit-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Creating your own pdf" href="../components/60%20-%20Custom%20PDF.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">zfit</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../pages/5_minutes_to_zfit.html">
+   5 minutes to zfit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/Introduction.html">
+   Introduction to zfit
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../TensorFlow/HPC_with_TensorFlow.html">
+   HPC in Python with TensorFlow
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../components/20%20-%20Composite%20Models.html">
+   Composite Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../components/60%20-%20Custom%20PDF.html">
+   Creating your own pdf
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Custom models
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/zfit-tutorials_copy/guides/custom_models.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/zfit/poster"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/zfit/poster/issues/new?title=Issue%20on%20page%20%2Fzfit-tutorials_copy/guides/custom_models.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/zfit/poster/edit/master/website/zfit-tutorials_copy/guides/custom_models.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/zfit/poster/master?urlpath=lab/tree/website/zfit-tutorials_copy/guides/custom_models.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/zfit/poster/blob/master/website/zfit-tutorials_copy/guides/custom_models.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-model">
+   Creating a model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-happened">
+   What happened?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-dimensions-and-parameters-with-angular-observables">
+   Multiple dimensions and parameters with angular observables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multidimensional-spaces">
+     Multidimensional Spaces
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#managing-parameters">
+     Managing parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#including-another-observable">
+     Including another observable
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-happened-exactly">
+   What happened
+   <em>
+    exactly
+   </em>
+   ?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overriding-pdf">
+     Overriding
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pdf
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#composed-pdfs">
+       Composed PDFs
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#and-now">
+   …and now?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mixing-with-pure-python">
+     Mixing with pure Python
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sidestep-what-is-z">
+       Sidestep: What is ‘z’?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#full-python-compatibility">
+     Full Python compatibility
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="custom-models">
+<h1>Custom models<a class="headerlink" href="#custom-models" title="Permalink to this headline">¶</a></h1>
+<p>All elements of zfit are built to be easily customized. Especially models offer many possibilities to be implemented by the user; in the end, regardless of how many models are provided by a library and of how many things are though, there is always a use-case that was not thought of. High flexibility is therefore a crucial aspect.</p>
+<p>This has disadvantages: the more freedom a model takes for itself, the less optimizations are potentially available. But this is usually not noticeable.</p>
+<div class="section" id="creating-a-model">
+<h2>Creating a model<a class="headerlink" href="#creating-a-model" title="Permalink to this headline">¶</a></h2>
+<p>Following the philosophy of zfit, there are different levels of customization. For the most simple use-case, all we need to do is to provide a function describing the shape and the name of the parameters. This can be done by overriding <code class="docutils literal notranslate"><span class="pre">_unnormalized_pdf</span></code>.</p>
+<p>To implement a mathematical function in zfit, TensorFlow or z should be used. The latter is a subset of TensorFlow and improves it in some aspects, such as automatic dtype casting, and therefore preferred to use.
+(<em>There are other ways to use arbitrary Python functions, they will be discussed later on</em>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">zfit</span>
+<span class="kn">from</span> <span class="nn">zfit</span> <span class="kn">import</span> <span class="n">z</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>We can start with a simple model and implement a custom second order polynomial. Therefore we need to inherit from the right base class, the simpler one is <code class="docutils literal notranslate"><span class="pre">ZPDF</span></code>.</p>
+<p>For a minimal example, we need to override only <code class="docutils literal notranslate"><span class="pre">_unnormalized_pdf</span></code> and specify a list of parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">_unnormalized_pdf</span></code> gets (currently) one argument, x. This is a zfit <code class="docutils literal notranslate"><span class="pre">Data</span></code> object and should first be unstacked. If it is one dimensional - such as here - it will return a single Tensor, otherwise a list of Tensors that can directly be unpacked.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SecondOrderPoly</span><span class="p">(</span><span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">ZPDF</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Second order polynomial `a + b * x + c * x^2`&quot;&quot;&quot;</span>
+    <span class="n">_PARAMS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>  <span class="c1"># specify which parameters to take</span>
+
+    <span class="k">def</span> <span class="nf">_unnormalized_pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>  <span class="c1"># implement function, unnormalized</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">unstack_x</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">data</span> <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="n">data</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we omitted <em>consciously</em> any attempt to normalize the function, as this is usually done over a specific range. Also, no analytic sampling or integration has to be provided. The model handles all of this internally automatically and we have the full functionality available.</p>
+<p>First, we can instantiate the model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obs</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Space</span><span class="p">(</span><span class="s2">&quot;obs1&quot;</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">custom_poly</span> <span class="o">=</span> <span class="n">SecondOrderPoly</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">obs</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>which lets us now fully access all the main methods of a model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">integral</span> <span class="o">=</span> <span class="n">custom_poly</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">custom_poly</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">custom_poly</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;integral=</span><span class="si">{</span><span class="n">integral</span><span class="si">}</span><span class="s2">, sample=</span><span class="si">{</span><span class="n">sample</span><span class="si">}</span><span class="s2">, prob=</span><span class="si">{</span><span class="n">prob</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>integral=[0.11071254], sample=&lt;zfit.Data: Data obs=(&#39;obs1&#39;,)&gt;, prob=[0.08753261 0.17130353 0.29735075 0.24371565 0.29307941 0.28715721
+ 0.18242791 0.06502546 0.18575654 0.30516393]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="what-happened">
+<h2>What happened?<a class="headerlink" href="#what-happened" title="Permalink to this headline">¶</a></h2>
+<p>The model tries to use analytical functions for integration and sampling <em>if available</em>, otherwise (as happened above), it falls back to the numerical methods. To improve our model, we can add an analytic integral, a common use case. This has to be the <em>integral over the <code class="docutils literal notranslate"><span class="pre">_unnormalized_pdf</span></code></em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define the integral function</span>
+<span class="k">def</span> <span class="nf">cdf_poly</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">limit</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">b</span> <span class="o">*</span> <span class="n">limit</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="n">limit</span> <span class="o">**</span> <span class="mi">3</span>
+
+<span class="k">def</span> <span class="nf">integral_func</span><span class="p">(</span><span class="n">limits</span><span class="p">,</span> <span class="n">norm_range</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+
+    <span class="n">b</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
+
+    <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">limit1d</span>
+    <span class="n">lower</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">lower</span><span class="p">)</span>  <span class="c1"># the limits are now 1-D, for axis 1</span>
+    <span class="n">upper</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">upper</span><span class="p">)</span>
+
+    <span class="c1"># calculate the integral</span>
+    <span class="n">integral</span> <span class="o">=</span> <span class="n">cdf_poly</span><span class="p">(</span><span class="n">upper</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">-</span> <span class="n">cdf_poly</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Integral called&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">integral</span>
+
+
+<span class="c1"># define the space over which it is defined. Here, we use the axes</span>
+<span class="n">integral_limits</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Space</span><span class="p">(</span><span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="n">zfit</span><span class="o">.</span><span class="n">Space</span><span class="o">.</span><span class="n">ANY</span><span class="p">,</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Space</span><span class="o">.</span><span class="n">ANY</span><span class="p">))</span>
+
+<span class="n">SecondOrderPoly</span><span class="o">.</span><span class="n">register_analytic_integral</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">integral_func</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="n">integral_limits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">poly2</span> <span class="o">=</span> <span class="n">SecondOrderPoly</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">obs</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">integral_analytic</span> <span class="o">=</span> <span class="n">custom_poly</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">custom_poly</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">prob_analytic</span> <span class="o">=</span> <span class="n">custom_poly</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;integral=</span><span class="si">{</span><span class="n">integral</span><span class="si">}</span><span class="s2">, sample=</span><span class="si">{</span><span class="n">sample</span><span class="si">}</span><span class="s2">, prob=</span><span class="si">{</span><span class="n">prob</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integral called
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integral called
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integral called
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>integral=[0.11071254], sample=&lt;zfit.Data: Data obs=(&#39;obs1&#39;,)&gt;, prob=[0.08753261 0.17130353 0.29735075 0.24371565 0.29307941 0.28715721
+ 0.18242791 0.06502546 0.18575654 0.30516393]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiple-dimensions-and-parameters-with-angular-observables">
+<h2>Multiple dimensions and parameters with angular observables<a class="headerlink" href="#multiple-dimensions-and-parameters-with-angular-observables" title="Permalink to this headline">¶</a></h2>
+<p>So far, we used rather simple examples and many basic shapes, such as polynomials, already have an efficient implementation within zfit. Therefore, we will now create a three dimensional PDF measuring the angular observables of a <span class="math notranslate nohighlight">\(B^+ \rightarrow K^* l l\)</span> decay.</p>
+<p>The implementation is not “special” or complicated at all, it rather shows how to deal with multiple dimensions and how to manage several parameters. It was created using the equation of the angular observables (taken from a paper).</p>
+<p><em>Many thanks to Rafael Silva Coutinho for the implementation!</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AngularPDF</span><span class="p">(</span><span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">ZPDF</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Full d4Gamma/dq2dOmega for Bd -&gt; Kst ll (l=e,mu)</span>
+
+<span class="sd">    Angular distribution obtained in the total PDF (using LHCb convention JHEP 02 (2016) 104)</span>
+<span class="sd">        i.e. the valid of the angles is given for</span>
+<span class="sd">            - phi: [-pi, pi]</span>
+<span class="sd">            - theta_K: [0, pi]</span>
+<span class="sd">            - theta_l: [0, pi]</span>
+
+<span class="sd">        The function is normalized over a finite range and therefore a PDF.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            FL (`zfit.Parameter`): Fraction of longitudinal polarisation of the Kst</span>
+<span class="sd">            S3 (`zfit.Parameter`): A_perp^2 - A_para^2 / A_zero^2 + A_para^2 + A_perp^2 (L, R)</span>
+<span class="sd">            S4 (`zfit.Parameter`): RE(A_zero*^2 * A_para^2) / A_zero^2 + A_para^2 + A_perp^2 (L, R)</span>
+<span class="sd">            S5 (`zfit.Parameter`): RE(A_zero*^2 * A_perp^2) / A_zero^2 + A_para^2 + A_perp^2 (L, R)</span>
+<span class="sd">            AFB (`zfit.Parameter`): Forward-backward asymmetry of the di-lepton system (also i.e. 3/4 * S6s)</span>
+<span class="sd">            S7 (`zfit.Parameter`): IM(A_zero*^2 * A_para^2) / A_zero^2 + A_para^2 + A_perp^2 (L, R)</span>
+<span class="sd">            S8 (`zfit.Parameter`): IM(A_zero*^2 * A_perp^2) / A_zero^2 + A_para^2 + A_perp^2 (L, R)</span>
+<span class="sd">            S9 (`zfit.Parameter`): IM(A_perp*^2 * A_para^2) / A_zero^2 + A_para^2 + A_perp^2 (L, R)</span>
+<span class="sd">            obs (`zfit.Space`):</span>
+<span class="sd">            name (str):</span>
+<span class="sd">            dtype (tf.DType):</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_PARAMS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;FL&#39;</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">,</span> <span class="s1">&#39;S4&#39;</span><span class="p">,</span> <span class="s1">&#39;S5&#39;</span><span class="p">,</span> <span class="s1">&#39;AFB&#39;</span><span class="p">,</span> <span class="s1">&#39;S7&#39;</span><span class="p">,</span> <span class="s1">&#39;S8&#39;</span><span class="p">,</span> <span class="s1">&#39;S9&#39;</span><span class="p">]</span>
+    <span class="n">_N_OBS</span> <span class="o">=</span> <span class="mi">3</span>
+
+    <span class="k">def</span> <span class="nf">_unnormalized_pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">FL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;FL&#39;</span><span class="p">]</span>
+        <span class="n">S3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;S3&#39;</span><span class="p">]</span>
+        <span class="n">S4</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;S4&#39;</span><span class="p">]</span>
+        <span class="n">S5</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;S5&#39;</span><span class="p">]</span>
+        <span class="n">AFB</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;AFB&#39;</span><span class="p">]</span>
+        <span class="n">S7</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;S7&#39;</span><span class="p">]</span>
+        <span class="n">S8</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;S8&#39;</span><span class="p">]</span>
+        <span class="n">S9</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;S9&#39;</span><span class="p">]</span>
+
+        <span class="n">costheta_l</span><span class="p">,</span> <span class="n">costheta_k</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">unstack_x</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">sintheta_k</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">costheta_k</span> <span class="o">*</span> <span class="n">costheta_k</span><span class="p">)</span>
+        <span class="n">sintheta_l</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">costheta_l</span> <span class="o">*</span> <span class="n">costheta_l</span><span class="p">)</span>
+
+        <span class="n">sintheta_2k</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">costheta_k</span> <span class="o">*</span> <span class="n">costheta_k</span><span class="p">)</span>
+        <span class="n">sintheta_2l</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">costheta_l</span> <span class="o">*</span> <span class="n">costheta_l</span><span class="p">)</span>
+
+        <span class="n">sin2theta_k</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sintheta_k</span> <span class="o">*</span> <span class="n">costheta_k</span><span class="p">)</span>
+        <span class="n">cos2theta_l</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">costheta_l</span> <span class="o">*</span> <span class="n">costheta_l</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">sin2theta_l</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sintheta_l</span> <span class="o">*</span> <span class="n">costheta_l</span><span class="p">)</span>
+
+        <span class="n">pdf</span> <span class="o">=</span> <span class="p">((</span><span class="mf">3.0</span> <span class="o">/</span> <span class="mf">4.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">FL</span><span class="p">)</span> <span class="o">*</span> <span class="n">sintheta_2k</span> <span class="o">+</span>
+               <span class="n">FL</span> <span class="o">*</span> <span class="n">costheta_k</span> <span class="o">*</span> <span class="n">costheta_k</span> <span class="o">+</span>
+               <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mf">4.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">FL</span><span class="p">)</span> <span class="o">*</span> <span class="n">sintheta_2k</span> <span class="o">*</span> <span class="n">cos2theta_l</span> <span class="o">+</span>
+               <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">FL</span> <span class="o">*</span> <span class="n">costheta_k</span> <span class="o">*</span> <span class="n">costheta_k</span> <span class="o">*</span> <span class="n">cos2theta_l</span> <span class="o">+</span>
+               <span class="n">S3</span> <span class="o">*</span> <span class="n">sintheta_2k</span> <span class="o">*</span> <span class="n">sintheta_2l</span> <span class="o">*</span> <span class="n">tf</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">phi</span><span class="p">)</span> <span class="o">+</span>
+               <span class="n">S4</span> <span class="o">*</span> <span class="n">sin2theta_k</span> <span class="o">*</span> <span class="n">sin2theta_l</span> <span class="o">*</span> <span class="n">tf</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">+</span>
+               <span class="n">S5</span> <span class="o">*</span> <span class="n">sin2theta_k</span> <span class="o">*</span> <span class="n">sintheta_l</span> <span class="o">*</span> <span class="n">tf</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">+</span>
+               <span class="p">(</span><span class="mf">4.0</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">AFB</span> <span class="o">*</span> <span class="n">sintheta_2k</span> <span class="o">*</span> <span class="n">costheta_l</span> <span class="o">+</span>
+               <span class="n">S7</span> <span class="o">*</span> <span class="n">sin2theta_k</span> <span class="o">*</span> <span class="n">sintheta_l</span> <span class="o">*</span> <span class="n">tf</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">+</span>
+               <span class="n">S8</span> <span class="o">*</span> <span class="n">sin2theta_k</span> <span class="o">*</span> <span class="n">sin2theta_l</span> <span class="o">*</span> <span class="n">tf</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">+</span>
+               <span class="n">S9</span> <span class="o">*</span> <span class="n">sintheta_2k</span> <span class="o">*</span> <span class="n">sintheta_2l</span> <span class="o">*</span> <span class="n">tf</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">phi</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">pdf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="multidimensional-spaces">
+<h3>Multidimensional Spaces<a class="headerlink" href="#multidimensional-spaces" title="Permalink to this headline">¶</a></h3>
+<p>This PDF now expects multidimensional data. Therefore, we need to provide a Space in multiple dimensions. The preferred way is to use the product operations to build this space from one dimensional <code class="docutils literal notranslate"><span class="pre">Space</span></code>s</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">costhetha_k</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Space</span><span class="p">(</span><span class="s1">&#39;costheta_k&#39;</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">costhetha_l</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Space</span><span class="p">(</span><span class="s1">&#39;costheta_l&#39;</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Space</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+<span class="n">angular_obs</span> <span class="o">=</span> <span class="n">costhetha_k</span> <span class="o">*</span> <span class="n">costhetha_l</span> <span class="o">*</span> <span class="n">phi</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="managing-parameters">
+<h3>Managing parameters<a class="headerlink" href="#managing-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Luckily, we’re in Python, which provides many tools out-of-the-box. Handling parameters in a <code class="docutils literal notranslate"><span class="pre">dict</span></code> can make things very easy, even for several parameters as here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params_init</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;FL&#39;</span><span class="p">:</span>  <span class="mf">0.43</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;S4&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;S5&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;AFB&#39;</span><span class="p">:</span> <span class="mf">0.343</span><span class="p">,</span> <span class="s1">&#39;S7&#39;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;S8&#39;</span><span class="p">:</span> <span class="mf">0.003</span><span class="p">,</span> <span class="s1">&#39;S9&#39;</span><span class="p">:</span> <span class="mf">0.002</span><span class="p">}</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">params_init</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">angular_pdf</span> <span class="o">=</span> <span class="n">AngularPDF</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">angular_obs</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">integral_analytic</span> <span class="o">=</span> <span class="n">angular_pdf</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="n">angular_obs</span><span class="p">)</span>  <span class="c1"># this should be one</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">angular_pdf</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">prob_analytic</span> <span class="o">=</span> <span class="n">angular_pdf</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;integral=</span><span class="si">{</span><span class="n">integral</span><span class="si">}</span><span class="s2">, sample=</span><span class="si">{</span><span class="n">sample</span><span class="si">}</span><span class="s2">, prob=</span><span class="si">{</span><span class="n">prob</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>integral=[0.11071254], sample=&lt;zfit.Data: Data obs=(&#39;costheta_k&#39;, &#39;costheta_l&#39;, &#39;phi&#39;)&gt;, prob=[0.08753261 0.17130353 0.29735075 0.24371565 0.29307941 0.28715721
+ 0.18242791 0.06502546 0.18575654 0.30516393]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="including-another-observable">
+<h3>Including another observable<a class="headerlink" href="#including-another-observable" title="Permalink to this headline">¶</a></h3>
+<p>We built our angular PDF successfully and can use this 3 dimensional PDF now. If we want, we could also include another observable. For example, the polynomial that we created above and make it 4 dimensional. Because it’s so simple, let’s do that!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">full_pdf</span> <span class="o">=</span> <span class="n">angular_pdf</span> <span class="o">*</span> <span class="n">poly2</span>
+
+<span class="c1"># equivalently</span>
+<span class="c1"># full_pdf = zfit.pdf.ProductPDF([angular_pdf, poly2])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Done! This PDF is now 4 dimensional, which <em>had to be</em>, given that the observable of <code class="docutils literal notranslate"><span class="pre">poly2</span></code> is different from the observable of <code class="docutils literal notranslate"><span class="pre">angular_pdf</span></code>. If they would coincide, e.g. if <code class="docutils literal notranslate"><span class="pre">poly2</span></code> had the observable <code class="docutils literal notranslate"><span class="pre">phi</span></code>, this would now be a 3 dimensional PDF.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;obs angular: </span><span class="si">{</span><span class="n">angular_pdf</span><span class="o">.</span><span class="n">obs</span><span class="si">}</span><span class="s2"> obs poly:</span><span class="si">{</span><span class="n">poly2</span><span class="o">.</span><span class="n">obs</span><span class="si">}</span><span class="s2"> obs product: </span><span class="si">{</span><span class="n">full_pdf</span><span class="o">.</span><span class="n">obs</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>obs angular: (&#39;costheta_k&#39;, &#39;costheta_l&#39;, &#39;phi&#39;) obs poly:(&#39;obs1&#39;,) obs product: (&#39;costheta_k&#39;, &#39;costheta_l&#39;, &#39;phi&#39;, &#39;obs1&#39;))
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="what-happened-exactly">
+<h2>What happened <em>exactly</em> ?<a class="headerlink" href="#what-happened-exactly" title="Permalink to this headline">¶</a></h2>
+<p>The model tries to be as smart as possible and calls the most explicit function. Then it starts falling back to alternatives and uses, whenever possible, the analytic version (if available), otherwise a numerical.</p>
+<p>The rule simplified: public (sanitizes input and) calls […] private. So e.g. <code class="docutils literal notranslate"><span class="pre">pdf</span></code> calls <code class="docutils literal notranslate"><span class="pre">_pdf</span></code> and if this is not provided, it uses the fallback that may not be optimized, but general enough to work.</p>
+<p>The rule extended (in its current implementation): public calls a series of well defined methods and hooks before it calls the private method. These intermediate <em>can</em> be used, they mostly automatically catch certain cases and handle them for us.</p>
+<p><strong>To remember</strong>: in order to have full control over a public function such as <code class="docutils literal notranslate"><span class="pre">integrate</span></code>, <code class="docutils literal notranslate"><span class="pre">pdf</span></code>, <code class="docutils literal notranslate"><span class="pre">sample</span></code> or <code class="docutils literal notranslate"><span class="pre">normalization</span></code>, the private method, e.g. <code class="docutils literal notranslate"><span class="pre">_integrate</span></code> can be overriden and is <em>guaranteed</em> to be called before other possibilities.</p>
+<p>In the case above, <code class="docutils literal notranslate"><span class="pre">pdf</span></code> called first <code class="docutils literal notranslate"><span class="pre">_pdf</span></code> (which is not implemented), so it calls <code class="docutils literal notranslate"><span class="pre">_unnormalized_pdf</span></code> and divides this by the <code class="docutils literal notranslate"><span class="pre">normalization</span></code>. The latter also does not have an explicit implementation (<code class="docutils literal notranslate"><span class="pre">_implementation</span></code>), so it uses the fallback and calls <code class="docutils literal notranslate"><span class="pre">integrate</span></code> over the <code class="docutils literal notranslate"><span class="pre">norm_range</span></code>. Since <code class="docutils literal notranslate"><span class="pre">_integrate</span></code> is not provided, the fallback tries to perform an analytic integral, which is not available. Therefore, it integrates the <code class="docutils literal notranslate"><span class="pre">_unnormalized_prob</span></code> numerically. In all of this calls, we can hook in by overriding the mentioned, specified methods.</p>
+<p>What we did not mention: <code class="docutils literal notranslate"><span class="pre">ZPDF</span></code> is just a wrapper around the actual <code class="docutils literal notranslate"><span class="pre">BasePDF</span></code> that should be preferred in general; it simply provides a convenient <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. For the next example, we will implement a multidimensional PDF and use the custom <code class="docutils literal notranslate"><span class="pre">__init__</span></code></p>
+<div class="section" id="overriding-pdf">
+<h3>Overriding <code class="docutils literal notranslate"><span class="pre">pdf</span></code><a class="headerlink" href="#overriding-pdf" title="Permalink to this headline">¶</a></h3>
+<p>Before, we used <code class="docutils literal notranslate"><span class="pre">_unnormalized_pdf</span></code>, which is the common use-case. Even if we want to add an analytic integral, we can register it. Or do more fancy stuff like overriding the <code class="docutils literal notranslate"><span class="pre">_normalization</span></code>. We can however also get the full control of what our model output by directly overriding <code class="docutils literal notranslate"><span class="pre">_pdf</span></code>. The signature does not contain only <code class="docutils literal notranslate"><span class="pre">x</span></code> but additionally <code class="docutils literal notranslate"><span class="pre">norm_range</span></code>. This can have no limits (<code class="docutils literal notranslate"><span class="pre">norm_range.has_limits</span></code> is False), in which case the “unnormalized pdf” is requested. Otherwise, <code class="docutils literal notranslate"><span class="pre">norm_range</span></code> can have different limits and we have to take care of the proper normalization.</p>
+<p>This is usually not needed and inside zfit, all PDFs are implemented using the <code class="docutils literal notranslate"><span class="pre">_unnormalized_pdf</span></code>.</p>
+<p>Therefore, it provides mostly a possibility to implement <em>whatever</em> is wanted, any unforeseen use-case, any kind of hack to “just try out something”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomPDF</span><span class="p">(</span><span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">BasePDF</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;My custom pdf with three parameters.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">,</span> <span class="n">param3</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CustomPDF&quot;</span><span class="p">,</span> <span class="p">):</span>
+        <span class="c1"># we can now do complicated stuff here if needed</span>
+        <span class="c1"># only thing: we have to specify explicitly here what is which parameter</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;super_param&#39;</span><span class="p">:</span> <span class="n">param1</span><span class="p">,</span>  <span class="c1"># we can change/compose etc parameters</span>
+                  <span class="s1">&#39;param2&#39;</span><span class="p">:</span> <span class="n">param2</span><span class="p">,</span> <span class="s1">&#39;param3&#39;</span><span class="p">:</span> <span class="n">param3</span><span class="p">}</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">norm_range</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">unstack_x</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">param1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;super_param&#39;</span><span class="p">]</span>
+        <span class="n">param2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;param2&#39;</span><span class="p">]</span>
+        <span class="n">param3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;param3&#39;</span><span class="p">]</span>
+
+        <span class="c1"># just a fantasy function</span>
+        <span class="n">probs</span> <span class="o">=</span> <span class="mi">42</span> <span class="o">*</span> <span class="n">param1</span> <span class="o">+</span> <span class="p">(</span><span class="n">data</span> <span class="o">*</span> <span class="n">param3</span><span class="p">)</span> <span class="o">**</span> <span class="n">param2</span>
+        <span class="k">return</span> <span class="n">probs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In a similar manner, other methods can be overriden as well. We won’t go into further details here, as this provides a quite advanced task. Furthermore, if stability is a large concern or such special cases need to be implemented, it is recommended to get in contact with the developers and share the idea.</p>
+<div class="section" id="composed-pdfs">
+<h4>Composed PDFs<a class="headerlink" href="#composed-pdfs" title="Permalink to this headline">¶</a></h4>
+<p>So far, we only looked at creating a model that depends on parameters and data but did not include other models. This is crucial to create for example sums or products of PDFs. Instead of inheriting from <code class="docutils literal notranslate"><span class="pre">BasePDF</span></code>, we can use the <code class="docutils literal notranslate"><span class="pre">BaseFunctor</span></code> that contains a mixin which handles daughter PDFs correctly.</p>
+<p>The main difference is that we can now provide a list of PDFs that our model depends on. There can still be parameters (as for example the <code class="docutils literal notranslate"><span class="pre">fracs</span></code> for the sum) that describe the behavior of the models but they can also be omitted (e.g. for the product). _Sidenote: technically, a normal <code class="docutils literal notranslate"><span class="pre">BasePDF</span></code> can of course also have no parameters, however, since this is a constant function without dependencies, this will rarely be used in practice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SquarePDF</span><span class="p">(</span><span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">BaseFunctor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Example of a functor pdf that takes the log of a single PDF.</span>
+
+<span class="sd">    DEMONSTRATION PURPOSE ONLY, DO **NOT** USE IN REAL CASE.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pdf1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SumOf3&quot;</span><span class="p">):</span>
+        <span class="n">pdfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">pdf1</span><span class="p">]</span>  <span class="c1"># we could have more of course, e.g. for sums</span>
+        <span class="c1"># no need for parameters here, so we can omit it</span>
+        <span class="n">obs</span> <span class="o">=</span> <span class="n">pdf1</span><span class="o">.</span><span class="n">space</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">pdfs</span><span class="o">=</span><span class="n">pdfs</span><span class="p">,</span> <span class="n">obs</span><span class="o">=</span><span class="n">obs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_unnormalized_pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># we do not need to unstack x here as we want to feed it directly to the pdf1</span>
+        <span class="n">pdf1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pdfs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">pdf1</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squarepdf</span> <span class="o">=</span> <span class="n">SquarePDF</span><span class="p">(</span><span class="n">pdf1</span><span class="o">=</span><span class="n">poly2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squarepdf</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integral called
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integral called
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(1,), dtype=float64, numpy=array([0.22233116])&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_square</span> <span class="o">=</span> <span class="n">squarepdf</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">sample_square</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integral called
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.core.data.SampleData at 0x7feff8f729a0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squarepdf</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">sample_square</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integral called
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integral called
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float64, numpy=
+array([0.53798214, 0.06310851, 0.57135972, 0.35468297, 0.12041713,
+       0.28475452, 0.58990031, 0.37234723, 0.18893329, 0.04897732])&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="and-now">
+<h2>…and now?<a class="headerlink" href="#and-now" title="Permalink to this headline">¶</a></h2>
+<p>We’ve implemented a custom PDF. Maybe spent quite some time fine tuning it, debugging it. Adding an integral. And now? Time to make it available to others: <a class="reference external" href="https://github.com/zfit/zfit-physics">zfit-physics</a>. This repository is meant for community contributions. It has less requirements to contribute than to zfit core and has a low threshold. Core devs can provide you with help and you can provide the community with a PDF.</p>
+<p>Make an issue or a PR, everything is welcome!</p>
+<div class="section" id="mixing-with-pure-python">
+<h3>Mixing with pure Python<a class="headerlink" href="#mixing-with-pure-python" title="Permalink to this headline">¶</a></h3>
+<p>Whenever possible, it is preferrable to write anything in TensorFlow. But there is the possibility to mix with pure Python, however losing many of the benefits that TensorFlow provides. To do so:</p>
+<ul class="simple">
+<li><p>try to use <code class="docutils literal notranslate"><span class="pre">z.py_function</span></code> or <code class="docutils literal notranslate"><span class="pre">tf.py_function</span></code> to wrap pure Python code</p></li>
+<li><p>if you write something and want to make sure it is run in eager mode, use <code class="docutils literal notranslate"><span class="pre">zfit.run.assert_executing_eagerly()</span></code>. This way, your function won’t be compiled and an error would be raised.</p></li>
+<li><p>set the graph mode and numerical gradient accordingly</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_tf</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">42.</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">py_function</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">sqrt</span><span class="p">,</span> <span class="n">inp</span><span class="o">=</span><span class="p">[</span><span class="n">x_tf</span><span class="p">],</span> <span class="n">Tout</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>This raises a warning: since we do not use pure TensorFlow anymore, it means that the automatic gradient (potentially) fails, as it cannot be traced through Python operations. Depending on the use-case, this is not a problem. That’s why the warning is an <code class="docutils literal notranslate"><span class="pre">AdvancedFeatureWarning</span></code>: it doesn’t say what we’re doing is wrong, it simply warns that we should know what we’re doing; it can also be switched off as explained in the warning.</p>
+<p>It is technically not always required: if we e.g. use the internal, numerical gradient of a minimizer such as Minuit, the global setting does not really matter anyway.</p>
+<p>This follows strongly the zfit philosophy that there <em>must</em> not be any bounds in terms of flexibility and even hackability of the framework, this should be an inherent part of it. However, the user should be made aware when leaving “the safe path”.</p>
+<p>To do what the above warning told us to do, we can use <code class="docutils literal notranslate"><span class="pre">zfit.run.set_autograd_mode(False)</span></code>.</p>
+<p>This is needed whenever we want to use non-traceable Python calls in the dynamic calculations, be it by using <code class="docutils literal notranslate"><span class="pre">py_function</span></code> or be it by switching off the gradient mode as shown below.</p>
+<div class="section" id="sidestep-what-is-z">
+<h4>Sidestep: What is ‘z’?<a class="headerlink" href="#sidestep-what-is-z" title="Permalink to this headline">¶</a></h4>
+<p>This is a subset of TensorFlow, wrapped to improve dtype handling and sometimes even provide additional functionality, such as <code class="docutils literal notranslate"><span class="pre">z.function</span></code> decorator.</p>
+</div>
+</div>
+<div class="section" id="full-python-compatibility">
+<h3>Full Python compatibility<a class="headerlink" href="#full-python-compatibility" title="Permalink to this headline">¶</a></h3>
+<p>To operate in a full Python compatible, yet (way) less efficient mode, we can switch off the automatic gradient, as discussed before, and the graph compilation, leaving us with a Numpy-like TensorFlow</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zfit</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">set_graph_mode</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">zfit</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">set_autograd_mode</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.util.temporary.TemporarilySet at 0x7feff8f72e50&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now build a Gaussian purely based on Numpy. As we have seen when building graphs with TensorFlow: anything Python-like will be converted to a static value in the graph. So we have to make sure that our code is never run in graph mode but only executed eagerly.</p>
+<p>This can be done by calling <code class="docutils literal notranslate"><span class="pre">zfit.run.assert_executing_eagerly()</span></code>, which raises an error if this code is run in graph mode.</p>
+<p>Note that omitting the graph mode means to loose many optimizations: Not only do we loose the whole TensorFlow speedup from the graph, we also perform redundant tasks that are not cached, since zfit itself is optimized to be run in the graph mode.
+However, practially, this mode should anyway be used rather rarely and compares still in the same order of magnitude as alternatives.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NumpyGauss</span><span class="p">(</span><span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">ZPDF</span><span class="p">):</span>
+    <span class="n">_PARAMS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_unnormalized_pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">zfit</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">assert_executing_eagerly</span><span class="p">()</span>  <span class="c1"># make sure we&#39;re eager</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">unstack_x</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">mu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">]</span>
+        <span class="n">sigma</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">z</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make sure to return a Tensor again, otherwise there will be an error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obs</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Space</span><span class="p">(</span><span class="s1">&#39;obs1&#39;</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;mu&#39;</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;sigma&#39;</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gauss_np</span> <span class="o">=</span> <span class="n">NumpyGauss</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">obs</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+<span class="n">gauss</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">Gauss</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">obs</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">integral_np</span> <span class="o">=</span> <span class="n">gauss_np</span><span class="o">.</span><span class="n">integrate</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">integral</span> <span class="o">=</span> <span class="n">gauss</span><span class="o">.</span><span class="n">integrate</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">integral_np</span><span class="p">,</span> <span class="n">integral</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor([0.3422554], shape=(1,), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor([0.3422688], shape=(1,), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "zfit/poster",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./zfit-tutorials_copy/guides"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../components/60%20-%20Custom%20PDF.html" title="previous page">Creating your own pdf</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By zfit<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

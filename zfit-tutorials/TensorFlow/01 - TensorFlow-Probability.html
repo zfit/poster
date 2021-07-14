@@ -87,31 +87,31 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../introduction/Introduction.html">
+  <a class="reference internal" href="../../zfit-tutorials_copy/introduction/Introduction.html">
    Introduction to zfit
   </a>
  </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="HPC_with_TensorFlow.html">
+  <a class="reference internal" href="../../zfit-tutorials_copy/TensorFlow/HPC_with_TensorFlow.html">
    HPC in Python with TensorFlow
   </a>
  </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../components/20%20-%20Composite%20Models.html">
+  <a class="reference internal" href="../../zfit-tutorials_copy/components/20%20-%20Composite%20Models.html">
    Composite Models
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../components/60%20-%20Custom%20PDF.html">
+  <a class="reference internal" href="../../zfit-tutorials_copy/components/60%20-%20Custom%20PDF.html">
    Creating your own pdf
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../guides/custom_models.html">
+  <a class="reference internal" href="../../zfit-tutorials_copy/guides/custom_models.html">
    Custom models
   </a>
  </li>
@@ -319,9 +319,9 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float32, numpy=
-array([0.03145166, 0.00579796, 0.031546  , 0.00536802, 0.0315127 ,
-       0.0006619 , 0.01891594, 0.03138551, 0.00143464, 0.0124557 ],
-      dtype=float32)&gt;
+array([2.1107777e-03, 3.0283744e-03, 3.1630291e-06, 3.1282615e-02,
+       7.7891498e-09, 3.1651597e-02, 2.6223660e-02, 3.3217978e-03,
+       9.4305333e-03, 3.1822663e-02], dtype=float32)&gt;
 </pre></div>
 </div>
 </div>
@@ -357,8 +357,8 @@ array([0.03145166, 0.00579796, 0.031546  , 0.00536802, 0.0315127 ,
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float32, numpy=
-array([0.56772614, 0.00709201, 0.56763494, 0.3880926 , 0.00186895,
-       0.5297514 , 0.5099601 , 0.00475914, 0.503537  , 0.00685434],
+array([0.00728669, 0.17124215, 0.00465947, 0.5251857 , 0.00832774,
+       0.00902226, 0.5322001 , 0.00838625, 0.5264861 , 0.3563407 ],
       dtype=float32)&gt;
 </pre></div>
 </div>
@@ -388,17 +388,16 @@ array([0.56772614, 0.00709201, 0.56763494, 0.3880926 , 0.00186895,
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;n&#39;: &lt;tf.Tensor: shape=(10,), dtype=float32, numpy=
- array([-3.2659202 , -1.2321174 , -1.2672435 , -0.30799368,  0.3075739 ,
-         1.633173  , -0.33560002,  1.5666772 ,  1.8812519 , -4.3456783 ],
+ array([-0.07787599, -1.0469935 ,  2.3240473 ,  1.5469637 , -2.0179083 ,
+        -1.3112209 , -0.86868477,  0.26665992, -2.1068077 , -0.3403982 ],
        dtype=float32)&gt;,
  &#39;c&#39;: &lt;tf.Tensor: shape=(10,), dtype=float32, numpy=
- array([14.059154 , 10.403583 ,  9.790475 ,  9.878747 ,  9.675811 ,
-         7.054901 , 18.269459 , 10.521203 ,  5.5151143, 15.190403 ],
-       dtype=float32)&gt;,
+ array([ 9.490874, 10.492632, 10.679151, 10.282615,  8.418486,  8.546978,
+        55.577587,  7.383709, 10.18334 , 16.528643], dtype=float32)&gt;,
  &#39;m&#39;: &lt;tf.Tensor: shape=(10,), dtype=float32, numpy=
- array([ -0.32608557,   8.365519  , -21.779665  ,  -9.904297  ,
-         21.904587  ,   1.7814012 , -23.458357  ,   6.7310963 ,
-          1.0337732 ,  33.9367    ], dtype=float32)&gt;}
+ array([  0.28775814,   2.1090581 ,  -5.833005  , -14.1048355 ,
+         -5.849066  ,  -4.8521156 , -20.24158   ,  -3.563673  ,
+          8.139838  , -17.539782  ], dtype=float32)&gt;}
 </pre></div>
 </div>
 </div>
@@ -411,9 +410,9 @@ array([0.56772614, 0.00709201, 0.56763494, 0.3880926 , 0.00186895,
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float32, numpy=
-array([2.6588310e-05, 1.1316262e-03, 2.2584228e-04, 1.5579090e-03,
-       1.9389497e-04, 2.6586928e-04, 8.8450333e-06, 1.2349251e-03,
-       1.3812006e-04, 2.3522396e-07], dtype=float32)&gt;
+array([2.1163367e-03, 1.6189720e-03, 6.1727007e-04, 5.3103897e-04,
+       4.6576330e-04, 7.0515531e-04, 1.8779282e-07, 3.7885937e-04,
+       8.3286886e-04, 2.0149613e-05], dtype=float32)&gt;
 </pre></div>
 </div>
 </div>
