@@ -91,17 +91,13 @@
 #     # Values: "3" (default) or "2" (in quotes)
 #     'bootstrap_version': "2",
 # }
-import atexit
 from pathlib import Path
-
-import pygit2
 
 html_favicon = "images/zfit-favicon.png"
 # type: ignore
 
 
 import os
-import shutil
 import sys
 
 project_dir = Path(__file__).parents[0]
@@ -110,12 +106,11 @@ project_dir = Path(__file__).parents[0]
 # shutil.rmtree(zfit_tutorials_path)
 # pygit2.clone_repository("https://github.com/zfit/zfit-tutorials", zfit_tutorials_path)
 
-jupyter_execute_notebooks = "cache"
+jupyter_execute_notebooks = "force"
 if jupyter_execute_notebooks == "cache":
     jupyter_cache_path = project_dir.joinpath('.cache', 'myst-nb')
     jupyter_cache_path.mkdir(parents=True, exist_ok=True)
     jupyter_cache = str(jupyter_cache_path)
-from pkg_resources import get_distribution
 
 # -- Project information -----------------------------------------------------
 project = "zfit"
@@ -126,7 +121,6 @@ author = "zfit"
 
 # -- Generate API ------------------------------------------------------------
 sys.path.insert(0, os.path.abspath("."))
-
 
 # -- General configuration ---------------------------------------------------
 master_doc = "index.md"
@@ -201,7 +195,6 @@ default_role = "py:obj"
 primary_domain = "py"
 nitpicky = True  # warn if cross-references are missing
 
-
 intersphinx_mapping = {
 
     "iminuit": ("https://iminuit.readthedocs.io/en/stable", None),
@@ -242,7 +235,6 @@ nb_render_priority = {
     )
 }
 nb_render_priority["doctest"] = nb_render_priority["html"]
-
 
 # Settings for myst-parser
 myst_enable_extensions = [
