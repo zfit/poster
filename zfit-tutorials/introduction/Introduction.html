@@ -1,0 +1,1598 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to zfit &#8212; zfit</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../_static/zfit-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HPC in Python with TensorFlow" href="../TensorFlow/HPC_with_TensorFlow.html" />
+    <link rel="prev" title="5 minutes to zfit" href="../../pages/5_minutes_to_zfit.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">zfit</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../pages/5_minutes_to_zfit.html">
+   5 minutes to zfit
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction to zfit
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../TensorFlow/HPC_with_TensorFlow.html">
+   HPC in Python with TensorFlow
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../components/20%20-%20Composite%20Models.html">
+   Composite Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../components/60%20-%20Custom%20PDF.html">
+   Creating your own pdf
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/custom_models.html">
+   Custom models
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/zfit-tutorials/introduction/Introduction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/zfit/poster"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/zfit/poster/issues/new?title=Issue%20on%20page%20%2Fzfit-tutorials/introduction/Introduction.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/zfit/poster/edit/master/website/zfit-tutorials/introduction/Introduction.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/zfit/poster/master?urlpath=lab/tree/website/zfit-tutorials/introduction/Introduction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/zfit/poster/blob/master/website/zfit-tutorials/introduction/Introduction.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction to zfit
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model">
+     Model
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#parameter">
+       Parameter
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functionality">
+     Functionality
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tensors">
+       Tensors
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting">
+     Plotting
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#different-models">
+       Different models
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#composing-models">
+     Composing models
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#extended-pdfs">
+       Extended PDFs
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loss">
+   Loss
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extended-loss">
+     Extended loss
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minimization">
+   Minimization
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pre-fit-parts-of-the-pdf">
+     Pre-fit parts of the PDF
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fit-result">
+   Fit result
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimating-uncertainties">
+     Estimating uncertainties
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-new-result">
+       What is ‘new_result’?
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-simple-profile">
+       A simple profile
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#end-of-zfit">
+   End of zfit
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beginning-of-hepstats">
+   Beginning of hepstats
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction-to-zfit">
+<h1>Introduction to zfit<a class="headerlink" href="#introduction-to-zfit" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook, we will have a walk through the main components of zfit and their features. Especially the extensive model building part will be discussed separately.
+zfit consists of 5 mostly independent parts. Other libraries can rely on this parts to do plotting or statistical inference, such as hepstats does. Therefore we will discuss two libraries in this tutorial: zfit to build models, data and a loss, minimize it and get a fit result and hepstats, to use the loss we built here and do inference.</p>
+<img src="../_static/zfit_workflow.png" style="max-width:70%">
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<p>This component in general plays a minor role in zfit: it is mostly to provide a unified interface for data.</p>
+<p>Preprocessing is therefore not part of zfit and should be done beforehand. Python offers many great possibilities to do so (e.g. Pandas).</p>
+<p>zfit <code class="docutils literal notranslate"><span class="pre">Data</span></code> can load data from various sources, most notably from Numpy, Pandas DataFrame, TensorFlow Tensor and ROOT (using uproot). It is also possible, for convenience, to convert it directly <code class="docutils literal notranslate"><span class="pre">to_pandas</span></code>. The constructors are named <code class="docutils literal notranslate"><span class="pre">from_numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">from_root</span></code> etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">zfit</span>
+<span class="kn">from</span> <span class="nn">zfit</span> <span class="kn">import</span> <span class="n">z</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">Data</span></code> needs not only the data itself but also the observables: the human readable string identifiers of the axes (corresponding to “columns” of a Pandas DataFrame). It is convenient to define the <code class="docutils literal notranslate"><span class="pre">Space</span></code> not only with the observable but also with a limit: this can directly be re-used as the normalization range in the PDF.</p>
+<p>First, let’s define our observables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obs</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Space</span><span class="p">(</span><span class="s1">&#39;obs1&#39;</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This <code class="docutils literal notranslate"><span class="pre">Space</span></code> has limits. Next to the effect of handling the observables, we can also play with the limits: multiple <code class="docutils literal notranslate"><span class="pre">Spaces</span></code> can be added to provide disconnected ranges. More importantly, <code class="docutils literal notranslate"><span class="pre">Space</span></code> offers functionality:</p>
+<ul class="simple">
+<li><p>limit1d: return the lower and upper limit in the 1 dimensional case (raises an error otherwise)</p></li>
+<li><p>rect_limits: return the n dimensional limits</p></li>
+<li><p>area(): calculate the area (e.g. distance between upper and lower)</p></li>
+<li><p>inside(): return a boolean Tensor corresponding to whether the value is <em>inside</em> the <code class="docutils literal notranslate"><span class="pre">Space</span></code></p></li>
+<li><p>filter(): filter the input values to only return the one inside</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">size_normal</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">data_normal_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size_normal</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">data_normal</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">obs</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">data_normal_np</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>The main functionality is</p>
+<ul class="simple">
+<li><p>nevents: attribute that returns the number of events in the object</p></li>
+<li><p>data_range: a <code class="docutils literal notranslate"><span class="pre">Space</span></code> that defines the limits of the data; if outside, the data will be cut</p></li>
+<li><p>n_obs: defines the number of dimensions in the dataset</p></li>
+<li><p>with_obs: returns a subset of the dataset with only the given obs</p></li>
+<li><p>weights: event based weights</p></li>
+</ul>
+<p>Furthermore, <code class="docutils literal notranslate"><span class="pre">value</span></code> returns a Tensor with shape <code class="docutils literal notranslate"><span class="pre">(nevents,</span> <span class="pre">n_obs)</span></code>.</p>
+<p>To retrieve values, in general <code class="docutils literal notranslate"><span class="pre">z.unstack_x(data)</span></code> should be used; this returns a single Tensor with shape (nevents) or a list of tensors if <code class="docutils literal notranslate"><span class="pre">n_obs</span></code> is larger then 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;We have </span><span class="si">{</span><span class="n">data_normal</span><span class="o">.</span><span class="n">nevents</span><span class="si">}</span><span class="s2"> events in our dataset with the minimum of </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data_normal</span><span class="o">.</span><span class="n">unstack_x</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># remember! The obs cut out some of the data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We have 9929 events in our dataset with the minimum of -4.984691513732003
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_normal</span><span class="o">.</span><span class="n">n_obs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="model">
+<h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
+<p>Building models is by far the largest part of zfit. We will therefore cover an essential part, the possibility to build custom models, in an extra chapter. Let’s start out with the idea that you define your parameters and your observable space; the latter is the expected input data.</p>
+<p>There are two types of models in zfit:</p>
+<ul class="simple">
+<li><p>functions, which are rather simple and “underdeveloped”; their usage is often not required.</p></li>
+<li><p>PDF that are function which are normalized (over a specified range); this is the main model and is what we gonna use throughout the tutorials.</p></li>
+</ul>
+<p>A PDF is defined by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-00186ce9-348a-4af4-b19a-e9a37b94c1c1">
+<span class="eqno">(1)<a class="headerlink" href="#equation-00186ce9-348a-4af4-b19a-e9a37b94c1c1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\mathrm{PDF}_{f(x)}(x; \theta) = \frac{f(x; \theta)}{\int_{a}^{b} f(x; \theta)}
+\end{align}\]</div>
+<p>where a and b define the normalization range (<code class="docutils literal notranslate"><span class="pre">norm_range</span></code>), over which (by inserting into the above definition) the integral of the PDF is unity.</p>
+<p>zfit has a modular approach to things and this is also true for models. While the normalization itself (e.g. what are parameters, what is normalized data) will already be pre-defined in the model, models are composed of functions that are transparently called inside. For example, a Gaussian would usually be implemented by writing a Python function <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">gauss(x,</span> <span class="pre">mu,</span> <span class="pre">sigma)</span></code>, which does not care about the normalization and then be wrapped in a PDF, where the normalization and what is a parameter is defined.</p>
+<p>In principle, we can go far by using simply functions (e.g. <a class="reference external" href="https://github.com/apoluekt/AmpliTF">TensorFlowAnalysis/AmpliTF</a> by Anton Poluektov uses this approach quite successfully for Amplitude Analysis), but this design has limitations for a more general fitting library such as zfit (or even <a class="reference external" href="https://github.com/ComPWA/tensorwaves">TensorWaves</a>, being built on top of AmpliTF).
+The main thing is to keep track of the different ordering of the data and parameters, especially the dependencies.</p>
+<p>Let’s create a simple Gaussian PDF. We already defined the <code class="docutils literal notranslate"><span class="pre">Space</span></code> for the data before, now we only need the parameters. This are a different object than a <code class="docutils literal notranslate"><span class="pre">Space</span></code>.</p>
+<div class="section" id="parameter">
+<h3>Parameter<a class="headerlink" href="#parameter" title="Permalink to this headline">¶</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> (there are different kinds actually, more on that later) takes the following arguments as input:
+<code class="docutils literal notranslate"><span class="pre">Parameter(human</span> <span class="pre">readable</span> <span class="pre">name,</span> <span class="pre">initial</span> <span class="pre">value[,</span> <span class="pre">lower</span> <span class="pre">limit,</span> <span class="pre">upper</span> <span class="pre">limit])</span></code> where the limits are recommended but not mandatory. Furthermore, <code class="docutils literal notranslate"><span class="pre">step_size</span></code> can be given (which is useful to be around the given uncertainty, e.g. for large yields or small values it can help a lot to set this). Also, a <code class="docutils literal notranslate"><span class="pre">floating</span></code> argument is supported, indicating whether the parameter is allowed to float in the fit or not (just omitting the limits does <em>not</em> make a parameter constant).</p>
+<p>Parameters have a unique name. This is served as the identifier for e.g. fit results. However, a parameter <em>cannot</em> be retrieved by its string identifier (its name) but the object itself should be used. In places where a parameter maps to something, the object itself is needed, not its name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;mu&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">sigma_num</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;sigma42&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">floating</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These attributes can be changed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sigma is float: </span><span class="si">{</span><span class="n">sigma_num</span><span class="o">.</span><span class="n">floating</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">sigma_num</span><span class="o">.</span><span class="n">floating</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sigma is float: </span><span class="si">{</span><span class="n">sigma_num</span><span class="o">.</span><span class="n">floating</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma is float: False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma is float: True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>PITFALL NOTEBOOKS: since the parameters have a unique name, a second parameter with the same name cannot be created; the behavior is undefined and therefore it raises an error.
+While this does not pose a problem in a normal Python script, it does in a Jupyter-like notebook, since it is an often practice to “rerun” a cell as an attempt to “reset” things. Bear in mind that this does not make sense, from a logic point of view. The parameter already exists. Best practice: write a small wrapper, do not rerun the parameter creation cell or simply rerun the notebook (restart kernel &amp; run all). For further details, have a look at the discussion and arguments <a class="reference external" href="https://github.com/zfit/zfit/issues/186">here</a></em></p>
+<p>Now we have everything to create a Gaussian PDF:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gauss</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">Gauss</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">obs</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma_num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since this holds all the parameters and the observables are well defined, we can retrieve them</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gauss</span><span class="o">.</span><span class="n">n_obs</span>  <span class="c1"># dimensions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gauss</span><span class="o">.</span><span class="n">obs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;obs1&#39;,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gauss</span><span class="o">.</span><span class="n">space</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit Space obs=(&#39;obs1&#39;,), axes=(0,), limits=(array([[-5.]]), array([[10.]]))&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gauss</span><span class="o">.</span><span class="n">norm_range</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit Space obs=(&#39;obs1&#39;,), axes=(0,), limits=(array([[-5.]]), array([[10.]]))&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we’ve seen, the <code class="docutils literal notranslate"><span class="pre">obs</span></code> we defined is the <code class="docutils literal notranslate"><span class="pre">space</span></code> of Gauss: this acts as the default limits whenever needed (e.g. for sampling). <code class="docutils literal notranslate"><span class="pre">gauss</span></code> also has a <code class="docutils literal notranslate"><span class="pre">norm_range</span></code>, which equals by default as well to the <code class="docutils literal notranslate"><span class="pre">obs</span></code> given, however, we can explicitly change that with <code class="docutils literal notranslate"><span class="pre">set_norm_range</span></code>.</p>
+<p>We can also access the parameters of the PDF in two ways, depending on our intention:
+either by <em>name</em> (the parameterization name, e.g. <code class="docutils literal notranslate"><span class="pre">mu</span></code> and <code class="docutils literal notranslate"><span class="pre">sigma</span></code>, as defined in the <code class="docutils literal notranslate"><span class="pre">Gauss</span></code>), which is useful if we are interested in the parameter that <em>describes</em> the shape</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gauss</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OrderedDict([(&#39;mu&#39;, &lt;zfit.Parameter &#39;mu&#39; floating=True value=1&gt;),
+             (&#39;sigma&#39;, &lt;zfit.Parameter &#39;sigma42&#39; floating=True value=1&gt;)])
+</pre></div>
+</div>
+</div>
+</div>
+<p>or to retrieve all the parameters that the PDF depends on. As this now may sounds trivial, we will see later that models can depend on other models (e.g. sums) and parameters on other parameters. There is one function that automatically retrieves <em>all</em> dependencies, <code class="docutils literal notranslate"><span class="pre">get_params</span></code>. It takes three arguments to filter:</p>
+<ul class="simple">
+<li><p>floating: whether to filter only floating parameters, only non-floating or don’t discriminate</p></li>
+<li><p>is_yield: if it is a yield, or not a yield, or both</p></li>
+<li><p>extract_independent: whether to recursively collect all parameters. This, and the explanation for why independent, can be found later on in the <code class="docutils literal notranslate"><span class="pre">Simultaneous</span></code> tutorial.</p></li>
+</ul>
+<p>Usually, the default is exactly what we want if we look for <em>all free parameters that this PDF depends on</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gauss</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OrderedSet([&lt;zfit.Parameter &#39;mu&#39; floating=True value=1&gt;, &lt;zfit.Parameter &#39;sigma42&#39; floating=True value=1&gt;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The difference will also be clear if we e.g. use the same parameter twice:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gauss_only_mu</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">Gauss</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">obs</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">mu</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;params=</span><span class="si">{</span><span class="n">gauss_only_mu</span><span class="o">.</span><span class="n">params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;get_params=</span><span class="si">{</span><span class="n">gauss_only_mu</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>params=OrderedDict([(&#39;mu&#39;, &lt;zfit.Parameter &#39;mu&#39; floating=True value=1&gt;), (&#39;sigma&#39;, &lt;zfit.Parameter &#39;mu&#39; floating=True value=1&gt;)])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>get_params=OrderedSet([&lt;zfit.Parameter &#39;mu&#39; floating=True value=1&gt;])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="functionality">
+<h2>Functionality<a class="headerlink" href="#functionality" title="Permalink to this headline">¶</a></h2>
+<p>PDFs provide a few useful methods. The main features of a zfit PDF are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pdf</span></code>: the normalized value of the PDF. It takes an argument <code class="docutils literal notranslate"><span class="pre">norm_range</span></code> that can be set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, in which case we retrieve the unnormalized value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">integrate</span></code>: given a certain range, the PDF is integrated. As <code class="docutils literal notranslate"><span class="pre">pdf</span></code>, it takes a <code class="docutils literal notranslate"><span class="pre">norm_range</span></code> argument that integrates over the unnormalized <code class="docutils literal notranslate"><span class="pre">pdf</span></code> if set to <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sample</span></code>: samples from the pdf and returns a <code class="docutils literal notranslate"><span class="pre">Data</span></code> object</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">integral</span> <span class="o">=</span> <span class="n">gauss</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># corresponds to 2 sigma integral</span>
+<span class="n">integral</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(1,), dtype=float64, numpy=array([0.95449974])&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tensors">
+<h3>Tensors<a class="headerlink" href="#tensors" title="Permalink to this headline">¶</a></h3>
+<p>As we see, many zfit functions return Tensors. This is however no magical thing! If we’re outside of models, than we can always safely convert them to a numpy array by calling <code class="docutils literal notranslate"><span class="pre">zfit.run(...)</span></code> on it (or any structure containing potentially multiple Tensors). However, this may not even be required often! They can be added just like numpy arrays and interact well with Python and Numpy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">integral</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.97698502])
+</pre></div>
+</div>
+</div>
+</div>
+<p>They also have shapes, dtypes, can be slices etc. So do not convert them except you need it. More on this can be seen in the talk later on about zfit and TensorFlow 2.0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">gauss</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># default space taken as limits</span>
+<span class="n">sample</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.core.data.SampleData at 0x7f745c31d580&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span><span class="o">.</span><span class="n">unstack_x</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float64, numpy=
+array([0.74910871, 1.09513127, 0.86641379, 2.65784658, 0.8762508 ,
+       0.45845093, 0.71202733, 1.58238395, 1.76785932, 0.89238699])&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span><span class="o">.</span><span class="n">n_obs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span><span class="o">.</span><span class="n">obs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;obs1&#39;,)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that sample returns also a zfit <code class="docutils literal notranslate"><span class="pre">Data</span></code> object with the same space as it was sampled in. This can directly be used e.g.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probs</span> <span class="o">=</span> <span class="n">gauss</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="n">probs</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float64, numpy=
+array([0.38658181, 0.39714115, 0.3953985 , 0.10094634, 0.39589927,
+       0.34452927, 0.38273874, 0.33671309, 0.29708336, 0.39663897])&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>NOTE</strong>: In case you want to do this repeatedly (e.g. for toy studies), there is a way more efficient way (see later on)</p>
+</div>
+</div>
+<div class="section" id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+<p>so far, we have a dataset and a PDF. Before we go for fitting, we can make a plot. This functionality is not <em>directly</em> provided in zfit (but can be added to <a class="reference external" href="https://github.com/zfit/zfit-physics">zfit-physics</a>). It is however simple enough to do it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">plot_data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>  <span class="c1"># we will use scale later on</span>
+
+    <span class="n">nbins</span> <span class="o">=</span> <span class="mi">50</span>
+
+    <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data_range</span><span class="o">.</span><span class="n">limit1d</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># np.linspace also works</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">size_normal</span> <span class="o">/</span> <span class="n">nbins</span> <span class="o">*</span> <span class="n">data</span><span class="o">.</span><span class="n">data_range</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">*=</span> <span class="n">scale</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">data_plot</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">unstack_x</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>  <span class="c1"># we could also use the `to_pandas` method</span>
+    <span class="k">if</span> <span class="n">plot_data</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data_plot</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">nbins</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model</span><span class="p">(</span><span class="n">gauss</span><span class="p">,</span> <span class="n">data_normal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Introduction_43_2.png" src="../../_images/Introduction_43_2.png" />
+</div>
+</div>
+<p>We can of course do better (and will see that later on, continuously improve the plots), but this is quite simple and gives us the full power of matplotlib.</p>
+<div class="section" id="different-models">
+<h3>Different models<a class="headerlink" href="#different-models" title="Permalink to this headline">¶</a></h3>
+<p>zfit offers a selection of predefined models (and extends with models from zfit-physics that contain physics specific models such as ARGUS shaped models).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">__all__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;BasePDF&#39;, &#39;BaseFunctor&#39;, &#39;Exponential&#39;, &#39;CrystalBall&#39;, &#39;DoubleCB&#39;, &#39;Gauss&#39;, &#39;Uniform&#39;, &#39;TruncatedGauss&#39;, &#39;WrapDistribution&#39;, &#39;Cauchy&#39;, &#39;Poisson&#39;, &#39;Chebyshev&#39;, &#39;Legendre&#39;, &#39;Chebyshev2&#39;, &#39;Hermite&#39;, &#39;Laguerre&#39;, &#39;RecursivePolynomial&#39;, &#39;ProductPDF&#39;, &#39;SumPDF&#39;, &#39;GaussianKDE1DimV1&#39;, &#39;FFTConvPDFV1&#39;, &#39;ConditionalPDFV1&#39;, &#39;ZPDF&#39;, &#39;SimplePDF&#39;, &#39;SimpleFunctorPDF&#39;]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To create a more realistic model, we can build some components for a mass fit with a</p>
+<ul class="simple">
+<li><p>signal component: CrystalBall</p></li>
+<li><p>combinatorial background: Exponential</p></li>
+<li><p>partial reconstructed background on the left: Kernel Density Estimation</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mass_obs</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Space</span><span class="p">(</span><span class="s1">&#39;mass&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Signal component</span>
+
+<span class="n">mu_sig</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;mu_sig&#39;</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+<span class="n">sigma_sig</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;sigma_sig&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">alpha_sig</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;alpha_sig&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="n">floating</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># won&#39;t be used in the fit</span>
+<span class="n">n_sig</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;n sig&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">floating</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">CrystalBall</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">mass_obs</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu_sig</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma_sig</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha_sig</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n_sig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># combinatorial background</span>
+
+<span class="n">lam</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;lambda&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">comb_bkg</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">obs</span><span class="o">=</span><span class="n">mass_obs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">part_reco_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
+<span class="n">part_reco_data</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">mass_obs</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">part_reco_data</span><span class="p">)</span>  <span class="c1"># we don&#39;t need to do this but now we&#39;re sure it&#39;s inside the limits</span>
+
+<span class="n">part_reco</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">GaussianKDE1DimV1</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">mass_obs</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">part_reco_data</span><span class="p">,</span> <span class="n">bandwidth</span><span class="o">=</span><span class="s1">&#39;adaptive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="composing-models">
+<h2>Composing models<a class="headerlink" href="#composing-models" title="Permalink to this headline">¶</a></h2>
+<p>We can also compose multiple models together. Here we’ll stick to one dimensional models, the extension to multiple dimensions is explained in the “custom models tutorial”.</p>
+<p>Here we will use a <code class="docutils literal notranslate"><span class="pre">SumPDF</span></code>. This takes pdfs and fractions. If we provide n pdfs and:</p>
+<ul class="simple">
+<li><p>n - 1 fracs: the nth fraction will be 1 - sum(fracs)</p></li>
+<li><p>n fracs: no normalization attempt is done by <code class="docutils literal notranslate"><span class="pre">SumPDf</span></code>. If the fracs are not implicitly normalized, this can lead to bad fitting
+behavior if there is a degree of freedom too much</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sig_frac</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;sig_frac&#39;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">comb_bkg_frac</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;comb_bkg_frac&#39;</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">SumPDF</span><span class="p">([</span><span class="n">signal</span><span class="p">,</span> <span class="n">comb_bkg</span><span class="p">,</span> <span class="n">part_reco</span><span class="p">],</span> <span class="p">[</span><span class="n">sig_frac</span><span class="p">,</span> <span class="n">comb_bkg_frac</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to have a corresponding data sample, we can just create one. Since we want to fit to this dataset later on, we will create it with slightly different values. Therefore, we can use the ability of a parameter to be set temporarily to a certain value with</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;before: </span><span class="si">{</span><span class="n">sig_frac</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">sig_frac</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mf">0.25</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;new value: </span><span class="si">{</span><span class="n">sig_frac</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;after &#39;with&#39;: </span><span class="si">{</span><span class="n">sig_frac</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>before: &lt;zfit.Parameter &#39;sig_frac&#39; floating=True value=0.3&gt;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>new value: &lt;zfit.Parameter &#39;sig_frac&#39; floating=True value=0.25&gt;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>after &#39;with&#39;: &lt;zfit.Parameter &#39;sig_frac&#39; floating=True value=0.3&gt;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>While this is useful, it does not fully scale up. We can use the <code class="docutils literal notranslate"><span class="pre">zfit.param.set_values</span></code> helper therefore.
+(<em>Sidenote: instead of a list of values, we can also use a <code class="docutils literal notranslate"><span class="pre">FitResult</span></code>, the given parameters then take the value from the result</em>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">zfit</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">set_values</span><span class="p">([</span><span class="n">mu_sig</span><span class="p">,</span> <span class="n">sigma_sig</span><span class="p">,</span> <span class="n">sig_frac</span><span class="p">,</span> <span class="n">comb_bkg_frac</span><span class="p">,</span> <span class="n">lam</span><span class="p">],</span> <span class="p">[</span><span class="mi">370</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.006</span><span class="p">]):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Introduction_58_0.png" src="../../_images/Introduction_58_0.png" />
+</div>
+</div>
+<p>Plotting the components is not difficult now: we can either just plot the pdfs separately (as we still can access them) or in a generalized manner by accessing the <code class="docutils literal notranslate"><span class="pre">pdfs</span></code> attribute:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_comp_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">mod</span><span class="p">,</span> <span class="n">frac</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">pdfs</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+        <span class="n">plot_model</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">frac</span><span class="p">,</span> <span class="n">plot_data</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plot_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_comp_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Introduction_61_0.png" src="../../_images/Introduction_61_0.png" />
+</div>
+</div>
+<p>Now we can add legends etc. Btw, did you notice that actually, the <code class="docutils literal notranslate"><span class="pre">frac</span></code> params are zfit <code class="docutils literal notranslate"><span class="pre">Parameters</span></code>? But we just used them as if they were Python scalars and it works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OrderedDict([(&#39;frac_0&#39;, &lt;zfit.Parameter &#39;sig_frac&#39; floating=True value=0.3&gt;), (&#39;frac_1&#39;, &lt;zfit.Parameter &#39;comb_bkg_frac&#39; floating=True value=0.25&gt;), (&#39;frac_2&#39;, &lt;zfit.ComposedParameter &#39;Composed_autoparam_2&#39; params=OrderedDict([(&#39;param_0&#39;, &lt;zfit.Parameter &#39;sig_frac&#39; floating=True value=0.3&gt;), (&#39;param_1&#39;, &lt;zfit.Parameter &#39;comb_bkg_frac&#39; floating=True value=0.25&gt;)]) value=0.45&gt;)])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="extended-pdfs">
+<h3>Extended PDFs<a class="headerlink" href="#extended-pdfs" title="Permalink to this headline">¶</a></h3>
+<p>So far, we have only looked at normalized PDFs that do contain information about the shape but not about the <em>absolute</em> scale. We can make a PDF extended by adding a yield to it.</p>
+<p>The behavior of the new, extended PDF does <strong>NOT change</strong>, any methods we called before will act the same. Only exception, some may require an argument <em>less</em> now. All the methods we used so far will return the same values. What changes is that the flag <code class="docutils literal notranslate"><span class="pre">model.is_extended</span></code> now returns <code class="docutils literal notranslate"><span class="pre">True</span></code>. Furthermore, we have now a few more methods that we can use which would have raised an error before:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_yield</span></code>: return the yield parameter (notice that the yield is <em>not</em> added to the shape parameters <code class="docutils literal notranslate"><span class="pre">params</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ext_{pdf,integrate}</span></code>: these methods return the same as the versions used before, however, multiplied by the yield</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sample</span></code> is still the same, but does not <em>require</em> the argument <code class="docutils literal notranslate"><span class="pre">n</span></code> anymore. By default, this will now equal to a <em>poissonian sampled</em> n around the yield.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">SumPDF</span></code> now does not strictly need <code class="docutils literal notranslate"><span class="pre">fracs</span></code> anymore: if <em>all</em> input PDFs are extended, the sum will be as well and use the (normalized) yields as fracs</p>
+<p>The preferred way to create an extended PDf is to use <code class="docutils literal notranslate"><span class="pre">PDF.create_extended(yield)</span></code>. However, since this relies on copying the PDF (which may does not work for different reasons), there is also a <code class="docutils literal notranslate"><span class="pre">set_yield(yield)</span></code> method that sets the yield in-place. This won’t lead to ambiguities, as everything is supposed to work the same.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yield_model</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;yield_model&#39;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20000</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">model_ext</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">create_extended</span><span class="p">(</span><span class="n">yield_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>alternatively, we can create the models as extended and sum them up</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sig_yield</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;sig_yield&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sig_ext</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">create_extended</span><span class="p">(</span><span class="n">sig_yield</span><span class="p">)</span>
+
+<span class="n">comb_bkg_yield</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;comb_bkg_yield&#39;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">comb_bkg_ext</span> <span class="o">=</span> <span class="n">comb_bkg</span><span class="o">.</span><span class="n">create_extended</span><span class="p">(</span><span class="n">comb_bkg_yield</span><span class="p">)</span>
+
+<span class="n">part_reco_yield</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s1">&#39;part_reco_yield&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">part_reco</span><span class="o">.</span><span class="n">set_yield</span><span class="p">(</span><span class="n">part_reco_yield</span><span class="p">)</span>  <span class="c1"># unfortunately, `create_extended` does not work here. But no problem, it won&#39;t change anyting.</span>
+<span class="n">part_reco_ext</span> <span class="o">=</span> <span class="n">part_reco</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_ext_sum</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">SumPDF</span><span class="p">([</span><span class="n">sig_ext</span><span class="p">,</span> <span class="n">comb_bkg_ext</span><span class="p">,</span> <span class="n">part_reco_ext</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="loss">
+<h1>Loss<a class="headerlink" href="#loss" title="Permalink to this headline">¶</a></h1>
+<p>A loss combines the model and the data, for example to build a likelihood. Furthermore, it can contain constraints, additions to the likelihood. Currently, if the <code class="docutils literal notranslate"><span class="pre">Data</span></code> has weights, these are automatically taken into account.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nll_gauss</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">loss</span><span class="o">.</span><span class="n">UnbinnedNLL</span><span class="p">(</span><span class="n">gauss</span><span class="p">,</span> <span class="n">data_normal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The loss has several attributes to be transparent to higher level libraries. We can calculate the value of it using <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nll_gauss</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float64, numpy=1000.0000000000014&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that due to graph building, this will take significantly longer on the first run. Rerun the cell above and it will be way faster.</p>
+<p>Furthermore, the loss also provides a possibility to calculate the gradients or, often used, the value and the gradients.</p>
+<p>We can access the data and models (and possible constraints)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nll_gauss</span><span class="o">.</span><span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;zfit.&lt;class &#39;zfit.models.dist_tfp.Gauss&#39;&gt;  params=[mu, sigma42]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nll_gauss</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;zfit.core.data.Data at 0x7f74dcfc6370&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nll_gauss</span><span class="o">.</span><span class="n">constraints</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similar to the models, we can also get the parameters via <code class="docutils literal notranslate"><span class="pre">get_params</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nll_gauss</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OrderedSet([&lt;zfit.Parameter &#39;mu&#39; floating=True value=1&gt;, &lt;zfit.Parameter &#39;sigma42&#39; floating=True value=1&gt;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="extended-loss">
+<h2>Extended loss<a class="headerlink" href="#extended-loss" title="Permalink to this headline">¶</a></h2>
+<p>More interestingly, we can now build a loss for our composite sum model using the sampled data. Since we created an extended model, we can now also create an extended likelihood, taking into account a Poisson term to match the yield to the number of events.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nll</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">loss</span><span class="o">.</span><span class="n">ExtendedUnbinnedNLL</span><span class="p">(</span><span class="n">model_ext_sum</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nll</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OrderedSet([&lt;zfit.Parameter &#39;sig_yield&#39; floating=True value=2000&gt;, &lt;zfit.Parameter &#39;comb_bkg_yield&#39; floating=True value=6000&gt;, &lt;zfit.Parameter &#39;part_reco_yield&#39; floating=True value=2000&gt;, &lt;zfit.Parameter &#39;mu_sig&#39; floating=True value=400&gt;, &lt;zfit.Parameter &#39;sigma_sig&#39; floating=True value=50&gt;, &lt;zfit.Parameter &#39;lambda&#39; floating=True value=-0.01&gt;])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="minimization">
+<h1>Minimization<a class="headerlink" href="#minimization" title="Permalink to this headline">¶</a></h1>
+<p>While a loss is interesting, we usually want to minimize it. Therefore we can use the minimizers in zfit, most notably <code class="docutils literal notranslate"><span class="pre">Minuit</span></code>, a wrapper around the <a class="reference external" href="https://github.com/scikit-hep/iminuit">iminuit minimizer</a>.</p>
+<p>The philosophy is to create a minimizer instance that is mostly <em>stateless</em>, e.g. does not remember the position (there are considerations to make it possible to have a state, in case you feel interested, <a class="reference external" href="https://github.com/zfit/zfit#contact">contact us</a>)</p>
+<p>Given that iminuit provides us with a very reliable and stable minimizer, it is usually recommended to use this. Others are implemented as well and could easily be wrapped, however, the convergence is usually not as stable.</p>
+<p>Minuit has a few options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tolerance</span></code>: the Estimated Distance to Minimum (EDM) criteria for convergence (default 1e-3)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">verbosity</span></code>: between 0 and 10, 5 is normal, 7 is verbose, 10 is maximum</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gradient</span></code>: if True, uses the Minuit numerical gradient instead of the TensorFlow gradient. This is usually more stable for smaller fits; furthermore the TensorFlow gradient <em>can</em> (experience based) sometimes be wrong.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimizer</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">minimize</span><span class="o">.</span><span class="n">Minuit</span><span class="p">(</span><span class="n">gradient</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the minimization, we can call <code class="docutils literal notranslate"><span class="pre">minimize</span></code>, which takes a</p>
+<ul class="simple">
+<li><p>loss as we created above</p></li>
+<li><p>optionally: the parameters to minimize</p></li>
+</ul>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">minimize</span></code> uses all the free floating parameters (obtained with <code class="docutils literal notranslate"><span class="pre">get_params</span></code>). We can also explicitly specify which ones to use by giving them (or better, objects that depend on them) to <code class="docutils literal notranslate"><span class="pre">minimize</span></code>; note however that non-floating parameters, even if given explicitly to <code class="docutils literal notranslate"><span class="pre">minimize</span></code> won ‘t be minimized.</p>
+<div class="section" id="pre-fit-parts-of-the-pdf">
+<h2>Pre-fit parts of the PDF<a class="headerlink" href="#pre-fit-parts-of-the-pdf" title="Permalink to this headline">¶</a></h2>
+<p>Before we want to fit the whole PDF however, it can be useful to pre-fit it. A way can be to fix the combinatorial background by fitting the exponential to the right tail.</p>
+<p>Therefore we create a new data object with an additional cut and furthermore, set the normalization range of the background pdf to the range we are interested in.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">unstack_x</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">obs_right_tail</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Space</span><span class="p">(</span><span class="s1">&#39;mass&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">700</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+<span class="n">data_tail</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">from_tensor</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">obs_right_tail</span><span class="p">,</span> <span class="n">tensor</span><span class="o">=</span><span class="n">values</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">comb_bkg</span><span class="o">.</span><span class="n">set_norm_range</span><span class="p">(</span><span class="n">obs_right_tail</span><span class="p">):</span>
+    <span class="n">nll_tail</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">loss</span><span class="o">.</span><span class="n">UnbinnedNLL</span><span class="p">(</span><span class="n">comb_bkg</span><span class="p">,</span> <span class="n">data_tail</span><span class="p">)</span>
+    <span class="n">minimizer</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">nll_tail</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since we now fit the lambda parameter of the exponential, we can fix it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lam</span><span class="o">.</span><span class="n">floating</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">lam</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.Parameter &#39;lambda&#39; floating=False value=-0.008261&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">minimizer</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">nll</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_comp_model</span><span class="p">(</span><span class="n">model_ext_sum</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Introduction_92_0.png" src="../../_images/Introduction_92_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="fit-result">
+<h1>Fit result<a class="headerlink" href="#fit-result" title="Permalink to this headline">¶</a></h1>
+<p>The result of every minimization is stored in a <code class="docutils literal notranslate"><span class="pre">FitResult</span></code>. This is the last stage of the zfit workflow and serves as the interface to other libraries. Its main purpose is to store the values of the fit, to reference to the objects that have been used and to perform (simple) uncertainty estimation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FitResult
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> of
+&lt;ExtendedUnbinnedNLL model=[&lt;zfit.&lt;class &#39;zfit.models.functor.SumPDF&#39;&gt;  params=[Composed_autoparam_5, Composed_autoparam_6, Composed_autoparam_7]] data=[&lt;zfit.core.data.SampleData object at 0x7f745c0f8190&gt;] constraints=[]&gt; 
+with
+&lt;Minuit Minuit tol=0.001&gt;
+
+╒═════════╤═════════════╤══════════════════╤═════════╤═════════════╕
+│ valid   │ converged   │ param at limit   │ edm     │ min value   │
+╞═════════╪═════════════╪══════════════════╪═════════╪═════════════╡
+│ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    │ True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        │ False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            │ 7.6e-06 │ -1065       │
+╘═════════╧═════════════╧══════════════════╧═════════╧═════════════╛
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameters
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name               value    at limit
+---------------  -------  ----------
+sig_yield           1867       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>comb_bkg_yield     984.6       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>part_reco_yield     7149       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_sig               370       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_sig          34.35       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This gives an overview over the whole result. Often we’re mostly interested in the parameters and their values, which we can access with a <code class="docutils literal notranslate"><span class="pre">params</span></code> attribute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name               value    at limit
+---------------  -------  ----------
+sig_yield           1867       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>comb_bkg_yield     984.6       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>part_reco_yield     7149       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_sig               370       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_sig          34.35       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is a <code class="docutils literal notranslate"><span class="pre">dict</span></code> which stores any knowledge about the parameters and can be accessed by the parameter (object) itself:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">mu_sig</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;value&#39;: 369.9951507875696}
+</pre></div>
+</div>
+</div>
+</div>
+<p>‘value’ is the value at the minimum. To obtain other information about the minimization process, <code class="docutils literal notranslate"><span class="pre">result</span></code> contains more attributes:</p>
+<ul class="simple">
+<li><p>fmin: the function minimum</p></li>
+<li><p>edm: estimated distance to minimum</p></li>
+<li><p>info: contains a lot of information, especially the original information returned by a specific minimizer</p></li>
+<li><p>converged: if the fit converged</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">fmin</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1065.2907853611541
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="estimating-uncertainties">
+<h2>Estimating uncertainties<a class="headerlink" href="#estimating-uncertainties" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">FitResult</span></code> has mainly two methods to estimate the uncertainty:</p>
+<ul class="simple">
+<li><p>a profile likelihood method (like MINOS)</p></li>
+<li><p>Hessian approximation of the likelihood (like HESSE)</p></li>
+</ul>
+<p>When using <code class="docutils literal notranslate"><span class="pre">Minuit</span></code>, this uses (currently) it’s own implementation. However, zfit has its own implementation, which are likely to become the standard and can be invoked by changing the method name.</p>
+<p>Hesse is also <a class="reference external" href="https://github.com/zfit/zfit/pull/244">on the way to implement</a> the <a class="reference external" href="https://inspirehep.net/literature/1762842">corrections for weights</a>.</p>
+<p>We can explicitly specify which parameters to calculate, by default it does for all.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">hesse</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;minuit_hesse&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&lt;zfit.Parameter &#39;sig_yield&#39; floating=True value=1867&gt;: {&#39;error&#39;: 70.78548699276114,
+  &#39;cl&#39;: 0.68268949},
+ &lt;zfit.Parameter &#39;comb_bkg_yield&#39; floating=True value=984.6&gt;: {&#39;error&#39;: 82.9793372780094,
+  &#39;cl&#39;: 0.68268949},
+ &lt;zfit.Parameter &#39;part_reco_yield&#39; floating=True value=7149&gt;: {&#39;error&#39;: 138.1671578087337,
+  &#39;cl&#39;: 0.68268949},
+ &lt;zfit.Parameter &#39;mu_sig&#39; floating=True value=370&gt;: {&#39;error&#39;: 1.3545166251043608,
+  &#39;cl&#39;: 0.68268949},
+ &lt;zfit.Parameter &#39;sigma_sig&#39; floating=True value=34.35&gt;: {&#39;error&#39;: 1.285293443297359,
+  &#39;cl&#39;: 0.68268949}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># result.hesse(method=&#39;hesse_np&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We get the result directly returned. This is also added to <code class="docutils literal notranslate"><span class="pre">result.params</span></code> for each parameter and is nicely displayed with an added column</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name               value    minuit_hesse    at limit
+---------------  -------  --------------  ----------
+sig_yield           1867     +/-      71       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>comb_bkg_yield     984.6     +/-      83       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>part_reco_yield     7149     +/- 1.4e+02       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_sig               370     +/-     1.4       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_sig          34.35     +/-     1.3       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">errors</span><span class="p">,</span> <span class="n">new_result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">errors</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="n">sig_yield</span><span class="p">,</span> <span class="n">part_reco_yield</span><span class="p">,</span> <span class="n">mu_sig</span><span class="p">])</span>  <span class="c1"># just using three for speed reasons</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># errors, new_result = result.errors(params=[yield_model, sig_frac, mu_sig], method=&#39;zfit_error&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OrderedDict([(&lt;zfit.Parameter &#39;sig_yield&#39; floating=True value=1867&gt;, {&#39;lower&#39;: -70.32263610727075, &#39;upper&#39;: 71.26424418922919, &#39;is_valid&#39;: True, &#39;upper_valid&#39;: True, &#39;lower_valid&#39;: True, &#39;at_lower_limit&#39;: False, &#39;at_upper_limit&#39;: False, &#39;nfcn&#39;: 72, &#39;original&#39;: &lt;MError number=0 name=&#39;sig_yield&#39; lower=-70.32263610727075 upper=71.26424418922919 is_valid=True lower_valid=True upper_valid=True at_lower_limit=False at_upper_limit=False at_lower_max_fcn=False at_upper_max_fcn=False lower_new_min=False upper_new_min=False nfcn=72 min=1866.5803075455972&gt;, &#39;cl&#39;: 0.68268949}), (&lt;zfit.Parameter &#39;part_reco_yield&#39; floating=True value=7149&gt;, {&#39;lower&#39;: -137.8630660731781, &#39;upper&#39;: 138.5132360462613, &#39;is_valid&#39;: True, &#39;upper_valid&#39;: True, &#39;lower_valid&#39;: True, &#39;at_lower_limit&#39;: False, &#39;at_upper_limit&#39;: False, &#39;nfcn&#39;: 36, &#39;original&#39;: &lt;MError number=2 name=&#39;part_reco_yield&#39; lower=-137.8630660731781 upper=138.5132360462613 is_valid=True lower_valid=True upper_valid=True at_lower_limit=False at_upper_limit=False at_lower_max_fcn=False at_upper_max_fcn=False lower_new_min=False upper_new_min=False nfcn=36 min=7148.881232153443&gt;, &#39;cl&#39;: 0.68268949}), (&lt;zfit.Parameter &#39;mu_sig&#39; floating=True value=370&gt;, {&#39;lower&#39;: -1.363713328235267, &#39;upper&#39;: 1.3463334592718414, &#39;is_valid&#39;: True, &#39;upper_valid&#39;: True, &#39;lower_valid&#39;: True, &#39;at_lower_limit&#39;: False, &#39;at_upper_limit&#39;: False, &#39;nfcn&#39;: 72, &#39;original&#39;: &lt;MError number=3 name=&#39;mu_sig&#39; lower=-1.363713328235267 upper=1.3463334592718414 is_valid=True lower_valid=True upper_valid=True at_lower_limit=False at_upper_limit=False at_lower_max_fcn=False at_upper_max_fcn=False lower_new_min=False upper_new_min=False nfcn=72 min=369.9951507875696&gt;, &#39;cl&#39;: 0.68268949})])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name               value    minuit_hesse         minuit_minos    at limit
+---------------  -------  --------------  -------------------  ----------
+sig_yield           1867     +/-      71  -     70   +     71       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>comb_bkg_yield     984.6     +/-      83                            False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>part_reco_yield     7149     +/- 1.4e+02  -1.4e+02   +1.4e+02       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_sig               370     +/-     1.4  -    1.4   +    1.3       False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_sig          34.35     +/-     1.3                            False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="what-is-new-result">
+<h3>What is ‘new_result’?<a class="headerlink" href="#what-is-new-result" title="Permalink to this headline">¶</a></h3>
+<p>When profiling a likelihood, such as done in the algorithm used in <code class="docutils literal notranslate"><span class="pre">errors</span></code>, a new minimum can be found. If this is the case, this new minimum will be returned, otherwise <code class="docutils literal notranslate"><span class="pre">new_result</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>. Furthermore, the current <code class="docutils literal notranslate"><span class="pre">result</span></code> would be rendered invalid by setting the flag <code class="docutils literal notranslate"><span class="pre">valid</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>. <em>Note</em>: this behavior only applies to the zfit internal error estimator.</p>
+</div>
+<div class="section" id="a-simple-profile">
+<h3>A simple profile<a class="headerlink" href="#a-simple-profile" title="Permalink to this headline">¶</a></h3>
+<p>There is no default function (yet) for simple profiling plot. However, again, we’re in Python and it’s simple enough to do that for a parameter. Let’s do it for <code class="docutils literal notranslate"><span class="pre">sig_yield</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1600</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">sig_yield</span><span class="o">.</span><span class="n">floating</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">sig_yield</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nll</span><span class="o">.</span><span class="n">value</span><span class="p">())</span>
+
+<span class="n">sig_yield</span><span class="o">.</span><span class="n">floating</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">zfit</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">nll</span><span class="o">.</span><span class="n">get_params</span><span class="p">(),</span> <span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.util.temporary.TemporarilySet at 0x7f7446a71460&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f74466952b0&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/Introduction_113_1.png" src="../../_images/Introduction_113_1.png" />
+</div>
+</div>
+<p>We can also access the covariance matrix of the parameters</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">covariance</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 5.01058521e+03,  1.44867019e+03, -4.59235589e+03,
+        -2.40950666e+01,  4.30379910e+01],
+       [ 1.44867019e+03,  6.88557048e+03, -7.34929634e+03,
+        -1.09352999e+01,  1.93068046e+01],
+       [-4.59235589e+03, -7.34929634e+03,  1.90901637e+04,
+         3.50276069e+01, -6.23403333e+01],
+       [-2.40950666e+01, -1.09352999e+01,  3.50276069e+01,
+         1.83471530e+00, -4.46179682e-01],
+       [ 4.30379910e+01,  1.93068046e+01, -6.23403333e+01,
+        -4.46179682e-01,  1.65197925e+00]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="end-of-zfit">
+<h1>End of zfit<a class="headerlink" href="#end-of-zfit" title="Permalink to this headline">¶</a></h1>
+<p>This is where zfit finishes and other libraries take over.</p>
+</div>
+<div class="section" id="beginning-of-hepstats">
+<h1>Beginning of hepstats<a class="headerlink" href="#beginning-of-hepstats" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">hepstats</span></code> is a library containing statistical tools and utilities for high energy physics. In particular you do statistical inferences using the models and likelhoods function constructed in <code class="docutils literal notranslate"><span class="pre">zfit</span></code>.</p>
+<p>Short example: let’s compute for instance a confidence interval at 68 % confidence level on the mean of the gaussian defined above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hepstats.hypotests</span> <span class="kn">import</span> <span class="n">ConfidenceInterval</span>
+<span class="kn">from</span> <span class="nn">hepstats.hypotests.calculators</span> <span class="kn">import</span> <span class="n">AsymptoticCalculator</span>
+<span class="kn">from</span> <span class="nn">hepstats.hypotests.parameters</span> <span class="kn">import</span> <span class="n">POIarray</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2532</span><span class="o">/</span><span class="mf">2041392903.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">hepstats.hypotests</span> <span class="kn">import</span> <span class="n">ConfidenceInterval</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">hepstats.hypotests.calculators</span> <span class="kn">import</span> <span class="n">AsymptoticCalculator</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">hepstats.hypotests.parameters</span> <span class="kn">import</span> <span class="n">POIarray</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;hepstats&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculator</span> <span class="o">=</span> <span class="n">AsymptoticCalculator</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">result</span><span class="p">,</span> <span class="n">minimizer</span><span class="o">=</span><span class="n">minimizer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">mu_sig</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">mu_sig</span><span class="p">][</span><span class="s2">&quot;minuit_hesse&quot;</span><span class="p">][</span><span class="s2">&quot;error&quot;</span><span class="p">]</span>
+
+<span class="n">mean_scan</span> <span class="o">=</span> <span class="n">POIarray</span><span class="p">(</span><span class="n">mu_sig</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">error</span><span class="p">,</span> <span class="n">value</span> <span class="o">+</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">error</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ci</span> <span class="o">=</span> <span class="n">ConfidenceInterval</span><span class="p">(</span><span class="n">calculator</span><span class="p">,</span> <span class="n">mean_scan</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ci</span><span class="o">.</span><span class="n">interval</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">one_minus_cl_plot</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">one_minus_cl_plot</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There will be more of <code class="docutils literal notranslate"><span class="pre">hepstats</span></code> later.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "zfit/poster",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./zfit-tutorials/introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../../pages/5_minutes_to_zfit.html" title="previous page">5 minutes to zfit</a>
+    <a class='right-next' id="next-link" href="../TensorFlow/HPC_with_TensorFlow.html" title="next page">HPC in Python with TensorFlow</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By zfit<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
