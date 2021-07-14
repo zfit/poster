@@ -13,3 +13,4 @@ sphinx-book-theme
 sphinx-panels
 sphinx-thebe
 sphinx-togglebutton
+pip >=21.1
