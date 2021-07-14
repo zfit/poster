@@ -105,10 +105,10 @@ import shutil
 import sys
 
 project_dir = Path(__file__).parents[0]
-zfit_tutorials_path = project_dir.joinpath('_tmp', 'zfit-tutorials')
-atexit.register(lambda path=zfit_tutorials_path: shutil.rmtree(path))
+# zfit_tutorials_path = project_dir.joinpath('_tmp', 'zfit-tutorials')
+# atexit.register(lambda path=zfit_tutorials_path: shutil.rmtree(path))
 # shutil.rmtree(zfit_tutorials_path)
-pygit2.clone_repository("https://github.com/zfit/zfit-tutorials", zfit_tutorials_path)
+# pygit2.clone_repository("https://github.com/zfit/zfit-tutorials", zfit_tutorials_path)
 
 jupyter_execute_notebooks = "cache"
 if jupyter_execute_notebooks == "cache":
