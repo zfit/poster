@@ -1,0 +1,1531 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HPC in Python with TensorFlow &#8212; zfit</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/zfit-favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="Introduction to zfit" href="../introduction/Introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">zfit</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../pages/5_minutes_to_zfit.html">
+   5 minutes to zfit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/Introduction.html">
+   Introduction to zfit
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   HPC in Python with TensorFlow
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/_tmp/zfit-tutorials/TensorFlow/HPC_with_TensorFlow.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/zfit/poster"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/zfit/poster/issues/new?title=Issue%20on%20page%20%2F_tmp/zfit-tutorials/TensorFlow/HPC_with_TensorFlow.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/zfit/poster/edit/master/website/_tmp/zfit-tutorials/TensorFlow/HPC_with_TensorFlow.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/zfit/poster/master?urlpath=lab/tree/website/_tmp/zfit-tutorials/TensorFlow/HPC_with_TensorFlow.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/zfit/poster/blob/master/website/_tmp/zfit-tutorials/TensorFlow/HPC_with_TensorFlow.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fast-and-slow">
+   Fast and slow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#equivalent-operations">
+   Equivalent operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dtypes">
+     DTypes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-cant-do-assignements">
+   What we can’t do: assignements
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tensorflow-list">
+     TensorFlow list
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#speed-comparison">
+     Speed comparison
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tensorflow-is-slow">
+     TensorFlow is slow?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tensorflow-kernels">
+   TensorFlow kernels
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tf-function">
+   tf.function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#large-functions">
+     Large functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shapes">
+     Shapes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variables">
+   Variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance">
+   Performance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#control-flow">
+   Control flow
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#while-loops">
+     While loops
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#map-a-function">
+     map a function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradients">
+   Gradients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tasks-to-try-out">
+   Tasks to try out
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-the-graph">
+   Bonus: the graph
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="hpc-in-python-with-tensorflow">
+<h1>HPC in Python with TensorFlow<a class="headerlink" href="#hpc-in-python-with-tensorflow" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">google.colab</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">!</span>pip install zfit numba numpy tensorflow_probability
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Depending on the CPU used and the TensorFlow binaries, what we will see (not in the Jupyter Notebook) are a bunch of messages, including the following:
+<code class="docutils literal notranslate"><span class="pre">tensorflow/core/platform/cpu_feature_guard.cc:143]</span> <span class="pre">Your</span> <span class="pre">CPU</span> <span class="pre">supports</span> <span class="pre">instructions</span> <span class="pre">that</span> <span class="pre">this</span> <span class="pre">TensorFlow</span> <span class="pre">binary</span> <span class="pre">was</span> <span class="pre">not</span> <span class="pre">compiled</span> <span class="pre">to</span> <span class="pre">use:</span> <span class="pre">SSE4.1</span> <span class="pre">SSE4.2</span> <span class="pre">AVX</span> <span class="pre">AVX2</span> <span class="pre">FMA</span></code></p>
+<p>What could they mean?</p>
+<p>AVX stands for Advanced Vector Extensions and are instruction that the CPU can perform. They are specializations on vector operations (remember? SIMD, CPU inststruction set, etc.)</p>
+<p>Why do they appear?</p>
+<p>The code that we are using was not compiled with this flag on. This means, TensorFlow assumes that the CPU does not support this instructions and instead uses non-optimized ones. The reason is that this allows the binary (=compiled code) to also be run on a CPU that does not support then. While we use only some speed.
+(yes, technically TensorFlow can be faster when compiled natively on your computer, but then it takes time and effort)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numba</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow_probability</span> <span class="k">as</span> <span class="nn">tfp</span>
+<span class="kn">import</span> <span class="nn">zfit</span>
+<span class="kn">from</span> <span class="nn">zfit</span> <span class="kn">import</span> <span class="n">z</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s start with a simple comparison of Numpy, an AOT compiled library, versus pure Python</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">size1</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size1</span><span class="p">)]</span>
+<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size1</span><span class="p">)]</span>
+<span class="n">list_zeros</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">size1</span>
+
+<span class="n">ar1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
+<span class="n">ar2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size1</span><span class="p">)</span>  <span class="c1"># way more efficient!</span>
+<span class="n">ar_zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">ar1</span><span class="p">)</span> <span class="c1"># quite useful function the *_like -&gt; like the object</span>
+<span class="c1"># we could also create the below, in general better:</span>
+<span class="c1"># ar_empty = np.empty(shape=size1, dtype=np.float64)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size1</span><span class="p">):</span>
+    <span class="n">list_zeros</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">list1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">list2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">ar1</span> <span class="o">+</span> <span class="n">ar2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>( <em>playground</em> : we can also try assignements here or simliar)</p>
+<div class="section" id="fast-and-slow">
+<h2>Fast and slow<a class="headerlink" href="#fast-and-slow" title="Permalink to this headline">¶</a></h2>
+<p>Before we go deeper into the topic, we can draw two conclusions:</p>
+<ul class="simple">
+<li><p>slow Python is not “slow”: it is still blazingly fast on an absolute scale, e.g if you need to loop over a few hundred points, it’s still nothing. But it can add up!</p></li>
+<li><p>Numpy is a factor of 300 faster for this case (and: better reabable!)</p></li>
+</ul>
+<p>=&gt; there is <em>no reason</em> to ever add (numerical) arrays with a for loop in Python (except for numba jit)</p>
+<p>As mentioned, TensorFlow is basically Numpy. Let’s check that out</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">rnd1_np</span>  <span class="c1"># adding a return value on the last line without assigning it prints the value</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,),</span>  <span class="c1"># notice the &quot;shape&quot; argument: it&#39;s more picky than Numpy</span>
+                         <span class="n">minval</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                         <span class="n">maxval</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                         <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">rnd2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,),</span>
+                         <span class="n">minval</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                         <span class="n">maxval</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                         <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is in fact a “numpy array wrapped” and can explicitly be converted to an array</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Other operations act as we would expect it</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1</span> <span class="o">+</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>… and it converts itself (often) to Numpy when needed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rnd1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can slice it…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>…expand it….</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>…and broadcast with the known (maybe slightly stricter) rules</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrix1</span> <span class="o">=</span> <span class="n">rnd1</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">rnd1</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
+<span class="n">matrix1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="equivalent-operations">
+<h2>Equivalent operations<a class="headerlink" href="#equivalent-operations" title="Permalink to this headline">¶</a></h2>
+<p>Many operations that exist in Numpy also exist in TensorFlow, sometimes with a different name.</p>
+<p>The concept however is exactly the same: we have higher level objects such as Tensors (or arrays) and call operations on it with arguments. This is a “strong limitation” (theoretically) of what we can do, however, since we do math, there is only a limited set we need, and in practice this suffices for 98% of the cases.</p>
+<p>Therefore we won’t dive too deep into the possibilities of TensorFlow/Numpy regarding operations but it is suggested to <a class="reference external" href="https://www.tensorflow.org/versions">read the API docs</a>, many are self-explanatory. It can be surprising that there is also some support for more exotic elements such as <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/ragged">RaggedTensors and operations</a> and <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/sparse">SparseTensors and operations</a></p>
+<p>Mostly, the differences and the terminology will be introduced.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rnd1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">matrix1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># with the axis argument to specify over which to reduce</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dtypes">
+<h3>DTypes<a class="headerlink" href="#dtypes" title="Permalink to this headline">¶</a></h3>
+<p>TensorFlow is more picky on dtypes as Numpy and does not automatically cast dtypes. That’s why we can often get a dtype error. Solution: make sure you add a <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">tf.cast(x,</span> <span class="pre">dtype=tf.float64)</span></code> (or whatever dtype we want) to cast it into the right dtype.</p>
+<p>One noticable difference: TensorFlow uses float32 as the default for all operations. Neural Networks function quite well with that (sometimes even with float16) but for (most) scientific use-cases, we want to use float64. So yes, <a class="reference external" href="https://github.com/tensorflow/tensorflow/issues/26033">currently</a>, we have to define this in (too) many places.</p>
+<p><em>Sidenote</em> : Also zfit uses tf.float64 throughout internally. It’s an often seen problem that custom shapes will raise a dtype error.</p>
+</div>
+</div>
+<div class="section" id="what-we-cant-do-assignements">
+<h2>What we can’t do: assignements<a class="headerlink" href="#what-we-cant-do-assignements" title="Permalink to this headline">¶</a></h2>
+<p>The idea of TensorFlow evolves around building a Graph<span class="math notranslate nohighlight">\(^{1)}\)</span>, the Eager (Numpy-like) execution is more of a “we get it for free addition”, but does not lead the development ideas. This has one profound implication, namely that we cannot make an <em>assignement</em> to a Tensor, because it is a node in a graph. The logic just does not work (exception: <code class="docutils literal notranslate"><span class="pre">tf.Variable</span></code>$^{2)}). This does not mean that TensorFlow would not perform in-place operations <em>behind the scenes</em> - it very well does if it is save to do so. Since TensorFlow knows the whole graph with all dependencies, this can be figured out.</p>
+<p>Even if EagerMode, assignements could work (as for Numpy arrays), they are forbidden for consistency (one of the great plus points of TensorFlow).</p>
+<div class="section" id="tensorflow-list">
+<h3>TensorFlow list<a class="headerlink" href="#tensorflow-list" title="Permalink to this headline">¶</a></h3>
+<p>an advanced structure that can also be modified is the <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/TensorArray"><code class="docutils literal notranslate"><span class="pre">tf.TensorArray</span></code></a>, which acts like a list or ArrayList (in other languages). It is however advanced and not usually used, so we won’t go into the details here.</p>
+<p><em>1) if you’re familiar with TensorFlow 1, this statement would suprise you as pretty obvious; but in TensorFlow 2, this is luckily more hidden.<br />
+2) more general, <code class="docutils literal notranslate"><span class="pre">ResourceHandler</span></code></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1_np</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">rnd1</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="speed-comparison">
+<h3>Speed comparison<a class="headerlink" href="#speed-comparison" title="Permalink to this headline">¶</a></h3>
+<p>Let’s do the same calculation as with Numpy. The result should be comparable: both are AOT compiled libraries specialized on numerical, vectorized operations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1_big</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">size1</span><span class="p">,),</span>  <span class="c1"># notice the &quot;shape&quot; argument: it&#39;s more picky than Numpy</span>
+                         <span class="n">minval</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                         <span class="n">maxval</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                         <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">rnd2_big</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">size1</span><span class="p">,),</span>
+                         <span class="n">minval</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                         <span class="n">maxval</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                         <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">rnd1_big</span> <span class="o">+</span> <span class="n">rnd2_big</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it  # using numpy, same as before
+<span class="n">ar1</span> <span class="o">+</span> <span class="n">ar2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looks like the same as Numpy. Let’s compare with smaller arrays</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1_np</span> <span class="o">=</span> <span class="n">rnd1</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">rnd2_np</span> <span class="o">=</span> <span class="n">rnd2</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1_np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">rnd1_np</span> <span class="o">+</span> <span class="n">rnd2_np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">rnd1</span> <span class="o">+</span> <span class="n">rnd2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="tensorflow-is-slow">
+<h3>TensorFlow is slow?<a class="headerlink" href="#tensorflow-is-slow" title="Permalink to this headline">¶</a></h3>
+<p>We see now a significant difference in the runtime! This is because TensorFlow has a larger overhead than Numpy. As seen before, this is not/barely noticable for larger arrays, however for very small calculations, this is visible.</p>
+<p>There is more overhead because TensorFlow tries to be “smarter” about many things than Numpy and does not simply directly execute the computation.</p>
+<p>The cost is a slowdown on very small operations but a better scaling and improved performance with larger arrays and more complicated calculations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># relative speeds may differ, depending on the hardware used.</span>
+<span class="c1"># size_big = 10  # numpy faster</span>
+<span class="n">size_big</span> <span class="o">=</span> <span class="mi">20000</span>  <span class="c1"># sameish</span>
+<span class="c1"># size_big = 100000  # TF faster</span>
+<span class="c1"># size_big = 1000000  # TF faster</span>
+<span class="c1"># size_big = 10000000  # TF faster</span>
+<span class="c1"># size_big = 100000000  # TF faster</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">size_big</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">size_big</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">size_big</span><span class="p">,))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">size_big</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="tensorflow-kernels">
+<h2>TensorFlow kernels<a class="headerlink" href="#tensorflow-kernels" title="Permalink to this headline">¶</a></h2>
+<p>In general, TensorFlow is preciser in what input arguments are required compared to Numpy and does less automatic dtype casting and asks more explicit for shapes. For example, integers don’t work in the logarithm. However, this error message illustrates very well the kernel dispatch system of TensorFlow, so lets do it!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">except</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">NotFoundError</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">InvalidArgumentError</span><span class="p">)</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span> <span class="c1"># TF 2.4 error, TF 2.5 error</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What we see here: it searches the registered kernels and does not find any that supports this operation. We find different classifications:</p>
+<ul class="simple">
+<li><p>GPU: normal GPU kernel</p></li>
+<li><p>CPU: normal CPU kernel</p></li>
+<li><p>XLA: <a class="reference external" href="https://www.tensorflow.org/xla">Accelerated Linear Algebra</a> is a high-level compiler that can fuse operations, which would result in single calls to a fused kernel.</p></li>
+</ul>
+</div>
+<div class="section" id="tf-function">
+<h2>tf.function<a class="headerlink" href="#tf-function" title="Permalink to this headline">¶</a></h2>
+<p>Let’s see the JIT in action. Therefore, we use the example from the slides and start modifying it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_log</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;running Python&#39;</span><span class="p">)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;running TensorFlow&quot;</span><span class="p">)</span>
+    <span class="n">x_sq</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">y_sq</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x_sq</span> <span class="o">+</span> <span class="n">y_sq</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As seen before, we can use it like Python. To make sure that we know when the actual Python is executed, we inserted a print and a <code class="docutils literal notranslate"><span class="pre">tf.print</span></code>, the latter is a TensorFlow operation and therefore expected to be called everytime we compute something.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_log</span><span class="p">(</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_log</span><span class="p">(</span><span class="mf">42.</span><span class="p">,</span> <span class="mf">52.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we see, both the Python and TensorFlow operation execute. Now we can do the same with a decorator. Note that so far we entered pure Python numbers, not Tensors. Since we ran in eager mode, this did not matter so far.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">autograph</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add_log_tf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;running Python&#39;</span><span class="p">)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;running TensorFlow&quot;</span><span class="p">)</span>
+    <span class="n">x_sq</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">y_sq</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x_sq</span> <span class="o">+</span> <span class="n">y_sq</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_log_tf</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_log_tf</span><span class="p">(</span><span class="mf">11.</span><span class="p">,</span> <span class="mf">21.</span><span class="p">)</span>  <span class="c1"># again with different numbers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we see, Python is still run: this happens because 11. is not equal to 1., TensorFlow does not convert those to Tensors. Lets use it in the right way, with Tensors</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_log_tf</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>  <span class="c1"># first compilation</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_log_tf</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">11.</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">22.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now only the TensorFlow operations get executed! Everything else became static. We can illustrate this more extremely here</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">autograph</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add_rnd</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;running Python&#39;</span><span class="p">)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;running TensorFlow&quot;</span><span class="p">)</span>
+    <span class="n">rnd_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
+    <span class="n">rnd_tf</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">rnd_np</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">rnd_tf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_rnd</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first time, the numpy code was executed as well, no difference so far. However, running it a second time, only the TensorFlow parts can change</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_rnd</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_rnd</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see now clearly: TensorFlow executes the function but <em>only cares about the TensorFlow operations</em> , everything else is regarded as static. This can be a large pitfall! If we would execute this function <em>without</em> the decorator, we would get a different result, since Numpy is also sampling a new random variable every time.</p>
+<div class="section" id="large-functions">
+<h3>Large functions<a class="headerlink" href="#large-functions" title="Permalink to this headline">¶</a></h3>
+<p>That having said, we can build graphs that require thousands of lines of Python code to stick them together correctly. Function calls in function calls etc are all possible.</p>
+</div>
+<div class="section" id="shapes">
+<h3>Shapes<a class="headerlink" href="#shapes" title="Permalink to this headline">¶</a></h3>
+<p>Tensors have a shape, similar to Numpy arrays. But Tensors have two kind of shapes, a static and a dynamic shape. The static shape is what can be inferred <em>before</em> executing the computation while the dynamic shape is only inferred during the execution of the code. The latter typically arises with random variables and masking or cuts.</p>
+<p>We can access the static shape with <code class="docutils literal notranslate"><span class="pre">Tensor.shape</span></code></p>
+<p>If the shape is known inside a graph, this will be the same. If the shape is unknown, the unknown axis will be None.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">autograph</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">func_shape</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;static shape: </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># static shape</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s1">&#39;dynamic shape &#39;</span><span class="p">,</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># dynamic shape</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">&gt;</span><span class="mf">3.5</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;static shape cuts applied: </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># static shape</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s1">&#39;dynamic shape cuts applied&#39;</span><span class="p">,</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># dynamic shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">func_shape</span><span class="p">(</span><span class="n">rnd1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can access the axes by indexing</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd3</span> <span class="o">=</span> <span class="n">rnd1</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">rnd1</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
+<span class="n">rnd3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">rnd3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<p>TensorFlow offers the possibility to have statefull objects inside a compiled graph (which e.g. is not possible with Numba). The most commonly used one is the <code class="docutils literal notranslate"><span class="pre">tf.Variable</span></code>. Technically, they are automatically captured on the function compilation and belong to it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">autograph</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">scale_by_var</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;running Python&#39;</span><span class="p">)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;running TensorFlow&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">var1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scale_by_var</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scale_by_var</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var1</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="mf">42.</span><span class="p">)</span>
+<span class="n">scale_by_var</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we see, the output changed. This is of course especially useful in the context of model fitting libraries, be it likelihoods or neural networks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_rnd</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;running Python&#39;</span><span class="p">)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;running TensorFlow&quot;</span><span class="p">)</span>
+    <span class="n">rnd_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
+    <span class="n">rnd_tf</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">rnd_np</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">rnd_tf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_rnd</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_rnd</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This means that we can use Numpy fully compatible in eager mode, but not when decorated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">try_np_sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">try_np_sqrt</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">5.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">try_np_sqrt_tf</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">try_np_sqrt</span><span class="p">,</span> <span class="n">autograph</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># equivalent to decorator</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">try_np_sqrt_tf</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">5.</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">NotImplementedError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we see, Numpy complains in the graph mode, given that it cannot handle the Symbolic Tensor.</p>
+<p>Having the <code class="docutils literal notranslate"><span class="pre">tf.function</span></code> decorator means that we can’t use any Python dynamicity. What fails when decorated but works nicely if not:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greater_python</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greater_python</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This works again, and will fail with the graph decorator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greater_python_tf</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">greater_python</span><span class="p">,</span> <span class="n">autograph</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">greater_python_tf</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The error message hints at something: while this does not work now - Python does not yet now the value of the Tensors so it can’t decide whether it will evaluate to True or False - there is the possibility of “autograph”: it automatically converts (a subset) of Python to TensorFlow: while loops, for loops through Tensors and conditionals. However, this is usually less effective and more errorprone than using explicitly the <code class="docutils literal notranslate"><span class="pre">tf.*</span></code> functions. Lets try it!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greater_python_tf_autograph</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">greater_python</span><span class="p">,</span> <span class="n">autograph</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greater_python_tf_autograph</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This now works neatless! But we’re never sure.</p>
+<p>To do it explicitly, we can do that as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">autograph</span><span class="o">.</span><span class="n">to_code</span><span class="p">(</span><span class="n">greater_python</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<p>In the end, this is what matters. And a comparison would be nice. Let’s do that and see how Numpy and TensorFlow compare.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nevents</span> <span class="o">=</span> <span class="mi">10000000</span>
+<span class="n">data_tf</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nevents</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">data_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">nevents</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_np</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x_init</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mf">42.</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_init</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">)))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">logx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">logx</span><span class="p">)</span>
+    
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_init</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">)))</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+    <span class="n">logx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">logx</span><span class="p">)</span>
+    
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_init</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">)))</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">x2</span> <span class="o">+</span> <span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+    <span class="n">logx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">logx</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span>
+
+<span class="n">calc_np_numba</span> <span class="o">=</span> <span class="n">numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)(</span><span class="n">calc_np</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_tf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x_init</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mf">42.</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_init</span> <span class="o">*</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">)))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_init</span> <span class="o">*</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">)))</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">/</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+    
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_init</span> <span class="o">*</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">)))</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">x2</span> <span class="o">+</span> <span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">/</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span>
+
+<span class="n">calc_tf_func</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">calc_tf</span><span class="p">,</span> <span class="n">autograph</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n1 -r1  # compile time, just for curiosity
+<span class="n">calc_tf_func</span><span class="p">(</span><span class="n">data_tf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n1 -r1  # compile time, just for curiosity
+<span class="n">calc_np_numba</span><span class="p">(</span><span class="n">data_np</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> calc_np(data_np)  # not compiled
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> calc_tf(data_tf)  # not compiled
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n1 -r7
+<span class="n">calc_np_numba</span><span class="p">(</span><span class="n">data_np</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n1 -r7
+<span class="n">calc_tf_func</span><span class="p">(</span><span class="n">data_tf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now play around with this numbers. Depending on the size (we can go up to 10 mio) and parallelizability of the problem, the numbers differ..</p>
+<p>In general:</p>
+<ul class="simple">
+<li><p>Numpy is faster for small numbers</p></li>
+<li><p>TensorFlow is faster for larger arrays and well parallelizable computations. Due to the larger overhead in dispatching in eager mode, it is significantly slower for very small (1-10) sample sizes.</p></li>
+</ul>
+<p>=&gt; there is no free lunch</p>
+<p>Note: this has not run on a GPU, which would automatically happen for TensorFlow.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_tf2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">sum_init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">)))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.4</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Jonas_log&quot;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Jonas_mean&quot;</span><span class="p">)</span>  <span class="c1"># name for ops, see later ;)</span>
+        <span class="n">sum_init</span> <span class="o">+=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">sum_init</span>
+
+<span class="n">calc_tf_func2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">calc_tf2</span><span class="p">,</span> <span class="n">autograph</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nd">@numba</span><span class="o">.</span><span class="n">njit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># njit is equal to jit(nopython=True), meaning &quot;compile everything or raise error&quot;</span>
+<span class="k">def</span> <span class="nf">calc_numba2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">sum_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">)))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.4</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">sum_init</span> <span class="o">+=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">sum_init</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n1 -r1  #compile
+<span class="n">calc_numba2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calc_numba2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n1 -r1  #compile
+<span class="n">calc_tf_func2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calc_tf_func2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">calc_numba2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">calc_tf_func2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calc_tf_func2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calc_numba2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">calc_numba2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">calc_tf_func2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="control-flow">
+<h2>Control flow<a class="headerlink" href="#control-flow" title="Permalink to this headline">¶</a></h2>
+<p>While TensorFlow is independent of the Python control flow, it has its own functions for that, mainly:</p>
+<ul class="simple">
+<li><p>while_loop(): a while loop taking a body and condition function</p></li>
+<li><p>cond(): if-like</p></li>
+<li><p>case and switch_case: if/elif statements</p></li>
+<li><p>tf.where</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">true_fn</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mf">1.</span>
+
+<span class="k">def</span> <span class="nf">false_fn</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mf">0.</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">greater</span><span class="p">(</span><span class="mf">111.</span><span class="p">,</span> <span class="mf">42.</span><span class="p">),</span> <span class="n">true_fn</span><span class="o">=</span><span class="n">true_fn</span><span class="p">,</span> <span class="n">false_fn</span><span class="o">=</span><span class="n">false_fn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="while-loops">
+<h3>While loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h3>
+<p>We can create while loops in order to have some kind of repetitive task</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cond</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">body</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">while_loop</span><span class="p">(</span><span class="n">cond</span><span class="o">=</span><span class="n">cond</span><span class="p">,</span>
+                     <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
+                     <span class="n">loop_vars</span><span class="o">=</span><span class="p">[</span><span class="mf">100.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="map-a-function">
+<h3>map a function<a class="headerlink" href="#map-a-function" title="Permalink to this headline">¶</a></h3>
+<p>We can also map a function on each element. While this is not very efficient, it allows for high flexibility.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n1 -r1
+<span class="n">tf</span><span class="o">.</span><span class="n">map_fn</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">rnd1_big</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n1 -r1
+<span class="n">tf</span><span class="o">.</span><span class="n">vectorized_map</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">rnd1_big</span><span class="p">)</span>  <span class="c1"># can speedup things sometimes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">autograph</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">do_map</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tensor</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">map_fn</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tensor</span><span class="p">)</span>
+
+<span class="n">do_map</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">rnd1_big</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">autograph</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">do_map_vec</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tensor</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">vectorized_map</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tensor</span><span class="p">)</span>
+
+<span class="n">do_map_vec</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">rnd1_big</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">do_map</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">rnd1_big</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">do_map_vec</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">rnd1_big</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">rnd1_big</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, the generic mapping is surely not optimal. However, it works “always”. <code class="docutils literal notranslate"><span class="pre">vectorized_map</span></code> on the other hand has a huge speedup and performs nearly as well as using the native function! However, while this works nicely for this case, it’s applications are limited and depend heavily on the use-case; more complicated examples can easily result in a longer runtime and a huge memory consumption. Caution is therefore advised when using this function.</p>
+</div>
+</div>
+<div class="section" id="gradients">
+<h2>Gradients<a class="headerlink" href="#gradients" title="Permalink to this headline">¶</a></h2>
+<p>TensorFlow allows us to calculate the automatic gradients.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+    <span class="n">tape</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">var2</span><span class="p">)</span>  <span class="c1"># actually watches all variables already by default</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">var2</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grad</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">var2</span><span class="p">)</span>
+<span class="n">grad</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="tasks-to-try-out">
+<h2>Tasks to try out<a class="headerlink" href="#tasks-to-try-out" title="Permalink to this headline">¶</a></h2>
+<p>Following are a few ideas to check whether you understand things</p>
+<ul class="simple">
+<li><p>can you get the second derivative? play around ;)</p></li>
+<li><p>write a shape that you know as a function</p></li>
+<li><p>create the MC integral of it over a certain range</p></li>
+</ul>
+<p>This allows to do many things with gradients and e.g. solve differential equations.</p>
+</div>
+<div class="section" id="bonus-the-graph">
+<h2>Bonus: the graph<a class="headerlink" href="#bonus-the-graph" title="Permalink to this headline">¶</a></h2>
+<p>We talked about the graph back and forth, but <em>where is it</em> ?</p>
+<p>The graph can be retained from a function that was already traced.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">concrete_func</span> <span class="o">=</span> <span class="n">calc_tf_func2</span><span class="o">.</span><span class="n">get_concrete_function</span><span class="p">(</span><span class="n">rnd1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">concrete_func</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span> <span class="o">=</span> <span class="n">concrete_func</span><span class="o">.</span><span class="n">graph</span>
+<span class="n">graph</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ops</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">get_operations</span><span class="p">()</span>
+<span class="n">ops</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_op</span> <span class="o">=</span> <span class="n">ops</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">log_op</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_op</span><span class="o">.</span><span class="n">outputs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">op_inputs_mean</span> <span class="o">=</span> <span class="n">ops</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">inputs</span>
+<span class="n">op_inputs_mean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_op</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="n">op_inputs_mean</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output of the log operation is the input to the mean operation! We can just walk along the graph here. TensorFlow Graphs are no magic, they are simple object that store their input, their output, their operation. That’s it!</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "zfit/poster",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./_tmp/zfit-tutorials/TensorFlow"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../introduction/Introduction.html" title="previous page">Introduction to zfit</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By zfit<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

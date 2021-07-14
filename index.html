@@ -1,121 +1,263 @@
+
 <!DOCTYPE html>
 
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zfit: scalable, pythonic fitting &#8212; zfit-poster  documentation</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zfit: scalable, pythonic fitting &#8212; zfit</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/zfit-favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+    <link rel="next" title="5 minutes to zfit" href="pages/5_minutes_to_zfit.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
 
-  </head><body>
+    
 
-  <div id="navbar" class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-
-        <a class="brand" href="#">
-          zfit</a>
-        <span class="navbar-text pull-left"><b></b></span>
-
-        <div class="nav-collapse">
-          <ul class="nav">
-            <li class="divider-vertical"></li>
-            
-            
-              <li class="dropdown globaltoc-container">
-  <a role="button"
-     id="dLabelGlobalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="#">Overview <b class="caret"></b></a>
-  <ul class="dropdown-menu globaltoc"
-      role="menu"
-      aria-labelledby="dLabelGlobalToc"></ul>
-</li>
-              
-                <li class="dropdown">
-  <a role="button"
-     id="dLabelLocalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="#">Page <b class="caret"></b></a>
-  <ul class="dropdown-menu localtoc"
-      role="menu"
-      aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">zfit: scalable, pythonic fitting</a><ul>
-<li><a class="reference internal" href="#what-is-zfit">What is zfit?</a></li>
-</ul>
-</li>
-</ul>
-</ul>
-</li>
-              
-            
-            
-            
-            
-            
-          </ul>
-
+    <div class="container-xl">
+      <div class="row">
           
-            
-<form class="navbar-form navbar-right" action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-
-<div class="container">
-  <div class="row">
-    <div class="body span12 content" role="main">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="#">
       
+      
+      <h1 class="site-logo" id="site-title">zfit</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pages/5_minutes_to_zfit.html">
+   5 minutes to zfit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="_tmp/zfit-tutorials/introduction/Introduction.html">
+   Introduction to zfit
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="_tmp/zfit-tutorials/TensorFlow/HPC_with_TensorFlow.html">
+   HPC in Python with TensorFlow
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/index.rst"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/zfit/poster"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/zfit/poster/issues/new?title=Issue%20on%20page%20%2Findex.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/zfit/poster/edit/master/website/index.rst"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-zfit">
+   What is zfit?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-tutorial">
+   Introduction tutorial
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-can-zfit-do">
+   What can zfit do
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
   <div class="section" id="zfit-scalable-pythonic-fitting">
 <h1>zfit: scalable, pythonic fitting<a class="headerlink" href="#zfit-scalable-pythonic-fitting" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/zfit/zfit"><img alt="zfit_logo" src="_images/zfit-fin_400x168.png" /></a></p>
-<p><strong>How it works</strong>: click on the links or the images to explore zfit.</p>
+<p>Click on the links or the images to explore zfit.</p>
 <div class="section" id="what-is-zfit">
 <h2>What is zfit?<a class="headerlink" href="#what-is-zfit" title="Permalink to this headline">¶</a></h2>
-<p>zfit is a (likelihood) model fitting library. Hereby, model refers to analytic distributions
-such as a Normal, Poisson. (<a class="reference external" href="scipy_vs_zfit">This is similar to SciPy distributions and fitting, why zfit?</a>)</p>
-<p><a class="reference external" href="https://mybinder.org/v2/gh/zfit/zfit-tutorials/9fc3fb862f078d410288142a354c78edfa0d0b05?filepath=10%20-%20Introduction%20to%20zfit.ipynb"><img alt="zfit logo" src="_images/gauss_fit.png" /></a></p>
+<p>zfit is a (likelihood) model fitting library using analytic distributions
+such as a Normal, Poisson. It is powerful and highly flexible such that it
+can be used to analyse data in High Energy Physics experiments like CERN.</p>
+<p>(<a href="#id1"><span class="problematic" id="id2">:ref:`This looks similar to SciPy distributions and fitting, why zfit? &lt;scipy-vs-zfit&gt;`_</span></a>)</p>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/zfit/zfit-tutorials/94ced467f58ddf46a7c653cdc22aa97c9b7add24"><img alt="zfit logo" src="_images/gauss_fit.png" style="width: 243.75px; height: 161.20000000000002px;" /></a> <a class="reference internal" href="_images/zfit_poster_classic.png"><img alt="zfit logo" src="_images/zfit_poster_classic.png" style="width: 180.0px; height: 240.0px;" /></a></p>
+</div>
+<div class="section" id="introduction-tutorial">
+<h2>Introduction tutorial<a class="headerlink" href="#introduction-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>For an introduction into zfit</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pages/5_minutes_to_zfit.html">5 minutes to zfit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tmp/zfit-tutorials/introduction/Introduction.html">Introduction to zfit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tmp/zfit-tutorials/introduction/Introduction.html#loss">Loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tmp/zfit-tutorials/introduction/Introduction.html#minimization">Minimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tmp/zfit-tutorials/introduction/Introduction.html#fit-result">Fit result</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tmp/zfit-tutorials/introduction/Introduction.html#end-of-zfit">End of zfit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tmp/zfit-tutorials/introduction/Introduction.html#beginning-of-hepstats">Beginning of hepstats</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="what-can-zfit-do">
+<h2>What can zfit do<a class="headerlink" href="#what-can-zfit-do" title="Permalink to this headline">¶</a></h2>
 <p>It is built to be powerful and flexible enough to satisfy the
 strong requirements of High Energy Physics, but is a general purpose library. It focuses strongly on two points,
 namely:</p>
 <ul class="simple">
-<li><p>performance: it is built on top of the <em>low-level</em> components of TensorFlow. This is an
+<li><p><strong>performance</strong>: it is built on top of the <em>low-level</em> components of TensorFlow. This is a
 mathematical library very similar to Numpy but with the native ability to compile
 parts and imply various optimizations, including GPU support and automatic gradients.</p></li>
-<li><p>customizability of models: While comparable libraries offer usually a limited set of
+</ul>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_tmp/zfit-tutorials/TensorFlow/HPC_with_TensorFlow.html">HPC in Python with TensorFlow</a></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><strong>custom models</strong>: While comparable libraries offer usually a limited set of
 model combinations or the possibility to implement custom models, zfit supports <a class="reference external" href="https://mybinder.org/v2/gh/zfit/zfit-tutorials/9fc3fb862f078d410288142a354c78edfa0d0b05?filepath=20%20-%20Composite%20Models.ipynb">a variety of
 composed and multidimensional distributions</a>, such as
 products and sums, out-of-the-box.
@@ -130,29 +272,54 @@ be taken by the user therefore.</p></li>
 </div>
 </div>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "zfit/poster",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
-    </div>
-      
-  </div>
-</div>
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      
-        <br/>
+              </div>
+              
         
-<div id="sourcelink">
-  <a href="_sources/index.rst.txt"
-     rel="nofollow">Source</a>
-</div>
-      
-    </p>
-    <p>
-        &copy; Copyright 2020, Jonas Eschle.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
-    </p>
-  </div>
-</footer>
+        <div class='prev-next-bottom'>
+            
+    <a class='right-next' id="next-link" href="pages/5_minutes_to_zfit.html" title="next page">5 minutes to zfit</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By zfit<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
   </body>
 </html>
