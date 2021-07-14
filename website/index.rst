@@ -66,7 +66,7 @@ namely:
     :maxdepth: 1
 
     ../_tmp/zfit-tutorials/components/20 - Composite Models
-    ../_tmp/zfit-tutorials/components/20 - Custom PDF
+    ../_tmp/zfit-tutorials/components/60 - Custom PDF
     ../_tmp/zfit-tutorials/guides/custom_models
 
 .. |zfit_logo| image:: images/zfit-fin_400x168.png
