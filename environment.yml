@@ -18,3 +18,4 @@ dependencies:
     - sphinx-panels
     - sphinx-thebe
     - sphinx-togglebutton
+    - sphinx-copybutton

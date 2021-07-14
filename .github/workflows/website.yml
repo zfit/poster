@@ -22,11 +22,8 @@ jobs:
 
       - name: Install and Build
         run: |
-#          pip install -U pip
-#          pip install -r requirements.txt
           cd website
-          make clean
-          make html
+          make html -j4
           touch _build/html/.nojekyll
           cd ..
 
@@ -34,4 +31,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: master # The branch the action should deploy to.
-          folder: website # The folder the action should deploy.
+          folder: website/_build/html # The folder the action should deploy.
