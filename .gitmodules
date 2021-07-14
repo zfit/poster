@@ -2,7 +2,3 @@
 	path = website/zfit-tutorials
 	url = https://github.com/zfit/zfit-tutorials
 	branch = master
-[submodule "website/--force"]
-	path = website/--force
-	url = https://github.com/zfit/zfit-tutorials
-	branch = master
