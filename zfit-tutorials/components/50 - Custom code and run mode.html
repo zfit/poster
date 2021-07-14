@@ -340,81 +340,6 @@ The expression always stays the same. But in fact, we could split things into tw
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2834</span><span class="o">/</span><span class="mf">1991092450.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">zfit</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">zfit</span> <span class="kn">import</span> <span class="n">z</span>  <span class="c1"># this is basically tf, just wrapped</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>                        <span class="sa">f</span><span class="s2">&quot; only with TF &gt;= 2&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span> 
-<span class="ne">---&gt; </span><span class="mi">61</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="p">(</span><span class="n">constraint</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">dimension</span><span class="p">,</span> <span class="n">exception</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span>                <span class="n">minimize</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span> <span class="kn">from</span> <span class="nn">.core.data</span> <span class="kn">import</span> <span class="n">Data</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="n">constraint</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">.core.constraint</span> <span class="kn">import</span> <span class="n">GaussianConstraint</span><span class="p">,</span> <span class="n">SimpleConstraint</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">.util</span> <span class="kn">import</span> <span class="n">ztyping</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#  Copyright (c) 2021 zfit</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="p">(</span><span class="n">basefunc</span><span class="p">,</span> <span class="n">basemodel</span><span class="p">,</span> <span class="n">baseobject</span><span class="p">,</span> <span class="n">basepdf</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">integration</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>                <span class="n">interfaces</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">operations</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">space</span><span class="p">)</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">basefunc</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">..settings</span> <span class="kn">import</span> <span class="n">ztypes</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">..util</span> <span class="kn">import</span> <span class="n">ztyping</span>
-<span class="ne">---&gt; </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">.basemodel</span> <span class="kn">import</span> <span class="n">BaseModel</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">.interfaces</span> <span class="kn">import</span> <span class="n">ZfitFunc</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> 
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">basemodel</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span>                               <span class="n">WorkInProgressError</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">integration</span> <span class="k">as</span> <span class="n">zintegrate</span>
-<span class="ne">---&gt; </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sample</span> <span class="k">as</span> <span class="n">zsample</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="kn">from</span> <span class="nn">.baseobject</span> <span class="kn">import</span> <span class="n">BaseNumeric</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="kn">from</span> <span class="nn">.data</span> <span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">SampleData</span><span class="p">,</span> <span class="n">Sampler</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">sample</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">..util.container</span> <span class="kn">import</span> <span class="n">convert_to_container</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">..util.exception</span> <span class="kn">import</span> <span class="n">WorkInProgressError</span>
-<span class="ne">---&gt; </span><span class="mi">15</span> <span class="kn">from</span> <span class="nn">.data</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">.interfaces</span> <span class="kn">import</span> <span class="n">ZfitPDF</span><span class="p">,</span> <span class="n">ZfitSpace</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">.space</span> <span class="kn">import</span> <span class="n">Space</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">uproot</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pandas</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> 
-<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">29</span>     <span class="kn">from</span> <span class="nn">pandas._libs</span> <span class="kn">import</span> <span class="n">hashtable</span> <span class="k">as</span> <span class="n">_hashtable</span><span class="p">,</span> <span class="n">lib</span> <span class="k">as</span> <span class="n">_lib</span><span class="p">,</span> <span class="n">tslib</span> <span class="k">as</span> <span class="n">_tslib</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span>     <span class="c1"># hack but overkill to use re</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pandas</span><span class="o">/</span><span class="n">_libs</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> 
-<span class="g g-Whitespace">     </span><span class="mi">12</span> 
-<span class="ne">---&gt; </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">pandas._libs.interval</span> <span class="kn">import</span> <span class="n">Interval</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">pandas._libs.tslibs</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">NaT</span><span class="p">,</span>
-
-<span class="nn">pandas/_libs/interval.pyx</span> in <span class="ni">init pandas._libs.interval</span><span class="nt">()</span>
-
-<span class="ne">ValueError</span>: numpy.ndarray size changed, may indicate binary incompatibility. Expected 88 from C header, got 80 from PyObject
-</pre></div>
-</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -426,6 +351,20 @@ The expression always stays the same. But in fact, we could split things into tw
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.67280929 -0.47371704 -0.13172055 -0.6448143  -1.72050812]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor([-0.70130179 -0.21560894  0.5814453   0.01712894 -0.68367056], shape=(5,), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -434,10 +373,23 @@ The expression always stays the same. But in fact, we could split things into tw
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor([ 0.9715075  -0.68932598  0.44972475 -0.62768535 -2.40417868], shape=(5,), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">rnd_sum</span><span class="p">)</span>  <span class="c1"># this will be a numpy nd.array</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.94382681, 0.47517031, 0.20225235, 0.3939889 , 5.78007511])
 </pre></div>
 </div>
 </div>
@@ -459,10 +411,50 @@ The expression always stays the same. But in fact, we could split things into tw
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am Python, being executed, x is 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(5.0, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am TensorFlow, being executed, x is  5
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float64, numpy=25.0&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eager_func</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am Python, being executed, x is 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(7.0, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am TensorFlow, being executed, x is  7
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float64, numpy=49.0&gt;
 </pre></div>
 </div>
 </div>
@@ -493,10 +485,38 @@ The expression always stays the same. But in fact, we could split things into tw
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am Python, being executed, x is 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tensor(&quot;x:0&quot;, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am TensorFlow, being executed, x is  5
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float64, numpy=25.0&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">graph_func</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am TensorFlow, being executed, x is  7
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float64, numpy=49.0&gt;
 </pre></div>
 </div>
 </div>
@@ -527,6 +547,26 @@ The expression always stays the same. But in fact, we could split things into tw
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am Python, being executed, x is 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tensor(&quot;x:0&quot;, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error was raised, last line: Cannot convert a symbolic Tensor (x:0) to a numpy array. This error may indicate that you&#39;re trying to pass a Tensor to a NumPy call, which is not supported
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <p>The error message is clear: Numpy does not know how to deal with a symbolic Tensor since it does not know the symbolic language of TensorFlow. It cab only act on concrete numbers given.</p>
 <p>So far we have seen: when building a graph, we can only use <code class="docutils literal notranslate"><span class="pre">tf.*</span></code> acting on inputs.</p>
@@ -550,6 +590,26 @@ The expression always stays the same. But in fact, we could split things into tw
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">graph_func_fail</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am Python, being executed, x is 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(5.0, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am TensorFlow, being executed, x is  5
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.0
 </pre></div>
 </div>
 </div>
@@ -584,6 +644,13 @@ Furthermore, since different objects (e.g. different datasets, <code class="docu
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wrapped_numpy_func</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,)),</span> <span class="n">z</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float64, numpy=
+array([3.32809607, 2.30906621, 3.53316388, 3.8523388 , 0.81097347,
+       0.63896264, 2.28565877, 6.06724138, 1.39309433, 6.28701924])&gt;
 </pre></div>
 </div>
 </div>
@@ -634,6 +701,14 @@ Furthermore, since different objects (e.g. different datasets, <code class="docu
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.5 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -642,6 +717,14 @@ Furthermore, since different objects (e.g. different datasets, <code class="docu
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_evals</span><span class="p">):</span>
         <span class="n">graph_func2</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.2 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -658,10 +741,23 @@ Furthermore, since different objects (e.g. different datasets, <code class="docu
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.5 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zfit</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">set_mode_default</span><span class="p">()</span> <span class="c1"># resetting the mode</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.util.temporary.TemporarilySet at 0x7f053414bfa0&gt;
 </pre></div>
 </div>
 </div>
@@ -701,11 +797,54 @@ Building graphs and not clearing them will fill up the cache and significanlty s
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1727565324926.263, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1705557781098.4045, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1629750289480.7234, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1638967480634.2878, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1659873206515.258, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31.2 ms ± 415 µs per loop (mean ± std. dev. of 5 runs, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <p>This gives us a reference. As we see, the values are different each time, as expected. Now let’s run with the graph mode on. As mentioned, the first call just measures the graph building time + one single execution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zfit</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">set_mode_default</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zfit.util.temporary.TemporarilySet at 0x7f0534157820&gt;
 </pre></div>
 </div>
 </div>
@@ -717,12 +856,64 @@ Building graphs and not clearing them will fill up the cache and significanlty s
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1627986895616.1877, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>228 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <p>This takes significantly more time then the eager execution. Now we can execute it and measure the time of the succesive calls</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n1 -r5  # 5 repetitions
 <span class="nb">print</span><span class="p">(</span><span class="n">sum_func</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1635663611800.0073, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1612983845773.518, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1586347055930.8118, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1636065305909.3975, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor(1611537820309.3506, shape=(), dtype=float64)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.8 ms ± 5.03 ms per loop (mean ± std. dev. of 5 runs, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

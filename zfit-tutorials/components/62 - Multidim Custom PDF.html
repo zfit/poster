@@ -272,80 +272,6 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2880</span><span class="o">/</span><span class="mf">2696556740.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">zfit</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">zfit</span> <span class="kn">import</span> <span class="n">z</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>                        <span class="sa">f</span><span class="s2">&quot; only with TF &gt;= 2&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span> 
-<span class="ne">---&gt; </span><span class="mi">61</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="p">(</span><span class="n">constraint</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">dimension</span><span class="p">,</span> <span class="n">exception</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span>                <span class="n">minimize</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span> <span class="kn">from</span> <span class="nn">.core.data</span> <span class="kn">import</span> <span class="n">Data</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="n">constraint</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">.core.constraint</span> <span class="kn">import</span> <span class="n">GaussianConstraint</span><span class="p">,</span> <span class="n">SimpleConstraint</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">.util</span> <span class="kn">import</span> <span class="n">ztyping</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#  Copyright (c) 2021 zfit</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="p">(</span><span class="n">basefunc</span><span class="p">,</span> <span class="n">basemodel</span><span class="p">,</span> <span class="n">baseobject</span><span class="p">,</span> <span class="n">basepdf</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">integration</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>                <span class="n">interfaces</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">operations</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">space</span><span class="p">)</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">basefunc</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">..settings</span> <span class="kn">import</span> <span class="n">ztypes</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">..util</span> <span class="kn">import</span> <span class="n">ztyping</span>
-<span class="ne">---&gt; </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">.basemodel</span> <span class="kn">import</span> <span class="n">BaseModel</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">.interfaces</span> <span class="kn">import</span> <span class="n">ZfitFunc</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> 
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">basemodel</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span>                               <span class="n">WorkInProgressError</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">integration</span> <span class="k">as</span> <span class="n">zintegrate</span>
-<span class="ne">---&gt; </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sample</span> <span class="k">as</span> <span class="n">zsample</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="kn">from</span> <span class="nn">.baseobject</span> <span class="kn">import</span> <span class="n">BaseNumeric</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="kn">from</span> <span class="nn">.data</span> <span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">SampleData</span><span class="p">,</span> <span class="n">Sampler</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">sample</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">..util.container</span> <span class="kn">import</span> <span class="n">convert_to_container</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">..util.exception</span> <span class="kn">import</span> <span class="n">WorkInProgressError</span>
-<span class="ne">---&gt; </span><span class="mi">15</span> <span class="kn">from</span> <span class="nn">.data</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">.interfaces</span> <span class="kn">import</span> <span class="n">ZfitPDF</span><span class="p">,</span> <span class="n">ZfitSpace</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">.space</span> <span class="kn">import</span> <span class="n">Space</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">zfit</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">uproot</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pandas</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> 
-<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">29</span>     <span class="kn">from</span> <span class="nn">pandas._libs</span> <span class="kn">import</span> <span class="n">hashtable</span> <span class="k">as</span> <span class="n">_hashtable</span><span class="p">,</span> <span class="n">lib</span> <span class="k">as</span> <span class="n">_lib</span><span class="p">,</span> <span class="n">tslib</span> <span class="k">as</span> <span class="n">_tslib</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span>     <span class="c1"># hack but overkill to use re</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">zposter38</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pandas</span><span class="o">/</span><span class="n">_libs</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> 
-<span class="g g-Whitespace">     </span><span class="mi">12</span> 
-<span class="ne">---&gt; </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">pandas._libs.interval</span> <span class="kn">import</span> <span class="n">Interval</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">pandas._libs.tslibs</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">NaT</span><span class="p">,</span>
-
-<span class="nn">pandas/_libs/interval.pyx</span> in <span class="ni">init pandas._libs.interval</span><span class="nt">()</span>
-
-<span class="ne">ValueError</span>: numpy.ndarray size changed, may indicate binary incompatibility. Expected 88 from C header, got 80 from PyObject
-</pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="axes-not-obs">
@@ -404,6 +330,17 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probs_np</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">probs</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">probs_np</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.02182608 0.02062266 0.02447879 0.01794661 0.01803446 0.01991125
+ 0.01958775 0.01905487 0.02359136 0.01960867 0.02088731 0.02016197
+ 0.01958821 0.02105185 0.02004957 0.02158969 0.02073879 0.02308919
+ 0.01761885 0.02032246]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
