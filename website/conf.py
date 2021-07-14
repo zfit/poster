@@ -104,7 +104,7 @@ import os
 import sys
 
 project_dir = Path(__file__).parents[0]
-zfit_tutorials_path = project_dir.joinpath('zfit-tutorials')
+zfit_tutorials_path = project_dir.joinpath('zfit-tutorials_copy')
 # atexit.register(lambda path=zfit_tutorials_path: shutil.rmtree(path))
 if os.path.exists(zfit_tutorials_path):
     shutil.rmtree(zfit_tutorials_path)
