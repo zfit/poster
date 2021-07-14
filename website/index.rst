@@ -29,7 +29,7 @@ For an introduction into zfit
     :maxdepth: 1
 
     pages/5_minutes_to_zfit
-    ../zfit-tutorials/introduction/Introduction
+    zfit-tutorials/introduction/Introduction
 
 
 What can zfit do
@@ -46,7 +46,7 @@ namely:
 .. toctree::
     :maxdepth: 1
 
-    ../zfit-tutorials/TensorFlow/HPC_with_TensorFlow
+    zfit-tutorials/TensorFlow/HPC_with_TensorFlow
 
 
 - **custom models**: While comparable libraries offer usually a limited set of
@@ -65,9 +65,9 @@ namely:
 .. toctree::
     :maxdepth: 1
 
-    ../zfit-tutorials/components/20 - Composite Models
-    ../zfit-tutorials/components/60 - Custom PDF
-    ../zfit-tutorials/guides/custom_models
+    zfit-tutorials/components/20 - Composite Models
+    zfit-tutorials/components/60 - Custom PDF
+    zfit-tutorials/guides/custom_models
 
 .. |zfit_logo| image:: images/zfit-fin_400x168.png
    :target: https://github.com/zfit/zfit
