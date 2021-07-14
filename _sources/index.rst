@@ -16,7 +16,7 @@ zfit is a (likelihood) model fitting library using analytic distributions
 such as a Normal, Poisson. It is powerful and highly flexible such that it
 can be used to analyse data in High Energy Physics experiments like CERN.
 
-(:ref:`This looks similar to SciPy distributions and fitting, why zfit? <scipy-vs-zfit>`_)
+(:ref:`This looks similar to SciPy distributions and fitting, why zfit? <scipy-vs-zfit>`)
 
 |tutorial10| |classical_poster|
 
@@ -62,7 +62,12 @@ namely:
   available, it automatically falls back to numerical methods. No further care needs to
   be taken by the user therefore.
 
+.. toctree::
+    :maxdepth: 1
 
+    ../_tmp/zfit-tutorials/components/20 - Composite Models
+    ../_tmp/zfit-tutorials/components/20 - Custom Models
+    ../_tmp/zfit-tutorials/guides/custom_models
 
 .. |zfit_logo| image:: images/zfit-fin_400x168.png
    :target: https://github.com/zfit/zfit
