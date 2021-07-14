@@ -91,7 +91,10 @@
 #     # Values: "3" (default) or "2" (in quotes)
 #     'bootstrap_version': "2",
 # }
+import shutil
 from pathlib import Path
+
+import pygit2
 
 html_favicon = "images/zfit-favicon.png"
 # type: ignore
@@ -101,10 +104,11 @@ import os
 import sys
 
 project_dir = Path(__file__).parents[0]
-# zfit_tutorials_path = project_dir.joinpath('_tmp', 'zfit-tutorials')
+zfit_tutorials_path = project_dir.joinpath('zfit-tutorials')
 # atexit.register(lambda path=zfit_tutorials_path: shutil.rmtree(path))
-# shutil.rmtree(zfit_tutorials_path)
-# pygit2.clone_repository("https://github.com/zfit/zfit-tutorials", zfit_tutorials_path)
+if os.path.exists(zfit_tutorials_path):
+    shutil.rmtree(zfit_tutorials_path)
+pygit2.clone_repository("https://github.com/zfit/zfit-tutorials", zfit_tutorials_path)
 
 jupyter_execute_notebooks = "force"
 if jupyter_execute_notebooks == "cache":
