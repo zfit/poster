@@ -2,11 +2,11 @@ name: zposter38
 
 dependencies:
   - python=3.8
-  - matplotlib
-  - pandas
-  - scipy
   - pip >=21.1
   - pip:
+    - matplotlib
+    - pandas
+    - scipy
     - zfit
     - mplhep
     - pygit2
