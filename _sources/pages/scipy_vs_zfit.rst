@@ -1,9 +1,15 @@
+.. _scipy-vs-zfit:
+
 SciPy vs zfit
 =============
 
-zfit is a model fitting library. SciPy offers a lot more, but also has distributions and minimization capabilities.
+zfit is a model fitting library with strong and flexible model building capabilities.
+SciPy is a more general library with a lot broader functionality, that has also limited distributions
+and minimization capabilities.
 
 While the SciPy capabilities are good for simple fits, the library has a few shortcomings that zfit implements:
+
+
 
 - extendability: while distributions can be added to scipy, only analytical integrable distributions can. zfit
   can deal with any function and applies numerical methods to it.
