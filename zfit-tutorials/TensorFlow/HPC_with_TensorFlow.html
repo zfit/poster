@@ -387,18 +387,6 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2375</span><span class="o">/</span><span class="mf">2789063044.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numba</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">tensorflow_probability</span> <span class="k">as</span> <span class="nn">tfp</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">zfit</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">zfit</span> <span class="kn">import</span> <span class="n">z</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;numba&#39;
-</pre></div>
-</div>
 </div>
 </div>
 <p>Let’s start with a simple comparison of Numpy, an AOT compiled library, versus pure Python</p>
@@ -426,11 +414,27 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.1 ms ± 373 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
 <span class="n">ar1</span> <span class="o">+</span> <span class="n">ar2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>108 µs ± 131 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -452,6 +456,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.16963493, 6.97459476, 0.59067682, 2.30885495, 3.81780519,
+       5.56890749, 1.07919196, 9.69959239, 6.135924  , 5.7163101 ])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -466,10 +476,19 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float64, numpy=
+array([2.26114644, 0.68319395, 7.34361396, 6.84196525, 1.36759423,
+       6.69716447, 3.72511919, 3.50020386, 7.42365297, 1.98782923])&gt;
 </pre></div>
 </div>
 </div>
@@ -481,11 +500,24 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.26114644, 0.68319395, 7.34361396, 6.84196525, 1.36759423,
+       6.69716447, 3.72511919, 3.50020386, 7.42365297, 1.98782923])
+</pre></div>
+</div>
+</div>
 </div>
 <p>Other operations act as we would expect it</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1</span> <span class="o">+</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float64, numpy=
+array([12.26114644, 10.68319395, 17.34361396, 16.84196525, 11.36759423,
+       16.69716447, 13.72511919, 13.50020386, 17.42365297, 11.98782923])&gt;
 </pre></div>
 </div>
 </div>
@@ -497,11 +529,22 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.50371089, 0.82655547, 2.70991032, 2.61571505, 1.16944184,
+       2.58788803, 1.93005678, 1.87088318, 2.72463814, 1.40990398])
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can slice it…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(2,), dtype=float64, numpy=array([0.68319395, 7.34361396])&gt;
 </pre></div>
 </div>
 </div>
@@ -513,12 +556,52 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(1, 10, 1), dtype=float64, numpy=
+array([[[2.26114644],
+        [0.68319395],
+        [7.34361396],
+        [6.84196525],
+        [1.36759423],
+        [6.69716447],
+        [3.72511919],
+        [3.50020386],
+        [7.42365297],
+        [1.98782923]]])&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>…and broadcast with the known (maybe slightly stricter) rules</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrix1</span> <span class="o">=</span> <span class="n">rnd1</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">rnd1</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
 <span class="n">matrix1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10, 10), dtype=float64, numpy=
+array([[ 5.1127832 ,  1.54480156, 16.60498654, 15.47068532,  3.09233081,
+        15.14326956,  8.42303998,  7.91447349, 16.78596646,  4.49477299],
+       [ 1.54480156,  0.46675397,  5.01711261,  4.67438924,  0.9343321 ,
+         4.57546223,  2.54497888,  2.39131809,  5.07179478,  1.3580729 ],
+       [16.60498654,  5.01711261, 53.92866605, 50.24475151, 10.04308407,
+        49.18139051, 27.3558373 , 25.70414596, 54.51644164, 14.59785052],
+       [15.47068532,  4.67438924, 50.24475151, 46.81248841,  9.35703218,
+        45.82176653, 25.48713603, 23.94827318, 50.79237563, 13.60065853],
+       [ 3.09233081,  0.9343321 , 10.04308407,  9.35703218,  1.87031397,
+         9.15900347,  5.0944515 ,  4.7868586 , 10.15254496,  2.71854379],
+       [15.14326956,  4.57546223, 49.18139051, 45.82176653,  9.15900347,
+        44.85201191, 24.94773588, 23.44144094, 49.71742491, 13.31281931],
+       [ 8.42303998,  2.54497888, 27.3558373 , 25.48713603,  5.0944515 ,
+        24.94773588, 13.87651298, 13.03867658, 27.65399215,  7.40490082],
+       [ 7.91447349,  2.39131809, 25.70414596, 23.94827318,  4.7868586 ,
+        23.44144094, 13.03867658, 12.25142708, 25.98429881,  6.95780756],
+       [16.78596646,  5.07179478, 54.51644164, 50.79237563, 10.15254496,
+        49.71742491, 27.65399215, 25.98429881, 55.11062347, 14.7569544 ],
+       [ 4.49477299,  1.3580729 , 14.59785052, 13.60065853,  2.71854379,
+        13.31281931,  7.40490082,  6.95780756, 14.7569544 ,  3.95146506]])&gt;
 </pre></div>
 </div>
 </div>
@@ -536,10 +619,25 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float64, numpy=
+array([1.50371089, 0.82655547, 2.70991032, 2.61571505, 1.16944184,
+       2.58788803, 1.93005678, 1.87088318, 2.72463814, 1.40990398])&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">matrix1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># with the axis argument to specify over which to reduce</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10,), dtype=float64, numpy=
+array([ 94.5871099 ,  28.57901637, 307.19426671, 286.20955657,
+        57.20849544, 280.15232525, 155.82726211, 146.41872027,
+       310.5424172 ,  83.15384588])&gt;
 </pre></div>
 </div>
 </div>
@@ -576,6 +674,14 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;tensorflow.python.framework.ops.EagerTensor&#39; object does not support item assignment
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="speed-comparison">
@@ -602,11 +708,27 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>151 µs ± 9.24 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it  # using numpy, same as before
 <span class="n">ar1</span> <span class="o">+</span> <span class="n">ar2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>78.1 µs ± 1.45 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -626,6 +748,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.26114644, 0.68319395, 7.34361396, 6.84196525, 1.36759423,
+       6.69716447, 3.72511919, 3.50020386, 7.42365297, 1.98782923])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -634,11 +762,27 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>592 ns ± 5.23 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
 <span class="n">rnd1</span> <span class="o">+</span> <span class="n">rnd2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15 µs ± 30.9 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -669,11 +813,27 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>562 µs ± 3.33 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">size_big</span><span class="p">,))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">size_big</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>394 µs ± 1.91 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -689,6 +849,15 @@
     <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="k">except</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">NotFoundError</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">InvalidArgumentError</span><span class="p">)</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span> <span class="c1"># TF 2.4 error, TF 2.5 error</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Value for attr &#39;T&#39; of int32 is not in the list of allowed values: bfloat16, half, float, double, complex64, complex128
+	; NodeDef: {{node Log}}; Op&lt;name=Log; signature=x:T -&gt; y:T; attr=T:type,allowed=[DT_BFLOAT16, DT_HALF, DT_FLOAT, DT_DOUBLE, DT_COMPLEX64, DT_COMPLEX128]&gt; [Op:Log]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -722,10 +891,38 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running Python
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=2.9957323&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_log</span><span class="p">(</span><span class="mf">42.</span><span class="p">,</span> <span class="mf">52.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running Python
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=7.6889133&gt;
 </pre></div>
 </div>
 </div>
@@ -750,10 +947,38 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running Python
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=0.6931472&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_log_tf</span><span class="p">(</span><span class="mf">11.</span><span class="p">,</span> <span class="mf">21.</span><span class="p">)</span>  <span class="c1"># again with different numbers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running Python
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=5.442418&gt;
 </pre></div>
 </div>
 </div>
@@ -765,10 +990,32 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running Python
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=0.6931472&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_log_tf</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">11.</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">22.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=5.488938&gt;
 </pre></div>
 </div>
 </div>
@@ -793,6 +1040,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running Python
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;tf.Tensor: shape=(), dtype=float32, numpy=0.7154827&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.95440686&gt;)
+</pre></div>
+</div>
+</div>
 </div>
 <p>The first time, the numpy code was executed as well, no difference so far. However, running it a second time, only the TensorFlow parts can change</p>
 <div class="cell docutils container">
@@ -801,10 +1063,28 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;tf.Tensor: shape=(), dtype=float32, numpy=0.7154827&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.8802124&gt;)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_rnd</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;tf.Tensor: shape=(), dtype=float32, numpy=1.4309654&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=1.2755852&gt;)
 </pre></div>
 </div>
 </div>
@@ -838,12 +1118,57 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>static shape: (10,)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>static shape cuts applied: (None,)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dynamic shape  [10]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dynamic shape cuts applied [6]
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can access the axes by indexing</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd3</span> <span class="o">=</span> <span class="n">rnd1</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">rnd1</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
 <span class="n">rnd3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(10, 10), dtype=float64, numpy=
+array([[ 5.1127832 ,  1.54480156, 16.60498654, 15.47068532,  3.09233081,
+        15.14326956,  8.42303998,  7.91447349, 16.78596646,  4.49477299],
+       [ 1.54480156,  0.46675397,  5.01711261,  4.67438924,  0.9343321 ,
+         4.57546223,  2.54497888,  2.39131809,  5.07179478,  1.3580729 ],
+       [16.60498654,  5.01711261, 53.92866605, 50.24475151, 10.04308407,
+        49.18139051, 27.3558373 , 25.70414596, 54.51644164, 14.59785052],
+       [15.47068532,  4.67438924, 50.24475151, 46.81248841,  9.35703218,
+        45.82176653, 25.48713603, 23.94827318, 50.79237563, 13.60065853],
+       [ 3.09233081,  0.9343321 , 10.04308407,  9.35703218,  1.87031397,
+         9.15900347,  5.0944515 ,  4.7868586 , 10.15254496,  2.71854379],
+       [15.14326956,  4.57546223, 49.18139051, 45.82176653,  9.15900347,
+        44.85201191, 24.94773588, 23.44144094, 49.71742491, 13.31281931],
+       [ 8.42303998,  2.54497888, 27.3558373 , 25.48713603,  5.0944515 ,
+        24.94773588, 13.87651298, 13.03867658, 27.65399215,  7.40490082],
+       [ 7.91447349,  2.39131809, 25.70414596, 23.94827318,  4.7868586 ,
+        23.44144094, 13.03867658, 12.25142708, 25.98429881,  6.95780756],
+       [16.78596646,  5.07179478, 54.51644164, 50.79237563, 10.15254496,
+        49.71742491, 27.65399215, 25.98429881, 55.11062347, 14.7569544 ],
+       [ 4.49477299,  1.3580729 , 14.59785052, 13.60065853,  2.71854379,
+        13.31281931,  7.40490082,  6.95780756, 14.7569544 ,  3.95146506]])&gt;
 </pre></div>
 </div>
 </div>
@@ -854,10 +1179,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(2,), dtype=int32, numpy=array([10, 10], dtype=int32)&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
 </pre></div>
 </div>
 </div>
@@ -891,10 +1226,32 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running Python
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=1.0&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scale_by_var</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=2.0&gt;
 </pre></div>
 </div>
 </div>
@@ -903,6 +1260,14 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var1</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="mf">42.</span><span class="p">)</span>
 <span class="n">scale_by_var</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=42.0&gt;
 </pre></div>
 </div>
 </div>
@@ -926,10 +1291,40 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running Python
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;tf.Tensor: shape=(), dtype=float32, numpy=0.39230967&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.2781849&gt;)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_rnd</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running Python
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running TensorFlow
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;tf.Tensor: shape=(), dtype=float32, numpy=1.9611908&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.6551211&gt;)
 </pre></div>
 </div>
 </div>
@@ -949,6 +1344,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.236068
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -963,6 +1363,14 @@
     <span class="n">try_np_sqrt_tf</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">5.</span><span class="p">))</span>
 <span class="k">except</span> <span class="ne">NotImplementedError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot convert a symbolic Tensor (x:0) to a numpy array. This error may indicate that you&#39;re trying to pass a Tensor to a NumPy call, which is not supported
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -986,6 +1394,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
 </div>
 <p>This works again, and will fail with the graph decorator.</p>
 <div class="cell docutils container">
@@ -1004,6 +1417,14 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>using a `tf.Tensor` as a Python `bool` is not allowed: AutoGraph is disabled in this function. Try decorating it directly with @tf.function.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <p>The error message hints at something: while this does not work now - Python does not yet now the value of the Tensors so it can’t decide whether it will evaluate to True or False - there is the possibility of “autograph”: it automatically converts (a subset) of Python to TensorFlow: while loops, for loops through Tensors and conditionals. However, this is usually less effective and more errorprone than using explicitly the <code class="docutils literal notranslate"><span class="pre">tf.*</span></code> functions. Lets try it!</p>
 <div class="cell docutils container">
@@ -1019,6 +1440,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=bool, numpy=False&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>This now works neatless! But we’re never sure.</p>
 <p>To do it explicitly, we can do that as well.</p>
@@ -1026,6 +1452,44 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">autograph</span><span class="o">.</span><span class="n">to_code</span><span class="p">(</span><span class="n">greater_python</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>def tf__greater_python(x, y):
+    with ag__.FunctionScope(&#39;greater_python&#39;, &#39;fscope&#39;, ag__.ConversionOptions(recursive=True, user_requested=True, optional_features=(), internal_convert_user_code=True)) as fscope:
+        do_return = False
+        retval_ = ag__.UndefinedReturnValue()
+
+        def get_state():
+            return (do_return, retval_)
+
+        def set_state(vars_):
+            nonlocal do_return, retval_
+            (do_return, retval_) = vars_
+
+        def if_body():
+            nonlocal do_return, retval_
+            try:
+                do_return = True
+                retval_ = True
+            except:
+                do_return = False
+                raise
+
+        def else_body():
+            nonlocal do_return, retval_
+            try:
+                do_return = True
+                retval_ = False
+            except:
+                do_return = False
+                raise
+        ag__.if_stmt((ag__.ld(x) &gt; ag__.ld(y)), if_body, else_body, get_state, set_state, (&#39;do_return&#39;, &#39;retval_&#39;), 2)
+        return fscope.ret(retval_, do_return)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1128,11 +1592,27 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>959 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n1 -r1  # compile time, just for curiosity
 <span class="n">calc_np_numba</span><span class="p">(</span><span class="n">data_np</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.59 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1143,10 +1623,26 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.74 s ± 8.15 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> calc_tf(data_tf)  # not compiled
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.5 s ± 132 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1158,11 +1654,27 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.79 s ± 6.28 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n1 -r7
 <span class="n">calc_tf_func</span><span class="p">(</span><span class="n">data_tf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>876 ms ± 15.4 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1218,10 +1730,24 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.54 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calc_numba2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.82991846, 2.45507623, 1.49106249, ..., 1.58784451, 0.45862357,
+       2.36444783])
 </pre></div>
 </div>
 </div>
@@ -1233,10 +1759,25 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.1 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calc_tf_func2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(100000,), dtype=float64, numpy=
+array([0.82991846, 2.45507623, 1.49106249, ..., 1.58784451, 0.45862357,
+       2.36444783])&gt;
 </pre></div>
 </div>
 </div>
@@ -1248,11 +1789,27 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.56 ms ± 33.5 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
 <span class="n">calc_tf_func2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.89 ms ± 10.1 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1263,10 +1820,23 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(100000,), dtype=float64, numpy=
+array([10.13421598, 16.0298037 , 12.03320054, ..., 13.13887434,
+       12.0921866 , 15.94627606])&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calc_numba2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([10.13421598, 16.0298037 , 12.03320054, ..., 13.13887434,
+       12.0921866 , 15.94627606])
 </pre></div>
 </div>
 </div>
@@ -1278,11 +1848,27 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63.6 ms ± 615 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
 <span class="n">calc_tf_func2</span><span class="p">(</span><span class="n">rnd1_big</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>74.4 ms ± 1.27 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1316,6 +1902,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="while-loops">
 <h3>While loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h3>
@@ -1341,6 +1932,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;tf.Tensor: shape=(), dtype=float32, numpy=3.125&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=6.0&gt;)
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="map-a-function">
@@ -1353,11 +1950,27 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.8 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n1 -r1
 <span class="n">tf</span><span class="o">.</span><span class="n">vectorized_map</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">rnd1_big</span><span class="p">)</span>  <span class="c1"># can speedup things sometimes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54.1 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1372,6 +1985,13 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(100000,), dtype=float64, numpy=
+array([ 0.08780093, -0.61491212,  0.99557477, ...,  0.99827938,
+        0.95044042, -0.79466407])&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1383,11 +2003,26 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(100000,), dtype=float64, numpy=
+array([ 0.08780093, -0.61491212,  0.99557477, ...,  0.99827938,
+        0.95044042, -0.79466407])&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
 <span class="n">do_map</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">rnd1_big</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.27 s ± 43.9 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1399,11 +2034,27 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.76 ms ± 67.9 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
 <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">rnd1_big</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.44 ms ± 4.52 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1430,11 +2081,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=8.0&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grad</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">var2</span><span class="p">)</span>
 <span class="n">grad</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=12.0&gt;
 </pre></div>
 </div>
 </div>
@@ -1461,11 +2122,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ConcreteFunction calc_tf2(x, n=2) at 0x7F994EDE7640&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span> <span class="o">=</span> <span class="n">concrete_func</span><span class="o">.</span><span class="n">graph</span>
 <span class="n">graph</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.framework.func_graph.FuncGraph at 0x7f994df799a0&gt;
 </pre></div>
 </div>
 </div>
@@ -1477,6 +2148,67 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;tf.Operation &#39;x&#39; type=Placeholder&gt;,
+ &lt;tf.Operation &#39;zeros_like&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;Cast/x&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;Cast&#39; type=Cast&gt;,
+ &lt;tf.Operation &#39;add/y&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;add&#39; type=AddV2&gt;,
+ &lt;tf.Operation &#39;mul&#39; type=Mul&gt;,
+ &lt;tf.Operation &#39;Abs&#39; type=Abs&gt;,
+ &lt;tf.Operation &#39;Sqrt&#39; type=Sqrt&gt;,
+ &lt;tf.Operation &#39;sub/y&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;sub&#39; type=Sub&gt;,
+ &lt;tf.Operation &#39;Cos&#39; type=Cos&gt;,
+ &lt;tf.Operation &#39;Cast_1/x&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;Cast_1&#39; type=Cast&gt;,
+ &lt;tf.Operation &#39;Pow&#39; type=Pow&gt;,
+ &lt;tf.Operation &#39;add_1/y&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;add_1&#39; type=AddV2&gt;,
+ &lt;tf.Operation &#39;Sinh&#39; type=Sinh&gt;,
+ &lt;tf.Operation &#39;pow_1/y&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;pow_1&#39; type=Pow&gt;,
+ &lt;tf.Operation &#39;Const&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;Mean&#39; type=Mean&gt;,
+ &lt;tf.Operation &#39;truediv&#39; type=RealDiv&gt;,
+ &lt;tf.Operation &#39;Abs_1&#39; type=Abs&gt;,
+ &lt;tf.Operation &#39;Jonas_log&#39; type=Log&gt;,
+ &lt;tf.Operation &#39;Const_1&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;Jonas_mean&#39; type=Mean&gt;,
+ &lt;tf.Operation &#39;sub_1&#39; type=Sub&gt;,
+ &lt;tf.Operation &#39;add_2&#39; type=AddV2&gt;,
+ &lt;tf.Operation &#39;Cast_2/x&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;Cast_2&#39; type=Cast&gt;,
+ &lt;tf.Operation &#39;add_3/y&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;add_3&#39; type=AddV2&gt;,
+ &lt;tf.Operation &#39;mul_1&#39; type=Mul&gt;,
+ &lt;tf.Operation &#39;Abs_2&#39; type=Abs&gt;,
+ &lt;tf.Operation &#39;Sqrt_1&#39; type=Sqrt&gt;,
+ &lt;tf.Operation &#39;sub_2/y&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;sub_2&#39; type=Sub&gt;,
+ &lt;tf.Operation &#39;Cos_1&#39; type=Cos&gt;,
+ &lt;tf.Operation &#39;Cast_3/x&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;Cast_3&#39; type=Cast&gt;,
+ &lt;tf.Operation &#39;Pow_2&#39; type=Pow&gt;,
+ &lt;tf.Operation &#39;add_4/y&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;add_4&#39; type=AddV2&gt;,
+ &lt;tf.Operation &#39;Sinh_1&#39; type=Sinh&gt;,
+ &lt;tf.Operation &#39;pow_3/y&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;pow_3&#39; type=Pow&gt;,
+ &lt;tf.Operation &#39;Const_2&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;Mean_1&#39; type=Mean&gt;,
+ &lt;tf.Operation &#39;truediv_1&#39; type=RealDiv&gt;,
+ &lt;tf.Operation &#39;Abs_3&#39; type=Abs&gt;,
+ &lt;tf.Operation &#39;Jonas_log_1&#39; type=Log&gt;,
+ &lt;tf.Operation &#39;Const_3&#39; type=Const&gt;,
+ &lt;tf.Operation &#39;Jonas_mean_1&#39; type=Mean&gt;,
+ &lt;tf.Operation &#39;sub_3&#39; type=Sub&gt;,
+ &lt;tf.Operation &#39;add_5&#39; type=AddV2&gt;,
+ &lt;tf.Operation &#39;Identity&#39; type=Identity&gt;]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1485,10 +2217,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Operation &#39;Jonas_log_1&#39; type=Log&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_op</span><span class="o">.</span><span class="n">outputs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;tf.Tensor &#39;Jonas_log_1:0&#39; shape=(10,) dtype=float64&gt;]
 </pre></div>
 </div>
 </div>
@@ -1500,10 +2242,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;tf.Tensor &#39;Jonas_log_1:0&#39; shape=(10,) dtype=float64&gt;,
+ &lt;tf.Tensor &#39;Const_3:0&#39; shape=(1,) dtype=int32&gt;)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_op</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="n">op_inputs_mean</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>

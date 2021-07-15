@@ -260,18 +260,6 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2616</span><span class="o">/</span><span class="mf">2488925279.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">progressbar</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">zfit</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;progressbar&#39;
-</pre></div>
-</div>
 </div>
 </div>
 <p>We gonna build a simple model, just a Gaussian. But, given the well defined workflow of zfit, <code class="docutils literal notranslate"><span class="pre">model</span></code> can be exchanged by <em>any</em> complicated composition or custom model.</p>
@@ -284,6 +272,8 @@
 <span class="n">model</span> <span class="o">=</span> <span class="n">zfit</span><span class="o">.</span><span class="n">pdf</span><span class="o">.</span><span class="n">Gauss</span><span class="p">(</span><span class="n">obs</span><span class="o">=</span><span class="n">obs</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
 </div>
 </div>
 <p>Instead of using <code class="docutils literal notranslate"><span class="pre">sample</span></code> as before, we will first build our loss with a more efficient <code class="docutils literal notranslate"><span class="pre">Data</span></code>, a “sampler”, created by <code class="docutils literal notranslate"><span class="pre">create_sampler</span></code>. This has like <code class="docutils literal notranslate"><span class="pre">sample</span></code> the arguments for limits and the number of samples, but also supports <code class="docutils literal notranslate"><span class="pre">fixed_params</span></code>, which is true by default. This means that whenever this object is <em>resampled</em>, it will be resampled with the parameter values that it had when we created the sampler.</p>
@@ -363,7 +353,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;zfit.minimizers.fitresult.FitResult object at 0x7f6af04313a0&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7f6af0431ee0&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7f6af0431a30&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7f6af0431190&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7f6af0431d30&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7f6af0451130&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7f6af0451070&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7f6af044acd0&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7f6af044adf0&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7f6af0482eb0&gt;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;zfit.minimizers.fitresult.FitResult object at 0x7fe4d4190340&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7fe4d4190ee0&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7fe4d4190a90&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7fe4d4190730&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7fe4d4190520&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7fe4d415e820&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7fe4d415eb20&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7fe4d415e6a0&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7fe4d415eaf0&gt;, &lt;zfit.minimizers.fitresult.FitResult object at 0x7fe4d415e760&gt;]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
